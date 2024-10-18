@@ -66,5 +66,16 @@
     "components": [
       "reference"
     ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+		"text",
+		"title",
+		"richtext",
+		"image",
+		"text",
+		"reference"
+    ]
   }
 ]

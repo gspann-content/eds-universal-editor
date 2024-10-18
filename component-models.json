@@ -265,5 +265,340 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "tabs",
+    "fields": [
+		{
+			  "component": "tab",
+			  "label": "Tab 1",
+			  "name": "tab1"
+		},
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "tabheader1",
+			"label": "Tab Header 1",
+			"value": ""
+		  },
+		  {
+			"component": "title",
+			"valueType": "string",
+			"name": "tabheading1",
+			"label": "Tab Heading 1",
+			"value": ""
+		  },
+		  {
+			"component": "richtext",
+			"valueType": "string",
+			"name": "description1",
+			"label": "Description 1",
+			"value": ""
+		  },
+		  {
+			"component": "image",
+			"valueType": "string",
+			"name": "image1",
+			"label": "Image 1",
+			"value": ""
+		  },
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "linktext1",
+			"label": "Link Text 1",
+			"value": ""
+		  },
+		  {
+			"component": "reference",
+			"valueType": "string",
+			"name": "linkpath1",
+			"label": "Link Path 1",
+			"value": ""
+		  }, 
+		  {
+			  "component": "tab",
+			  "label": "Tab 2",
+			  "name": "tab2"
+		},
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "tabheader2",
+			"label": "Tab Header 2",
+			"value": ""
+		  },
+		  {
+			"component": "title",
+			"valueType": "string",
+			"name": "tabheading2",
+			"label": "Tab Heading 2",
+			"value": ""
+		  },
+		  {
+			"component": "richtext",
+			"valueType": "string",
+			"name": "description2",
+			"label": "Description 2",
+			"value": ""
+		  },
+		  {
+			"component": "image",
+			"valueType": "string",
+			"name": "image2",
+			"label": "Image 2",
+			"value": ""
+		  },
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "linktext2",
+			"label": "Link Text 2",
+			"value": ""
+		  },
+		  {
+			"component": "reference",
+			"valueType": "string",
+			"name": "linkpath2",
+			"label": "Link Path 2",
+			"value": ""
+		  }, 
+		  {
+			  "component": "tab",
+			  "label": "Tab 3",
+			  "name": "tab3"
+		},
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "tabheader3",
+			"label": "Tab Header 3",
+			"value": ""
+		  },
+		  {
+			"component": "title",
+			"valueType": "string",
+			"name": "tabheading3",
+			"label": "Tab Heading 3",
+			"value": ""
+		  },
+		  {
+			"component": "richtext",
+			"valueType": "string",
+			"name": "description3",
+			"label": "Description 3",
+			"value": ""
+		  },
+		  {
+			"component": "image",
+			"valueType": "string",
+			"name": "image3",
+			"label": "Image 3",
+			"value": ""
+		  },
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "linktext3",
+			"label": "Link Text 3",
+			"value": ""
+		  },
+		  {
+			"component": "reference",
+			"valueType": "string",
+			"name": "linkpath3",
+			"label": "Link Path 3",
+			"value": ""
+		  }, 
+		  {
+			  "component": "tab",
+			  "label": "Tab 4",
+			  "name": "tab4"
+		},
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "tabheader4",
+			"label": "Tab Header 4",
+			"value": ""
+		  },
+		  {
+			"component": "title",
+			"valueType": "string",
+			"name": "tabheading4",
+			"label": "Tab Heading 4",
+			"value": ""
+		  },
+		  {
+			"component": "richtext",
+			"valueType": "string",
+			"name": "description4",
+			"label": "Description 4",
+			"value": ""
+		  },
+		  {
+			"component": "image",
+			"valueType": "string",
+			"name": "image4",
+			"label": "Image 4",
+			"value": ""
+		  },
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "linktext4",
+			"label": "Link Text 4",
+			"value": ""
+		  },
+		  {
+			"component": "reference",
+			"valueType": "string",
+			"name": "linkpath4",
+			"label": "Link Path 4",
+			"value": ""
+		  }, 
+		  {
+			  "component": "tab",
+			  "label": "Tab 5",
+			  "name": "tab5"
+		},
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "tabheader5",
+			"label": "Tab Header 5",
+			"value": ""
+		  },
+		  {
+			"component": "title",
+			"valueType": "string",
+			"name": "tabheading5",
+			"label": "Tab Heading 5",
+			"value": ""
+		  },
+		  {
+			"component": "richtext",
+			"valueType": "string",
+			"name": "description5",
+			"label": "Description 5",
+			"value": ""
+		  },
+		  {
+			"component": "image",
+			"valueType": "string",
+			"name": "image5",
+			"label": "Image 5",
+			"value": ""
+		  },
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "linktext5",
+			"label": "Link Text 5",
+			"value": ""
+		  },
+		  {
+			"component": "reference",
+			"valueType": "string",
+			"name": "linkpath5",
+			"label": "Link Path 5",
+			"value": ""
+		  }, 
+		  {
+			  "component": "tab",
+			  "label": "Tab 6",
+			  "name": "tab6"
+		},
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "tabheader6",
+			"label": "Tab Header 6",
+			"value": ""
+		  },
+		  {
+			"component": "title",
+			"valueType": "string",
+			"name": "tabheading6",
+			"label": "Tab Heading 6",
+			"value": ""
+		  },
+		  {
+			"component": "richtext",
+			"valueType": "string",
+			"name": "description6",
+			"label": "Description 6",
+			"value": ""
+		  },
+		  {
+			"component": "image",
+			"valueType": "string",
+			"name": "image6",
+			"label": "Image 6",
+			"value": ""
+		  },
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "linktext6",
+			"label": "Link Text 6",
+			"value": ""
+		  },
+		  {
+			"component": "reference",
+			"valueType": "string",
+			"name": "linkpath6",
+			"label": "Link Path 6",
+			"value": ""
+		  }, 
+		  {
+			  "component": "tab",
+			  "label": "Tab 7",
+			  "name": "tab7"
+		},
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "tabheader7",
+			"label": "Tab Header 7",
+			"value": ""
+		  },
+		  {
+			"component": "title",
+			"valueType": "string",
+			"name": "tabheading7",
+			"label": "Tab Heading 7",
+			"value": ""
+		  },
+		  {
+			"component": "richtext",
+			"valueType": "string",
+			"name": "description7",
+			"label": "Description 7",
+			"value": ""
+		  },
+		  {
+			"component": "image",
+			"valueType": "string",
+			"name": "image7",
+			"label": "Image 7",
+			"value": ""
+		  },
+		  {
+			"component": "text",
+			"valueType": "string",
+			"name": "linktext7",
+			"label": "Link Text 7",
+			"value": ""
+		  },
+		  {
+			"component": "reference",
+			"valueType": "string",
+			"name": "linkpath7",
+			"label": "Link Path 7",
+			"value": ""
+		  }
+	  
+    ]
   }
 ]
