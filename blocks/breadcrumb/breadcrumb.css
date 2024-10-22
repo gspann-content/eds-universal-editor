@@ -34,7 +34,14 @@
 }
 
 .separator-arrow {
-  margin: 0 5px;
+  display: inline-block;
+  font: normal normal normal 14px / 1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f105"; /* FontAwesome arrow */
+  color: #b0b0b0; /* Ash color */
 }
 
 .breadcrumb-link.last {
