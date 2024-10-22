@@ -28,20 +28,21 @@ export default function decorate(block) {
   const homeLi = li({ class: 'breadcrumb-item' }, homeAnchor);
   breadcrumbOl.appendChild(homeLi);
 
-  let url = '';
+  let url = `/${pathname.slice(1, startIndex + 2).join('/')}`; // Base URL up to "eds-ue-site"
   const length = relevantPathname.length;
 
   for (let i = 0; i < length; i += 1) {
-    // Construct the URL by including "eds-ue-site" only once
-    const fullPath = `/${pathname.slice(1, startIndex + 2).join('/')}/${relevantPathname[i]}`;
+    // Append each relevant path segment to the URL
+    const currentPathSegment = relevantPathname[i];
+    url = `${url}/${currentPathSegment}`; // Update URL for the current segment
 
-    const pathnameToUpperCase = relevantPathname[i].charAt(0).toUpperCase();
-    const linkText = (i === length - 1) ? title : pathnameToUpperCase + relevantPathname[i].slice(1);
+    const pathnameToUpperCase = currentPathSegment.charAt(0).toUpperCase();
+    const linkText = (i === length - 1) ? title : pathnameToUpperCase + currentPathSegment.slice(1);
     const formattedLinkText = linkText.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
 
     const breadcrumbLink = a({
       class: `breadcrumb-link ${i === length - 1 ? 'last' : ''}`,
-      href: fullPath, // URL now includes "eds-ue-site" correctly
+      href: url, // Correctly constructed URL
     }, formattedLinkText);
 
     const breadcrumbLi = li({ class: 'breadcrumb-item' }, breadcrumbLink);
