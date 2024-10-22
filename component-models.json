@@ -112,6 +112,10 @@
     ]
   },
   {
+    "id": "breadcrumb",
+    "fields": []
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -156,39 +160,6 @@
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
-      }
-    ]
-  },
-  {
-    "id": "tabs",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "tabhead",
-        "label": "Tab Head",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "name": "description",
-        "value": "",
-        "label": "Description",
-        "valueType": "string"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "name": "linkurl",
-        "value": "",
-        "label": "Link Url",
-        "valueType": "string"
       }
     ]
   },
