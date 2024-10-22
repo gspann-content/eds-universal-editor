@@ -22,10 +22,5 @@
       "fields": []
     }
   ],
-  "filters": [
-    {
-      "id": "bread-crumb",
-      "components": ["bread-crumb"]
-    }
-  ]
+  "filters": []
 }
