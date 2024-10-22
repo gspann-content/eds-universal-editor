@@ -35,13 +35,9 @@
 
 .separator-arrow {
   display: inline-block;
-  font: normal normal normal 14px / 1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f105"; /* FontAwesome arrow */
+  font-size: 14px;
   color: #b0b0b0; /* Ash color */
+  margin: 0 5px; /* Spacing around the arrow */
 }
 
 .breadcrumb-link.last {
