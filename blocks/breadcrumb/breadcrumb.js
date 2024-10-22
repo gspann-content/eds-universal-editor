@@ -8,9 +8,11 @@ export default function decorate(block) {
   const pathname = window.location.pathname.split('/').slice(1);
   const title = getMetadata('og:title');
 
-  // Find the index of "eds-ue-site" and slice accordingly
+  // Find the index of "eds-ue-site"
   const startIndex = pathname.indexOf('eds-ue-site');
-  const relevantPathname = pathname.slice(startIndex + 1);
+
+  // Slice the relevant path including "eds-ue-site"
+  const relevantPathname = pathname.slice(startIndex); // Start from "eds-ue-site"
 
   const breadcrumbOl = ol({ class: 'breadcrumb-list' });
 
@@ -26,28 +28,28 @@ export default function decorate(block) {
   const homeLi = li({ class: 'breadcrumb-item' }, homeAnchor);
   breadcrumbOl.appendChild(homeLi);
 
-  let url = '';
-  const length = relevantPathname.length;
+  let url = `/${pathname.slice(1, startIndex + 1).join('/')}`; // Base URL up to "eds-ue-site"
 
-  for (let i = 0; i < length; i += 1) {
-    // Construct the URL, including "eds-ue-site" in the path
-    const fullPath = `${pathname.slice(0, startIndex + 2).join('/')}/${relevantPathname[i]}`;
-    url = `${url}/${relevantPathname[i]}`;
+  for (let i = 0; i < relevantPathname.length; i += 1) {
+    const currentPathSegment = relevantPathname[i];
 
-    const pathnameToUpperCase = relevantPathname[i].charAt(0).toUpperCase();
-    const linkText = (i === length - 1) ? title : pathnameToUpperCase + relevantPathname[i].slice(1);
+    // Update the URL for the current segment
+    url += `/${currentPathSegment}`; // Correctly append the current segment to the URL
+
+    const pathnameToUpperCase = currentPathSegment.charAt(0).toUpperCase();
+    const linkText = (i === relevantPathname.length - 1) ? title : pathnameToUpperCase + currentPathSegment.slice(1);
     const formattedLinkText = linkText.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
 
     const breadcrumbLink = a({
-      class: `breadcrumb-link ${i === length - 1 ? 'last' : ''}`,
-      href: fullPath, // URL now includes "eds-ue-site"
+      class: `breadcrumb-link ${i === relevantPathname.length - 1 ? 'last' : ''}`,
+      href: url, // Correctly constructed URL
     }, formattedLinkText);
 
     const breadcrumbLi = li({ class: 'breadcrumb-item' }, breadcrumbLink);
     breadcrumbOl.appendChild(breadcrumbLi);
 
     // Add arrow separator if not the last item
-    if (i < length - 1) {
+    if (i < relevantPathname.length - 1) {
       const separatorLi = li({ class: 'separator-item' }, span({ class: 'separator-arrow', textContent: '→' }));
       breadcrumbOl.appendChild(separatorLi);
     }
