@@ -7,7 +7,11 @@ import {
 export default function decorate(block) {
   const pathname = window.location.pathname.split('/').slice(1);
   const title = getMetadata('og:title');
-  const { length } = pathname;
+
+  // Find the index of "eds-ue-site" and slice accordingly
+  const startIndex = pathname.indexOf('eds-ue-site');
+  const relevantPathname = pathname.slice(startIndex + 1);
+
   const breadcrumbOl = ol({ class: 'breadcrumb-list' });
 
   // Home Link
@@ -23,32 +27,26 @@ export default function decorate(block) {
   breadcrumbOl.appendChild(homeLi);
 
   let url = '';
+  const length = relevantPathname.length;
+
   for (let i = 0; i < length; i += 1) {
-    url = `${url}/${pathname[i]}`;
-    const pathnameToUpperCase = pathname[i].charAt(0).toUpperCase();
-    const linkText = (i === length - 1) ? title : pathnameToUpperCase + pathname[i].slice(1);
+    url = `${url}/${relevantPathname[i]}`;
+    const pathnameToUpperCase = relevantPathname[i].charAt(0).toUpperCase();
+    const linkText = (i === length - 1) ? title : pathnameToUpperCase + relevantPathname[i].slice(1);
     const formattedLinkText = linkText.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
 
-    // Create separator SVG
-    const separatorLi = li({ class: 'separator-item' }, span({ class: 'separator-arrow' }));
-    if (i < length) {
-      const breadcrumbLink = a({
-        class: 'breadcrumb-link',
-        href: url,
-      }, formattedLinkText);
-      const breadcrumbLi = li(
-        { class: 'breadcrumb-item' },
-        breadcrumbLink,
-      );
-      breadcrumbOl.appendChild(breadcrumbLi);
+    const breadcrumbLink = a({
+      class: `breadcrumb-link ${i === length - 1 ? 'last' : ''}`,
+      href: url,
+    }, formattedLinkText);
+
+    const breadcrumbLi = li({ class: 'breadcrumb-item' }, breadcrumbLink);
+    breadcrumbOl.appendChild(breadcrumbLi);
+
+    // Add arrow separator if not the last item
+    if (i < length - 1) {
+      const separatorLi = li({ class: 'separator-item' }, span({ class: 'separator-arrow', textContent: '→' }));
       breadcrumbOl.appendChild(separatorLi);
-    } else {
-      const breadcrumbLink = a({
-        class: 'breadcrumb-link last',
-        href: url,
-      }, formattedLinkText);
-      const breadcrumbLi = li({ class: 'breadcrumb-item' }, breadcrumbLink);
-      breadcrumbOl.appendChild(breadcrumbLi);
     }
   }
 

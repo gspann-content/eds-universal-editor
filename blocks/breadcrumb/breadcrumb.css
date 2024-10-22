@@ -44,5 +44,4 @@
 /* Last breadcrumb item styles */
 .breadcrumb-link.last {
   color: #4b5563; /* Different grey for last item */
-  font-weight: normal;
 }
