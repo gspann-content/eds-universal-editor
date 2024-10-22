@@ -8,10 +8,8 @@ export default function decorate(block) {
   const pathname = window.location.pathname.split('/').slice(1);
   const title = getMetadata('og:title');
 
-  // Find the index of "eds-ue-site"
+  // Find the index of "eds-ue-site" and slice accordingly
   const startIndex = pathname.indexOf('eds-ue-site');
-
-  // Get the relevant pathname excluding "eds-ue-site"
   const relevantPathname = pathname.slice(startIndex + 1);
 
   const breadcrumbOl = ol({ class: 'breadcrumb-list' });
@@ -28,21 +26,21 @@ export default function decorate(block) {
   const homeLi = li({ class: 'breadcrumb-item' }, homeAnchor);
   breadcrumbOl.appendChild(homeLi);
 
-  let url = `/${pathname.slice(1, startIndex + 2).join('/')}`; // Base URL up to "eds-ue-site"
+  let url = '';
   const length = relevantPathname.length;
 
   for (let i = 0; i < length; i += 1) {
-    // Append each relevant path segment to the URL
-    const currentPathSegment = relevantPathname[i];
-    url = `${url}/${currentPathSegment}`; // Update URL for the current segment
+    // Construct the URL, including "eds-ue-site" in the path
+    const fullPath = `${pathname.slice(0, startIndex + 2).join('/')}/${relevantPathname[i]}`;
+    url = `${url}/${relevantPathname[i]}`;
 
-    const pathnameToUpperCase = currentPathSegment.charAt(0).toUpperCase();
-    const linkText = (i === length - 1) ? title : pathnameToUpperCase + currentPathSegment.slice(1);
+    const pathnameToUpperCase = relevantPathname[i].charAt(0).toUpperCase();
+    const linkText = (i === length - 1) ? title : pathnameToUpperCase + relevantPathname[i].slice(1);
     const formattedLinkText = linkText.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
 
     const breadcrumbLink = a({
       class: `breadcrumb-link ${i === length - 1 ? 'last' : ''}`,
-      href: url, // Correctly constructed URL
+      href: fullPath, // URL now includes "eds-ue-site"
     }, formattedLinkText);
 
     const breadcrumbLi = li({ class: 'breadcrumb-item' }, breadcrumbLink);
