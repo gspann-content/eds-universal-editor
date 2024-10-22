@@ -16,7 +16,8 @@
       "cards",
       "columns",
       "menu",
-      "fragment"
+      "fragment",
+      "breadcrumb"
     ]
   },
   {
