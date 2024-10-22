@@ -10,7 +10,7 @@ export default function decorate(block) {
   const breadcrumbOl = ol({ class: 'breadcrumb-list' });
 
   // Start from the part after the standard path
-  const relevantPathname = pathname.slice(pathname.indexOf('blocks') + 1);
+  const relevantPathname = pathname.slice(pathname.indexOf('eds-ue-site') + 1);
 
   // Home Link
   const homeSvg = span({ class: 'home-logo' });
