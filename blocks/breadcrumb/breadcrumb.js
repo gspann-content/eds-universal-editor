@@ -8,8 +8,10 @@ export default function decorate(block) {
   const pathname = window.location.pathname.split('/').slice(1);
   const title = getMetadata('og:title');
 
-  // Find the index of "eds-ue-site" and slice accordingly
+  // Find the index of "eds-ue-site"
   const startIndex = pathname.indexOf('eds-ue-site');
+
+  // Get the relevant pathname excluding "eds-ue-site"
   const relevantPathname = pathname.slice(startIndex + 1);
 
   const breadcrumbOl = ol({ class: 'breadcrumb-list' });
@@ -30,14 +32,16 @@ export default function decorate(block) {
   const length = relevantPathname.length;
 
   for (let i = 0; i < length; i += 1) {
-    url = `${url}/${relevantPathname[i]}`;
+    // Construct the URL by including "eds-ue-site" only once
+    const fullPath = `/${pathname.slice(1, startIndex + 2).join('/')}/${relevantPathname[i]}`;
+
     const pathnameToUpperCase = relevantPathname[i].charAt(0).toUpperCase();
     const linkText = (i === length - 1) ? title : pathnameToUpperCase + relevantPathname[i].slice(1);
     const formattedLinkText = linkText.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
 
     const breadcrumbLink = a({
       class: `breadcrumb-link ${i === length - 1 ? 'last' : ''}`,
-      href: url,
+      href: fullPath, // URL now includes "eds-ue-site" correctly
     }, formattedLinkText);
 
     const breadcrumbLi = li({ class: 'breadcrumb-item' }, breadcrumbLink);
