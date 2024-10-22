@@ -4,7 +4,7 @@ import {
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  const standardPath = '/content/eds-ue-site/blocks';
+  const standardPath = '/content/eds-ue-site';
   const pathname = window.location.pathname.split('/').slice(1);
   const title = getMetadata('og:title');
   const breadcrumbOl = ol({ class: 'breadcrumb-list' });
