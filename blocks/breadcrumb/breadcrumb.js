@@ -30,14 +30,17 @@ export default function decorate(block) {
   const length = relevantPathname.length;
 
   for (let i = 0; i < length; i += 1) {
+    // Construct the URL, including "eds-ue-site" in the path
+    const fullPath = `${pathname.slice(0, startIndex + 2).join('/')}/${relevantPathname[i]}`;
     url = `${url}/${relevantPathname[i]}`;
+
     const pathnameToUpperCase = relevantPathname[i].charAt(0).toUpperCase();
     const linkText = (i === length - 1) ? title : pathnameToUpperCase + relevantPathname[i].slice(1);
     const formattedLinkText = linkText.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
 
     const breadcrumbLink = a({
       class: `breadcrumb-link ${i === length - 1 ? 'last' : ''}`,
-      href: url,
+      href: fullPath, // URL now includes "eds-ue-site"
     }, formattedLinkText);
 
     const breadcrumbLi = li({ class: 'breadcrumb-item' }, breadcrumbLink);
