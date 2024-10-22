@@ -4,13 +4,13 @@ import {
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  const standardPath = '/content/eds-ue-site/blocks';
+  const standardPath = '/content/eds-ue-site';
   const pathname = window.location.pathname.split('/').slice(1);
   const title = getMetadata('og:title');
   const breadcrumbOl = ol({ class: 'breadcrumb-list' });
 
   // Start from the part after the standard path
-  const relevantPathname = pathname.slice(pathname.indexOf('blocks') + 1);
+  const relevantPathname = pathname.slice(pathname.indexOf('eds-ue-site') + 1);
 
   // Home Link
   const homeSvg = span({ class: 'home-logo' });
@@ -38,7 +38,7 @@ export default function decorate(block) {
 
     // Add arrow separator if not the last item
     if (i < length - 1) {
-      const separatorLi = li({ class: 'separator-item' }, span({ class: 'separator-arrow' }));
+      const separatorLi = li({ class: 'separator-item' }, span({ class: 'separator-arrow', textContent: '→' }));
       breadcrumbOl.appendChild(separatorLi);
     }
   }
