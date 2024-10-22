@@ -1,6 +1,7 @@
 .breadcrumb-nav {
-  padding: 16px 0;
-  width: 100%;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .breadcrumb-list {
@@ -9,39 +10,37 @@
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
-  overflow-y: hidden;
-  overflow-x: auto;
 }
 
 .breadcrumb-item {
-  display: flex;
-  align-items: center;
-  margin-right: 16px; /* Space between breadcrumb items */
+  position: relative;
 }
 
 .breadcrumb-link {
   text-decoration: none;
-  color: #6b7280; /* Grey color */
-  transition: color 0.3s ease;
-  white-space: nowrap; /* Prevent line breaks */
+  color: #007bff;
+  font-weight: bold;
+  padding: 0 5px;
 }
 
 .breadcrumb-link:hover {
-  color: #1f2937; /* Darker grey on hover */
+  text-decoration: underline;
 }
 
 .separator-item {
   display: flex;
   align-items: center;
-  color: #6b7280; /* Grey color for separator */
+  padding: 0 5px;
 }
 
 .separator-arrow {
-  margin: 0 8px; /* Space around the arrow */
+  display: inline-block;
   font-size: 14px;
+  color: #b0b0b0; /* Ash color */
+  margin: 0 5px; /* Spacing around the arrow */
 }
 
-/* Last breadcrumb item styles */
 .breadcrumb-link.last {
-  color: #4b5563; /* Different grey for last item */
+  color: #555;
+  font-weight: normal;
 }
