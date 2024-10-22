@@ -3,21 +3,23 @@ import {
   div, nav, ol, li, a, span,
 } from '../../scripts/dom-builder.js';
 
-// breadcrumb functionality implementation
+// Breadcrumb functionality implementation
 export default function decorate(block) {
   const pathname = window.location.pathname.split('/').slice(1);
   const title = getMetadata('og:title');
   const { length } = pathname;
-  const breadcrumbOl = ol({ class: 'flex mobile-scroll tw-overflow-y-hidden tw-overflow-x-auto tw-flex-1 tw-flex tw-items-center text-sm' });
-  const homeSvg = span({ class: 'home-logo tw-h-full tw-w-full tw-flex icon icon-home ' });
+  const breadcrumbOl = ol({ class: 'breadcrumb-list' });
+
+  // Home Link
+  const homeSvg = span({ class: 'home-logo' });
   const homeAnchor = a({
-    class: 'tw-text-grey-500 hover:tw-text-grey-900 tw-transition-colors tw-duration-300',
+    class: 'home-link',
     href: '/',
   });
-  homeAnchor.appendChild( );
+  homeAnchor.appendChild(homeSvg);
   decorateIcons(homeAnchor);
 
-  const homeLi = li({ class: 'tw-flex tw-items-center tw-mt-4' }, homeAnchor);
+  const homeLi = li({ class: 'breadcrumb-item' }, homeAnchor);
   breadcrumbOl.appendChild(homeLi);
 
   let url = '';
@@ -26,42 +28,35 @@ export default function decorate(block) {
     const pathnameToUpperCase = pathname[i].charAt(0).toUpperCase();
     const linkText = (i === length - 1) ? title : pathnameToUpperCase + pathname[i].slice(1);
     const formattedLinkText = linkText.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
-    if (i < length) {
-      // Create separator SVG
-      const divSvg = div({ class: 'tw-text-grey-500 tw-pr-8' });
-      const separatorSvg = span({ class: 'icon icon-chevron tw-h-full tw-w-full tw-flex' });
-      divSvg.appendChild(separatorSvg);
-      decorateIcons(divSvg);
 
-      // Create breadcrumb link
+    // Create separator SVG
+    const separatorLi = li({ class: 'separator-item' }, span({ class: 'separator-arrow' }));
+    if (i < length) {
       const breadcrumbLink = a({
-        class: ' tw-text-grey-500 hover:tw-text-grey-900 tw-transition-colors tw-whitespace-nowrap tw-tracking-wide tw-duration-300',
+        class: 'breadcrumb-link',
         href: url,
       }, formattedLinkText);
-      breadcrumbLink.appendChild(divSvg);
-      // Create list item with separator
       const breadcrumbLi = li(
-        { class: 'tw-flex tw-items-center tw-ml-4' },
-        divSvg,
+        { class: 'breadcrumb-item' },
         breadcrumbLink,
       );
       breadcrumbOl.appendChild(breadcrumbLi);
+      breadcrumbOl.appendChild(separatorLi);
     } else {
-      // Create last breadcrumb link
       const breadcrumbLink = a({
-        class: 'tw-text-grey-500 hover:tw-text-grey-900 tw-transition-colors tw-whitespace-nowrap tw-tracking-wide tw-duration-300 tw-ml-8',
+        class: 'breadcrumb-link last',
         href: url,
       }, formattedLinkText);
-      const breadcrumbLi = li({ class: 'tw-flex tw-items-center' }, breadcrumbLink);
+      const breadcrumbLi = li({ class: 'breadcrumb-item' }, breadcrumbLink);
       breadcrumbOl.appendChild(breadcrumbLi);
     }
   }
 
   const breadcrumbNav = nav(
-    { class: 'tw-pt-16 tw-w-screen tw-pb-32 md:tw-pb-48' },
-    div({ class: 'tw-container tw-px-0 tw-ml-0' }, breadcrumbOl),
+    { class: 'breadcrumb-nav' },
+    div({ class: 'breadcrumb-container' }, breadcrumbOl),
   );
 
-  block.classList.add('tw');
+  block.classList.add('custom-breadcrumb');
   block.appendChild(breadcrumbNav);
 }
