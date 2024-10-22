@@ -17,7 +17,8 @@
       "columns",
       "menu",
        "tabs",
-      "hero-banner"
+      "hero-banner",
+      "bread-crumb"
     ]
   },
   {
