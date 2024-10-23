@@ -38,8 +38,8 @@ const createLink = (path) => {
 const createHomeIcon = () => {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("viewBox", "0 0 24 24");
-  svg.setAttribute("width", "24");
-  svg.setAttribute("height", "24");
+  svg.setAttribute("width", "16");  // Set width to match text size
+  svg.setAttribute("height", "16"); // Set height to match text size
   svg.setAttribute("fill", "currentColor");
   svg.innerHTML = `
     <path d="M12 3l10 9h-3v8h-6v-6h-4v6H5v-8H2l10-9z"/>
@@ -53,11 +53,11 @@ export default async function decorate(block) {
   });
   block.innerHTML = '';
 
-  // Create the Home link with an SVG icon
+  // Create the Home link with just the SVG icon
   const homeIcon = createHomeIcon();
   const HomeLink = createLink({ path: '', name: '' });
-  HomeLink.prepend(homeIcon); // Add the SVG before the link text (if any)
-  HomeLink.append('Home'); // Optionally add text if you want it alongside the icon
+  HomeLink.append(homeIcon); // Add only the SVG
+
   const breadcrumbLinks = [HomeLink.outerHTML];
 
   window.setTimeout(async () => {
@@ -69,7 +69,8 @@ export default async function decorate(block) {
     currentPath.innerText = document.querySelector('title').innerText;
     breadcrumbLinks.push(currentPath.outerHTML);
 
-    breadcrumb.innerHTML = breadcrumbLinks.join('<span class="breadcrumb-separator">/</span>');
+    // Change the separator from "/" to ">"
+    breadcrumb.innerHTML = breadcrumbLinks.join('<span class="breadcrumb-separator">></span>');
     block.append(breadcrumb);
   }, 1000);
 }
