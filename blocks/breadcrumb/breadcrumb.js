@@ -19,6 +19,7 @@ const getAllPathsExceptCurrent = async (paths) => {
     const prevPath = result[i - 1] ? result[i - 1].path : '';
     const path = `${prevPath}/${pathPart}`;
     const url = `${window.location.origin}${path}`;
+    /* eslint-disable-next-line no-await-in-loop */
     const name = await getPageTitle(url);
     if (name) {
       result.push({ path, name, url });
@@ -34,30 +35,13 @@ const createLink = (path) => {
   return pathLink;
 };
 
-// Function to create an SVG for the Home icon
-const createHomeIcon = () => {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", "0 0 24 24");
-  svg.setAttribute("width", "16");  // Set width to match text size
-  svg.setAttribute("height", "16"); // Set height to match text size
-  svg.setAttribute("fill", "currentColor");
-  svg.innerHTML = `
-    <path d="M12 3l10 9h-3v8h-6v-6h-4v6H5v-8H2l10-9z"/>
-  `;
-  return svg;
-};
-
 export default async function decorate(block) {
   const breadcrumb = createElement('nav', '', {
     'aria-label': 'Breadcrumb',
   });
   block.innerHTML = '';
 
-  // Create the Home link with just the SVG icon
-  const homeIcon = createHomeIcon();
-  const HomeLink = createLink({ path: '', name: '' });
-  HomeLink.append(homeIcon); // Add only the SVG
-
+  const HomeLink = createLink({ path: '', name: 'Home', url: window.location.origin });
   const breadcrumbLinks = [HomeLink.outerHTML];
 
   window.setTimeout(async () => {
@@ -65,11 +49,14 @@ export default async function decorate(block) {
     const paths = await getAllPathsExceptCurrent(path);
 
     paths.forEach((pathPart) => breadcrumbLinks.push(createLink(pathPart).outerHTML));
+
+    // Create currentPath element with bold text and black color
     const currentPath = document.createElement('span');
     currentPath.innerText = document.querySelector('title').innerText;
+    currentPath.style.fontWeight = 'bold';  // Make text bold
+    currentPath.style.color = 'black';       // Change text color to black
     breadcrumbLinks.push(currentPath.outerHTML);
 
-    // Change the separator from "/" to ">"
     breadcrumb.innerHTML = breadcrumbLinks.join('<span class="breadcrumb-separator">></span>');
     block.append(breadcrumb);
   }, 1000);
