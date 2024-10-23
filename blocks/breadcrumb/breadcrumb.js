@@ -43,6 +43,7 @@ export default async function decorate(block) {
 
   const HomeLink = createLink({ path: '', name: 'Home', url: window.location.origin });
   const breadcrumbLinks = [HomeLink.outerHTML];
+  breadcrumbLinks.style.color = 'black';
 
   window.setTimeout(async () => {
     const path = window.location.pathname;
