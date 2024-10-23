@@ -1,53 +1,59 @@
-import { decorateIcons, getMetadata } from '../../scripts/aem.js';
-import {
-  div, nav, ol, li, a, span,
-} from '../../scripts/dom-builder.js';
+import { createElement } from '../../scripts/scripts.js';
 
-export default function decorate(block) {
-  const standardPath = '/content/eds-ue-site';
-  const pathname = window.location.pathname.split('/').slice(1);
-  const title = getMetadata('og:title');
-  const breadcrumbOl = ol({ class: 'breadcrumb-list' });
-
-  // Start from the part after the standard path
-  const relevantPathname = pathname.slice(pathname.indexOf('eds-ue-site') + 1);
-
-  // Home Link
-  const homeSvg = span({ class: 'home-logo' });
-  const homeAnchor = a({ class: 'home-link', href: '/' }, homeSvg);
-  decorateIcons(homeAnchor);
-  const homeLi = li({ class: 'breadcrumb-item' }, homeAnchor);
-  breadcrumbOl.appendChild(homeLi);
-
-  let url = '';
-  const length = relevantPathname.length;
-
-  for (let i = 0; i < length; i += 1) {
-    url = `${url}/${relevantPathname[i]}`;
-    const pathnameToUpperCase = relevantPathname[i].charAt(0).toUpperCase();
-    const linkText = (i === length - 1) ? title : pathnameToUpperCase + relevantPathname[i].slice(1);
-    const formattedLinkText = linkText.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
-
-    const breadcrumbLink = a({
-      class: `breadcrumb-link ${i === length - 1 ? 'last' : ''}`,
-      href: url,
-    }, formattedLinkText);
-
-    const breadcrumbLi = li({ class: 'breadcrumb-item' }, breadcrumbLink);
-    breadcrumbOl.appendChild(breadcrumbLi);
-
-    // Add arrow separator if not the last item
-    if (i < length - 1) {
-      const separatorLi = li({ class: 'separator-item' }, span({ class: 'separator-arrow', textContent: '→' }));
-      breadcrumbOl.appendChild(separatorLi);
-    }
+const getPageTitle = async (url) => {
+  const resp = await fetch(url);
+  if (resp.ok) {
+    const html = document.createElement('div');
+    html.innerHTML = await resp.text();
+    return html.querySelector('title').innerText;
   }
 
-  const breadcrumbNav = nav(
-    { class: 'breadcrumb-nav' },
-    div({ class: 'breadcrumb-container' }, breadcrumbOl),
-  );
+  return '';
+};
 
-  block.classList.add('custom-breadcrumb');
-  block.appendChild(breadcrumbNav);
+const getAllPathsExceptCurrent = async (paths) => {
+  const result = [];
+  // remove first and last slash characters
+  const pathsList = paths.replace(/^\/|\/$/g, '').split('/');
+  for (let i = 0; i < pathsList.length - 1; i += 1) {
+    const pathPart = pathsList[i];
+    const prevPath = result[i - 1] ? result[i - 1].path : '';
+    const path = `${prevPath}/${pathPart}`;
+    const url = `${window.location.origin}${path}`;
+    /* eslint-disable-next-line no-await-in-loop */
+    const name = await getPageTitle(url);
+    if (name) {
+      result.push({ path, name, url });
+    }
+  }
+  return result;
+};
+
+const createLink = (path) => {
+  const pathLink = document.createElement('a');
+  pathLink.href = path.url;
+  pathLink.innerText = path.name;
+  return pathLink;
+};
+
+export default async function decorate(block) {
+  const breadcrumb = createElement('nav', '', {
+    'aria-label': 'Breadcrumb',
+  });
+  block.innerHTML = '';
+  const HomeLink = createLink({ path: '', name: 'Home', url: window.location.origin });
+  const breadcrumbLinks = [HomeLink.outerHTML];
+
+  window.setTimeout(async () => {
+    const path = window.location.pathname;
+    const paths = await getAllPathsExceptCurrent(path);
+
+    paths.forEach((pathPart) => breadcrumbLinks.push(createLink(pathPart).outerHTML));
+    const currentPath = document.createElement('span');
+    currentPath.innerText = document.querySelector('title').innerText;
+    breadcrumbLinks.push(currentPath.outerHTML);
+
+    breadcrumb.innerHTML = breadcrumbLinks.join('<span class="breadcrumb-separator">/</span>');
+    block.append(breadcrumb);
+  }, 1000);
 }
