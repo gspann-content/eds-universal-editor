@@ -16,11 +16,16 @@ const getAllPathsExceptCurrent = async (paths) => {
   const pathsList = paths.replace(/^\/|\/$/g, '').split('/');
   for (let i = 0; i < pathsList.length - 1; i += 1) {
     const pathPart = pathsList[i];
+    console.log("pathPart",pathPart);
     const prevPath = result[i - 1] ? result[i - 1].path : '';
+    console.log("prevPath",prevPath);
     const path = `${prevPath}/${pathPart}`;
+    console.log("path",path);
     const url = `${window.location.origin}${path}`;
+     console.log("url",url);
     /* eslint-disable-next-line no-await-in-loop */
     const name = await getPageTitle(url);
+    console.log("name",name);
     if (name) {
       result.push({ path, name, url });
     }
