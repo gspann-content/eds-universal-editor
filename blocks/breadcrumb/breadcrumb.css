@@ -1,15 +1,13 @@
-/* General styles for breadcrumb container */
-.breadcrumb-container {
+main > .breadcrumb-container {
   padding: 10px;
-  display: grid;
+  grid-row: 1;
+  grid-column: 1;
 }
 
-/* Specific styles for blog pages */
 .blog main div.breadcrumb-container {
   padding: 10px;
 }
 
-/* Media query for larger screens */
 @media (min-width: 900px) {
   main .breadcrumb-container {
     grid-row: 1;
@@ -17,27 +15,16 @@
   }
 }
 
-/* Styles for breadcrumb navigation */
-.breadcrumb > nav {
-  color: var(--link-color);
-  font-size: var(--body-font-size-xs);
-  padding-left: 10px;
-  min-height: 26px;
-}
-
-/* Styles for links within the breadcrumb */
 .breadcrumb > nav a {
   text-decoration: none;
   color: black; /* Initial color */
   transition: color 0.3s; /* Smooth transition */
 }
 
-/* Hover effect for links */
 .breadcrumb > nav a:hover {
   color: #d8862a; /* Color on hover */
 }
 
-/* Styles for breadcrumb separators */
 .breadcrumb .breadcrumb-separator {
   margin-inline: 1.5ch;
   color: black; /* Separator color */
