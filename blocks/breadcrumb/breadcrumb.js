@@ -7,20 +7,17 @@ const getPageTitle = async (url) => {
     html.innerHTML = await resp.text();
     return html.querySelector('title').innerText;
   }
-
   return '';
 };
 
 const getAllPathsExceptCurrent = async (paths) => {
   const result = [];
-  // remove first and last slash characters
   const pathsList = paths.replace(/^\/|\/$/g, '').split('/');
   for (let i = 0; i < pathsList.length - 1; i += 1) {
     const pathPart = pathsList[i];
     const prevPath = result[i - 1] ? result[i - 1].path : '';
-    const path = `${prevPath}/${pathPart}`;
+    const path = `${prevPath}/${pathPart}`.replace(/\/+/g, '/');
     const url = `${window.location.origin}${path}`;
-    /* eslint-disable-next-line no-await-in-loop */
     const name = await getPageTitle(url);
     if (name) {
       result.push({ path, name, url });
