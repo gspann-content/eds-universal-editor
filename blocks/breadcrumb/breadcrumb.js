@@ -32,6 +32,7 @@ const createLink = (path) => {
   const pathLink = document.createElement('a');
   pathLink.href = path.url;
   pathLink.innerText = path.name;
+   pathLink.style.color = 'black';
   return pathLink;
 };
 
@@ -43,7 +44,6 @@ export default async function decorate(block) {
 
   const HomeLink = createLink({ path: '', name: 'Home', url: window.location.origin });
   const breadcrumbLinks = [HomeLink.outerHTML];
-  breadcrumbLinks.style.color = 'black';
 
   window.setTimeout(async () => {
     const path = window.location.pathname;
