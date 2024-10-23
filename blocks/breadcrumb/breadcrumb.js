@@ -32,7 +32,7 @@ const createLink = (path) => {
   const pathLink = document.createElement('a');
   pathLink.href = path.url;
   pathLink.innerText = path.name;
-   pathLink.style.color = 'black';
+  pathLink.classList.add('breadcrumb-link'); // Add a class for styling
   return pathLink;
 };
 
@@ -58,7 +58,10 @@ export default async function decorate(block) {
     currentPath.style.color = 'black';       // Change text color to black
     breadcrumbLinks.push(currentPath.outerHTML);
 
-    breadcrumb.innerHTML = breadcrumbLinks.join('<span class="breadcrumb-separator">></span>');
+    // Create the separator with the class and set color
+    const separator = `<span class="breadcrumb-separator">></span>`;
+
+    breadcrumb.innerHTML = breadcrumbLinks.join(separator);
     block.append(breadcrumb);
   }, 1000);
 }
