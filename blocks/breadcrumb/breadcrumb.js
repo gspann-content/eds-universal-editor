@@ -12,26 +12,30 @@ const getPageTitle = async (url) => {
 
 const getAllPathsExceptCurrent = async (paths) => {
   const result = [];
-  // Remove first and last slash characters
+  const basePath = '/content/eds-ue-site/blocks'; // Base path to ignore
   const pathsList = paths.replace(/^\/|\/$/g, '').split('/');
 
-  let prevPath = ''; // Initialize prevPath outside the loop
+  let prevPath = '';
 
-  for (let i = 0; i < pathsList.length - 1; i += 1) {
+  for (let i = 0; i < pathsList.length; i += 1) {
     const pathPart = pathsList[i];
-    console.log("pathPart",pathPart);
+
+    // Skip the base path segments
+    if (prevPath === basePath) {
+      prevPath = ''; // Reset prevPath if we've reached the base path
+      continue;
+    }
+
     // Build the current path based on the previous path
-    prevPath = `${prevPath}/${pathPart}`; // Update prevPath for the current segment
-     console.log("prevPath",prevPath);
+    prevPath = `${prevPath}/${pathPart}`;
     const path = `${prevPath}.html`; // Add .html suffix
-     console.log("path",path);
-    const url = `${window.location.origin}${path}.html`;
-     console.log("url",url);
+    const url = `${window.location.origin}${path}`;
 
     const name = await getPageTitle(url);
-     console.log("name",name);
     if (name) {
-      result.push({ path, name, url });
+      // Use only the last part for the UI
+      const displayName = i === pathsList.length - 1 ? name : pathPart;
+      result.push({ path, name: displayName, url });
     }
   }
 
@@ -41,7 +45,7 @@ const getAllPathsExceptCurrent = async (paths) => {
 const createLink = (path) => {
   const pathLink = document.createElement('a');
   pathLink.href = path.url;
-  pathLink.innerText = path.name;
+  pathLink.innerText = path.name; // This will display the name in the UI
   pathLink.classList.add('breadcrumb-link'); // Add a class for styling
   return pathLink;
 };
