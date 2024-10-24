@@ -1,0 +1,123 @@
+/* Base styles */
+.header-bar {
+    max-width: 100%;
+    background-color: rgb(20, 20, 20);
+    padding: 0px 0px 0px 132px; /* Left padding for large screens */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between logo and nav */
+    align-items: center; /* Vertically center items */
+    font-family: Geogrotesque, sans-serif;
+    color: grey;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.logo img {
+    height: 32px; /* Set the logo height */
+    width: auto; /* Let width adjust based on aspect ratio */
+    margin-left: 20px; /* Reduced margin for better responsiveness */
+}
+
+.header-bar div {
+    display: flex; /* Use flexbox for nav items */
+    gap: 30px; /* Space between nav items */
+}
+
+div a {
+    display: flex; /* Use flex to center icons and text */
+    align-items: center; /* Vertically center items */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth color transition on hover */
+    font-size: 16px;
+    color: rgba(161, 161, 161, var(--tw-text-opacity)) !important;  
+}
+
+/* On hover, change the color of the text and image to white */
+div a:hover {
+    color: white !important; /* Change text color to white on hover */
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+/* Flexbox for nav links and automatic spacing */
+.navLinks-bar {
+    display: flex;
+    gap: 30px; /* Add space between nav items */
+    margin-left: auto; /* Align to the right on larger screens */
+    padding: 0px 0px 0px 482px; /* Adjusted for large screens */
+}
+
+/* Change the icon color on hover */
+.navLinks-bar img {
+    margin-right: 5px;
+    height: 20px;
+    width: 20px;
+    background-color: white; /* Background color */
+    border-radius: 50%; /* Make the background a circle */
+    padding: 1px; /* Add padding to make the circle larger */
+    box-sizing: border-box; /* Ensure padding doesn't exceed the element size */
+}
+
+.last-item {
+    background-color: #1e40af;
+    color: white !important;
+    padding: 18px 33px;
+    transition: background-color 0.3s; /* Smooth transition */
+    font-size: 16px; /* Font size */
+    margin-left: auto; /* Push this item to the right */
+}
+.last-item:hover {
+    background-color: #0056b3; /* Darken background on hover */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    .header-bar {
+        padding: 0 20px; /* Reduce padding for smaller screens */
+        flex-direction: row; /* Maintain horizontal layout */
+        justify-content: space-between; /* Ensure space between logo and nav */
+    }
+
+    .navLinks-bar {
+        padding-left: 0; /* Remove left padding on nav links */
+        gap: 20px; /* Reduce gap between nav items */
+        margin-left: auto; /* Keep the nav items aligned to the right */
+        margin-right: 0; /* Ensure it doesn't push to the left */
+    }
+
+    .logo img {
+        height: 28px; /* Reduce logo size */
+    }
+
+    div a {
+        font-size: 14px; /* Slightly smaller font size */
+    }
+
+    .last-item {
+        padding: 15px 25px; /* Reduce padding */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-bar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .navLinks-bar {
+        flex-direction: column; /* Stack nav items vertically */
+        width: 100%; /* Full width */
+        padding: 0; /* Remove padding */
+        gap: 10px; /* Space between stacked nav items */
+        margin-left: 0; /* Remove left margin for full-width nav */
+    }
+
+    .logo {
+        margin-bottom: 10px; /* Add space below the logo */
+    }
+
+    /* Adjust the last item to be more mobile-friendly */
+    .last-item {
+        width: 100%; /* Full width on mobile */
+        text-align: center; /* Center text */
+        margin-top: 10px; /* Add space above */
+    }
+}
