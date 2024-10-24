@@ -19,7 +19,8 @@ const getAllPathsExceptCurrent = async (paths) => {
   for (let i = 0; i < pathsList.length - 1; i += 1) {
     const pathPart = pathsList[i];
     console.log("pathPart",pathPart);
-    prevPath = `${prevPath}/${pathPart}`;
+    // Build the current path based on the previous path
+    prevPath = `${prevPath}/${pathPart}`; // Update prevPath for the current segment
      console.log("prevPath",prevPath);
     const path = `${prevPath}.html`; // Add .html suffix
      console.log("path",path);
@@ -67,7 +68,7 @@ export default async function decorate(block) {
     breadcrumbLinks.push(currentPath.outerHTML);
 
     // Create the separator with the class and set color
-   const separator = <span className="breadcrumb-separator" aria-hidden="true"></span>;
+    const separator = `<span class="breadcrumb-separator"></span>`;
 
     breadcrumb.innerHTML = breadcrumbLinks.join(separator);
     block.append(breadcrumb);
