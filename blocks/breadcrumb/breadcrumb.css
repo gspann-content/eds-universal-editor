@@ -4,6 +4,10 @@ main > .breadcrumb-container {
   grid-column: 1;
 }
 
+main > .section > div {
+    padding: 15px 32px;
+    }
+
 .blog main div.breadcrumb-container {
   padding: 10px;
 }
