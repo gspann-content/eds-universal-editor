@@ -67,7 +67,7 @@ export default async function decorate(block) {
     breadcrumbLinks.push(currentPath.outerHTML);
 
     // Create the separator with the class and set color
-   const separator = <span className="breadcrumb-separator" aria-hidden="true">{'\uF105'}</span>;
+   const separator = <span className="breadcrumb-separator" aria-hidden="true"></span>;
 
     breadcrumb.innerHTML = breadcrumbLinks.join(separator);
     block.append(breadcrumb);
