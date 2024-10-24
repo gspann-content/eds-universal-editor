@@ -18,14 +18,9 @@ const getAllPathsExceptCurrent = async (paths) => {
 
   for (let i = 0; i < pathsList.length - 1; i += 1) {
     const pathPart = pathsList[i];
-    console.log("pathPart",pathPart);
-    // Build the current path based on the previous path
     prevPath = `${prevPath}/${pathPart}`; // Update prevPath for the current segment
-     console.log("prevPath",prevPath);
     const path = `${prevPath}.html`; // Add .html suffix
-     console.log("path",path);
     const url = `${window.location.origin}${path}`;
-     console.log("url",url);
 
     const name = await getPageTitle(url);
      console.log("name",name);

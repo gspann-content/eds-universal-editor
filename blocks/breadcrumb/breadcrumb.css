@@ -16,18 +16,17 @@ main > .breadcrumb-container {
 }
 
 .breadcrumb > nav a {
-  text-decoration: none;
-  color: black; /* Initial color */
-  transition: color 0.3s; /* Smooth transition */
+  text-decoration: none;  /* No underline by default */
+  color: black;           /* Initial color */
+  transition: color 0.3s, text-decoration 0.3s; /* Smooth transition for color and underline */
 }
 
 .breadcrumb > nav a:hover {
-  color: #d8862a; /* Color on hover */
+  color: #d8862a;         /* Color on hover */
+  text-decoration: underline; /* Underline on hover */
 }
 
 .breadcrumb .breadcrumb-separator {
   margin-inline: 1.5ch;
-  color: black; /* Separator color */
+  color: black;           /* Separator color */
 }
-
-
