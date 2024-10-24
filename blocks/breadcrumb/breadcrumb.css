@@ -29,3 +29,15 @@ main > .breadcrumb-container {
   margin-inline: 1.5ch;
   color: black; /* Separator color */
 }
+
+.breadcrumb-separator {
+    display: inline-block;
+    font-family: FontAwesome; /* Ensure you have FontAwesome imported */
+    font-size: 14px; /* Inherit from parent if needed */
+    line-height: 1; /* Adjust as necessary */
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f105"; /* This may not work directly in CSS, use the Unicode in JSX */
+}
+

@@ -12,16 +12,14 @@ const getPageTitle = async (url) => {
 
 const getAllPathsExceptCurrent = async (paths) => {
   const result = [];
-  // Remove first and last slash characters
   const pathsList = paths.replace(/^\/|\/$/g, '').split('/');
 
-  let prevPath = ''; // Initialize prevPath outside the loop
+  let prevPath = '';
 
   for (let i = 0; i < pathsList.length - 1; i += 1) {
     const pathPart = pathsList[i];
     console.log("pathPart",pathPart);
-    // Build the current path based on the previous path
-    prevPath = `${prevPath}/${pathPart}`; // Update prevPath for the current segment
+    prevPath = `${prevPath}/${pathPart}`;
      console.log("prevPath",prevPath);
     const path = `${prevPath}.html`; // Add .html suffix
      console.log("path",path);
@@ -69,7 +67,7 @@ export default async function decorate(block) {
     breadcrumbLinks.push(currentPath.outerHTML);
 
     // Create the separator with the class and set color
-    const separator = `<span class="breadcrumb-separator">></span>`;
+   const separator = <span className="breadcrumb-separator" aria-hidden="true">{'\uF105'}</span>;
 
     breadcrumb.innerHTML = breadcrumbLinks.join(separator);
     block.append(breadcrumb);
