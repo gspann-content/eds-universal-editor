@@ -150,6 +150,16 @@
     ]
   },
   {
+    "id": "fragment",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Reference"
+      }
+    ]
+  },
+  {
     "id": "quote",
     "fields": [
        {
@@ -168,16 +178,6 @@
        }
      ]
   },  
-  {
-    "id": "fragment",
-    "fields": [
-      {
-        "component": "aem-content",
-        "name": "reference",
-        "label": "Reference"
-      }
-    ]
-  },
   {
     "id": "headerbarItem",
     "fields": [
