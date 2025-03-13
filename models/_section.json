@@ -43,6 +43,7 @@
         "title",
         "hero",
         "cards",
+        "carousel",
         "columns",
         "menu",
         "fragment"
