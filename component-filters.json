@@ -83,6 +83,12 @@
     ]
   },
   {
+    "id": "carousel",
+    "components": [
+      "carousel"
+    ]
+  },
+  {
     "id": "tabs",
     "components": [
       "tabItem"
