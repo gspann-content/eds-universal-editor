@@ -8,7 +8,7 @@
   {
     "id": "section",
     "components": [
-     "text",
+      "text",
       "image",
       "button",
       "title",
@@ -16,17 +16,7 @@
       "cards",
       "columns",
       "menu",
-      "split-image-text",
-      "header-bar",
-      "hero-banner",
-      "horizontal-vertical",
-      "page-title",
-      "tabs",
-      "breadcrumb",
-      "sciexColumns",
-      "media-grid",
-      "sciex-columns",
-      "page-subnav"
+      "fragment"
     ]
   },
   {
@@ -64,6 +54,12 @@
     ]
   },
   {
+    "id": "media-grid",
+    "components": [
+      "media-grid-item"
+    ]
+  },
+  {
     "id": "menu",
     "components": [
       "menuItem"
@@ -76,6 +72,12 @@
     ]
   },
   {
+    "id": "quote",
+    "components": [
+      "quote"
+    ]
+  },
+  {
     "id": "sciex-columns",
     "components": [
       "sciex-card"
@@ -85,18 +87,6 @@
     "id": "tabs",
     "components": [
       "tabItem"
-    ]
-  },
-  {
-    "id": "media-grid",
-    "components": [
-      "media-grid-item"
-    ]
-  },
-  {
-    "id": "page-subnav",
-    "components": [
-      "page-subnav-item"
     ]
   }
 ]
