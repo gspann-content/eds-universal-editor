@@ -1,0 +1,28 @@
+.testimonials > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+    grid-gap: 24px;
+  }
+  
+  .testimonials > ul > li {
+    border: 1px solid #dadada;
+    background-color: var(--background-color);
+  }
+  
+  .testimonials .testimonial-body {
+    margin: 16px;
+  }
+  
+  .testimonials .testimonial-image {
+    line-height: 0;
+  }
+  
+  .testimonials > ul > li img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  

@@ -8,25 +8,16 @@
   {
     "id": "section",
     "components": [
-     "text",
+      "text",
       "image",
       "button",
       "title",
       "hero",
       "cards",
+      "testimonials",
       "columns",
       "menu",
-      "split-image-text",
-      "header-bar",
-      "hero-banner",
-      "horizontal-vertical",
-      "page-title",
-      "tabs",
-      "breadcrumb",
-      "sciexColumns",
-      "media-grid",
-      "sciex-columns",
-      "page-subnav"
+      "fragment"
     ]
   },
   {
@@ -64,6 +55,12 @@
     ]
   },
   {
+    "id": "media-grid",
+    "components": [
+      "media-grid-item"
+    ]
+  },
+  {
     "id": "menu",
     "components": [
       "menuItem"
@@ -88,15 +85,9 @@
     ]
   },
   {
-    "id": "media-grid",
+    "id": "testimonials",
     "components": [
-      "media-grid-item"
-    ]
-  },
-  {
-    "id": "page-subnav",
-    "components": [
-      "page-subnav-item"
+      "testimonial"
     ]
   }
 ]
