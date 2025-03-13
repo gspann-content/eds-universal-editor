@@ -296,13 +296,6 @@
         "value": "",
         "label": "Link Url",
         "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "altText",
-        "label": "Alt text",
-        "value": "Alt text"
       }
     ]
   },
