@@ -293,6 +293,18 @@
     ]
   },
   {
+    "id": "carousel",
+    "fields": [
+      {
+        "component": "text",
+        "name": "carouseltext",
+        "value": "",
+        "label": "Carousel Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "subItem",
     "fields": [
       {
