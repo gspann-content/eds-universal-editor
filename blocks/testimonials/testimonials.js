@@ -1,8 +1,11 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+let currentIndex=0;
 function activateCarousel(action,currentIndex,testimonialsToShow)
 {
+  console.log(currentIndex);
+  
   const testimonialsWrapper=document.querySelector('.testimonials ul');
   const totalTestimonials=document.querySelectorAll('ul li').length;
   if(action==='prev')
@@ -36,7 +39,6 @@ export default function decorate(block) {
   const buttonsWrapper = document.createElement('div');
   buttonsWrapper.classList.add('buttons');
 
-  let currentIndex=0;
   const testimonialsToShow=4;
 
 // prev button
