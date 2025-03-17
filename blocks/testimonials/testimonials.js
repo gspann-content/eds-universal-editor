@@ -2,7 +2,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 let currentIndex=0;
-const testimonialsToShow=4;
+const testimonialsToShow=3;
 function activateCarousel(action,testimonialsToShow)
 {
   const testimonialsWrapper=document.querySelector('.testimonials ul');
@@ -53,6 +53,7 @@ export default function decorate(block) {
     {
       activateCarousel('next',testimonialsToShow);
     });
+
   buttonsWrapper.appendChild(prevButton);
   buttonsWrapper.appendChild(nextButton);
 
