@@ -3,12 +3,10 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 let currentIndex=0;
 const testimonialsToShow=4;
-
 function activateCarousel(action,testimonialsToShow)
 {
   const testimonialsWrapper=document.querySelector('.testimonials ul');
   const totalTestimonials=testimonialsWrapper.querySelectorAll('li').length;
-  
   if(action==='prev')
   {
     if(currentIndex>0)
@@ -26,14 +24,11 @@ function activateCarousel(action,testimonialsToShow)
   }
   updateTestimonials(testimonialsWrapper,currentIndex,testimonialsToShow);
 }
-
 function updateTestimonials(testimonialsWrapper,currentIndex,testimonialsToShow)
 {
-  
   const offset=-currentIndex*(100/testimonialsToShow)
   testimonialsWrapper.style.transform=`translate(${offset}%)`;
 }
-
 
 export default function decorate(block) {
   
@@ -42,8 +37,6 @@ export default function decorate(block) {
   // create button wrapper and buttons for previous and next for textimonials carousel
   const buttonsWrapper = document.createElement('div');
   buttonsWrapper.classList.add('buttons');
-
-
 // prev button
   const prevButton=document.createElement('button');
   prevButton.id="prev";
@@ -60,13 +53,12 @@ export default function decorate(block) {
     {
       activateCarousel('next',testimonialsToShow);
     });
-
   buttonsWrapper.appendChild(prevButton);
   buttonsWrapper.appendChild(nextButton);
 
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
-    moveInstrumentation(row, li);
+    //moveInstrumentation(row, li);
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'testimonial-image';
@@ -79,8 +71,6 @@ export default function decorate(block) {
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
-
-
   block.textContent = '';
   block.append(ul);
   block.append(buttonsWrapper);
