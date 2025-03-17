@@ -39,6 +39,7 @@
       "components": [
         "text",
         "card-sample",
+        "testingcard",
         "image",
         "button",
         "title",
