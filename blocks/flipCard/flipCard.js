@@ -33,7 +33,7 @@ export default function decorate(block) {
   cardContainer.appendChild(card);
 
   // Append the card container to the body of the document
-  document.body.appendChild(cardContainer);
+  // document.body.appendChild(cardContainer);
 
   // Add event listener to flip the card
   card.addEventListener('click', () => {
