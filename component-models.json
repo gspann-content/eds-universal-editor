@@ -470,10 +470,24 @@
         "multi": false
       },
       {
+        "component": "text",
+        "name": "text",
+        "value": "",
+        "label": "Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "text",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Text",
+        "label": "Description",
         "valueType": "string"
       }
     ]

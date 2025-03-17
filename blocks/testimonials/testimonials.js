@@ -2,12 +2,13 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 let currentIndex=0;
-function activateCarousel(action,currentIndex,testimonialsToShow)
+const testimonialsToShow=4;
+
+function activateCarousel(action,testimonialsToShow)
 {
-  console.log(currentIndex);
-  
   const testimonialsWrapper=document.querySelector('.testimonials ul');
-  const totalTestimonials=document.querySelectorAll('ul li').length;
+  const totalTestimonials=testimonialsWrapper.querySelectorAll('li').length;
+  
   if(action==='prev')
   {
     if(currentIndex>0)
@@ -21,25 +22,27 @@ function activateCarousel(action,currentIndex,testimonialsToShow)
     {
       currentIndex++;
     }
+    console.table(totalTestimonials,currentIndex,totalTestimonials,testimonialsToShow);
   }
   updateTestimonials(testimonialsWrapper,currentIndex,testimonialsToShow);
 }
 
 function updateTestimonials(testimonialsWrapper,currentIndex,testimonialsToShow)
 {
+  
   const offset=-currentIndex*(100/testimonialsToShow)
-  testimonialsWrapper.style.transform=`translate(${offset})`;
+  testimonialsWrapper.style.transform=`translate(${offset}%)`;
 }
 
 
 export default function decorate(block) {
+  
   /* change to ul, li */
   const ul = document.createElement('ul');
   // create button wrapper and buttons for previous and next for textimonials carousel
   const buttonsWrapper = document.createElement('div');
   buttonsWrapper.classList.add('buttons');
 
-  const testimonialsToShow=4;
 
 // prev button
   const prevButton=document.createElement('button');
@@ -47,7 +50,7 @@ export default function decorate(block) {
   prevButton.textContent="<";
   prevButton.addEventListener('click',()=>
   {
-    activateCarousel('prev',currentIndex,testimonialsToShow);
+    activateCarousel('prev',testimonialsToShow);
   });
   //next button
   const nextButton=document.createElement('button');
@@ -55,7 +58,7 @@ export default function decorate(block) {
   nextButton.textContent=">";
   nextButton.addEventListener('click',()=>
     {
-      activateCarousel('next',currentIndex,testimonialsToShow);
+      activateCarousel('next',testimonialsToShow);
     });
 
   buttonsWrapper.appendChild(prevButton);
