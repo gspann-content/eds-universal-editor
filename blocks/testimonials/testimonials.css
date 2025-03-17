@@ -6,7 +6,10 @@
     grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
     grid-gap: 24px;
   }
-  
+  .testimonials-container h2
+  {
+    text-align: center;
+  }
   .testimonials > ul > li {
     border: 1px solid #dadada;
     background-color: var(--background-color);

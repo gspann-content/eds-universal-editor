@@ -3,7 +3,7 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 function activateCarousel(action,currentIndex,testimonialsToShow)
 {
-  const testimonialsWrapper=document.querySelectorAll('ul');
+  const testimonialsWrapper=document.querySelector('.testimonials ul');
   const totalTestimonials=document.querySelectorAll('ul li').length;
   if(action==='prev')
   {
@@ -14,7 +14,7 @@ function activateCarousel(action,currentIndex,testimonialsToShow)
   }
   if(action==='next')
   {
-    if(currentIndex< totalTestimonials-testimonialsToShow)
+    if(currentIndex < totalTestimonials-testimonialsToShow)
     {
       currentIndex++;
     }
