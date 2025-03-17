@@ -16,8 +16,7 @@
       "cards",
       "columns",
       "menu",
-      "fragment",
-      "quote"
+      "fragment"
     ]
   },
   {
@@ -70,12 +69,6 @@
     "id": "menuItem",
     "components": [
       "subItem"
-    ]
-  },
-  {
-    "id": "quote",
-    "components": [
-      "quote"
     ]
   },
   {

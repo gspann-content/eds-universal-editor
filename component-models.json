@@ -150,6 +150,98 @@
     ]
   },
   {
+    "id": "flipcard",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "frontImage",
+        "label": "Front Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "frontTitle",
+        "label": "Front Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "frontText",
+        "value": "",
+        "label": "Front Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "backImage",
+        "label": "Back Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "backTitle",
+        "label": "Back Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "backText",
+        "value": "",
+        "label": "Back Text",
+        "valueType": "string"
+      },
+      {
+        "component": "colorpicker",
+        "valueType": "string",
+        "name": "frontBackgroundColor",
+        "label": "Front Background Color",
+        "value": "#3498db"
+      },
+      {
+        "component": "colorpicker",
+        "valueType": "string",
+        "name": "backBackgroundColor",
+        "label": "Back Background Color",
+        "value": "#2ecc71"
+      },
+      {
+        "component": "colorpicker",
+        "valueType": "string",
+        "name": "textColor",
+        "label": "Text Color",
+        "value": "#ffffff"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "flipDuration",
+        "label": "Flip Duration (seconds)",
+        "value": "0.5"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "flipAction",
+        "label": "Flip Action",
+        "options": [
+          {
+            "value": "click",
+            "label": "Click"
+          },
+          {
+            "value": "hover",
+            "label": "Hover"
+          }
+        ],
+        "value": "click"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
@@ -296,6 +388,13 @@
         "value": "",
         "label": "Link Url",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "altText",
+        "label": "Alt text",
+        "value": "Alt text"
       }
     ]
   },
@@ -339,25 +438,6 @@
         "name": "menuitemtext",
         "value": "",
         "label": "Menu Item Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "quote",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
         "valueType": "string"
       }
     ]
