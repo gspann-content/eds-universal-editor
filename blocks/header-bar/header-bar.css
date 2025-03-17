@@ -31,7 +31,7 @@ div a {
     text-decoration: none !important;
     transition: color 0.3s;
     font-size: 16px;
-    color: rgba(161, 161, 161, var(--global-text-opacity)) !important;
+    color: rgb(161 161 161 / var(--global-text-opacity)) !important;
 }
 div a:hover {
     color: white !important;
@@ -41,12 +41,12 @@ div a:hover {
     display: unset;
 }
 .default-content-wrapper a:hover{
-    color: rgb(19, 19, 19) !important;
+    color: rgb(19 19 19) !important;
     transition: color 0.3s ease;
     text-decoration: underline !important;
 }
 .breadcrumb a:hover{
-    color: rgb(19, 19, 19) !important;
+    color: rgb(19 19 19) !important;
 }
 .navLinks-bar {
     display: flex;
