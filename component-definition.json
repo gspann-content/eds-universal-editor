@@ -17,6 +17,20 @@
           }
         },
         {
+          "title": "Card Sample",
+          "id": "card-sample",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/title/v1/block",
+                "template": {
+                  "model": "card-sample"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Title",
           "id": "title",
           "plugins": {

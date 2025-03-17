@@ -9,6 +9,7 @@
     "id": "section",
     "components": [
      "text",
+      "card-sample",
       "image",
       "button",
       "title",
@@ -28,6 +29,12 @@
       "media-grid",
       "sciex-columns",
       "page-subnav"
+    ]
+  },
+  {
+    "id": "cards-sample",
+    "components": [
+      "card-sample"
     ]
   },
   {
