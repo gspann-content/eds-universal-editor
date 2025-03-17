@@ -1,7 +1,7 @@
 {
     "definitions": [
       {
-        "title": "FlipCard",
+        "title": "Flip Card",
         "id": "flipcard",
         "plugins": {
           "xwalk": {
@@ -21,95 +21,113 @@
         "id": "flipcard",
         "fields": [
           {
-            "component": "reference",
-            "valueType": "string",
-            "name": "frontImage",
-            "label": "Front Image",
-            "multi": false
-          },
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "frontTitle",
-            "label": "Front Title",
-            "value": ""
-          },
-          {
-            "component": "richtext",
-            "name": "frontText",
-            "value": "",
-            "label": "Front Text",
-            "valueType": "string"
-          },
-          {
-            "component": "reference",
-            "valueType": "string",
-            "name": "backImage",
-            "label": "Back Image",
-            "multi": false
-          },
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "backTitle",
-            "label": "Back Title",
-            "value": ""
-          },
-          {
-            "component": "richtext",
-            "name": "backText",
-            "value": "",
-            "label": "Back Text",
-            "valueType": "string"
-          },
-          {
-            "component": "colorpicker",
-            "valueType": "string",
-            "name": "frontBackgroundColor",
-            "label": "Front Background Color",
-            "value": "#3498db"
-          },
-          {
-            "component": "colorpicker",
-            "valueType": "string",
-            "name": "backBackgroundColor",
-            "label": "Back Background Color",
-            "value": "#2ecc71"
-          },
-          {
-            "component": "colorpicker",
-            "valueType": "string",
-            "name": "textColor",
-            "label": "Text Color",
-            "value": "#ffffff"
-          },
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "flipDuration",
-            "label": "Flip Duration (seconds)",
-            "value": "0.5"
-          },
-          {
-            "component": "select",
-            "valueType": "string",
-            "name": "flipAction",
-            "label": "Flip Action",
-            "options": [
+            "component": "fieldset",
+            "name": "frontCard",
+            "label": "Front Card",
+            "collapsible": true,
+            "fields": [
               {
-                "value": "click",
-                "label": "Click"
+                "component": "reference",
+                "valueType": "string",
+                "name": "frontImage",
+                "label": "Front Image"
               },
               {
-                "value": "hover",
-                "label": "Hover"
+                "component": "text",
+                "valueType": "string",
+                "name": "frontTitle",
+                "label": "Front Title"
+              },
+              {
+                "component": "richtext",
+                "name": "frontText",
+                "value": "",
+                "label": "Front Text",
+                "valueType": "string"
               }
-            ],
-            "value": "click"
+            ]
+          },
+          {
+            "component": "fieldset",
+            "name": "backCard",
+            "label": "Back Card",
+            "collapsible": true,
+            "fields": [
+              {
+                "component": "reference",
+                "valueType": "string",
+                "name": "backImage",
+                "label": "Back Image"
+              },
+              {
+                "component": "text",
+                "valueType": "string",
+                "name": "backTitle",
+                "label": "Back Title"
+              },
+              {
+                "component": "richtext",
+                "name": "backText",
+                "value": "",
+                "label": "Back Text",
+                "valueType": "string"
+              }
+            ]
+          },
+          {
+            "component": "fieldset",
+            "name": "styling",
+            "label": "Styling",
+            "collapsible": true,
+            "fields": [
+              {
+                "component": "colorpicker",
+                "valueType": "string",
+                "name": "frontBackgroundColor",
+                "label": "Front Background Color"
+              },
+              {
+                "component": "colorpicker",
+                "valueType": "string",
+                "name": "backBackgroundColor",
+                "label": "Back Background Color"
+              },
+              {
+                "component": "colorpicker",
+                "valueType": "string",
+                "name": "textColor",
+                "label": "Text Color"
+              },
+              {
+                "component": "text",
+                "valueType": "string",
+                "name": "flipDuration",
+                "label": "Flip Duration",
+                "value": "0.5"
+              }
+            ]
+          },
+          {
+            "component": "fieldset",
+            "name": "action",
+            "label": "Action",
+            "collapsible": true,
+            "fields": [
+              {
+                "component": "select",
+                "valueType": "string",
+                "name": "flipAction",
+                "label": "Flip Action",
+                "options": [
+                  { "value": "click", "label": "Click" },
+                  { "value": "hover", "label": "Hover" }
+                ],
+                "value": "click"
+              }
+            ]
           }
         ]
       }
     ],
     "filters": []
-  }
-  
+  }  
