@@ -44,21 +44,21 @@
                 },
                 {
                     "component": "text",
-                    "name": "text",
+                    "name": "name",
                     "value": "",
                     "label": "Name",
                     "valueType": "string"
                 },
                 {
                     "component": "text",
-                    "name": "text",
+                    "name": "title",
                     "value": "",
                     "label": "Title",
                     "valueType": "string"
                 },
                 {
                     "component": "richtext",
-                    "name": "text",
+                    "name": "description",
                     "value": "",
                     "label": "Description",
                     "valueType": "string"
