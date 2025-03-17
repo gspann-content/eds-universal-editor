@@ -17,7 +17,7 @@
       "columns",
       "menu",
       "fragment",
-      "quote"
+      "testpage"
     ]
   },
   {
@@ -58,18 +58,6 @@
     "id": "media-grid",
     "components": [
       "media-grid-item"
-    ]
-  },
-  {
-    "id": "menu",
-    "components": [
-      "menuItem"
-    ]
-  },
-  {
-    "id": "menuItem",
-    "components": [
-      "subItem"
     ]
   },
   {

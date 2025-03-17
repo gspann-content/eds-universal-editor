@@ -1,6 +1,0 @@
-.global  .hover:global-text-blue-700{
-    --global-bg-opacity: 1;
-
-    background-color: #0068fa;
-    background-color: rgb(0 104 250 / var(--global-bg-opacity))
-}

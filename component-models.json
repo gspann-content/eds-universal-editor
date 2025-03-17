@@ -300,50 +300,6 @@
     ]
   },
   {
-    "id": "menu",
-    "fields": [
-      {
-        "component": "text",
-        "name": "menutext",
-        "value": "",
-        "label": "Menu Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "subItem",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "subitemtext",
-        "value": "",
-        "label": "Sub Item Text",
-        "valueType": "string",
-        "multi": true
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": true
-      }
-    ]
-  },
-  {
-    "id": "menuItem",
-    "fields": [
-      {
-        "component": "text",
-        "name": "menuitemtext",
-        "value": "",
-        "label": "Menu Item Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
     "id": "quote",
     "fields": [
       {
