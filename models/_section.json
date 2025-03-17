@@ -38,7 +38,7 @@
       "id": "section",
       "components": [
         "text",
-        "card-sample",
+        "cards-sample",
         "image",
         "button",
         "title",
