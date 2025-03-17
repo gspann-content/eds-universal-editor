@@ -32,12 +32,6 @@
     ]
   },
   {
-    "id": "cards-sample",
-    "components": [
-      "card-sample"
-    ]
-  },
-  {
     "id": "cards",
     "components": [
       "card"
