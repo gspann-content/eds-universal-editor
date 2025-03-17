@@ -10,9 +10,11 @@ export default function decorate(block) {
 // prev button
   const prevButton=document.createElement('button');
   prevButton.id="prev";
+  prevButton.textContent="<";
   //next button
   const nextButton=document.createElement('button');
   nextButton.id="next";
+  nextButton.textContent=">";
   buttonsWrapper.appendChild(prevButton);
   buttonsWrapper.appendChild(nextButton);
 
