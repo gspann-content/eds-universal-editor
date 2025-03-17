@@ -4,6 +4,18 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
+  // create button wrapper and buttons for previous and next for textimonials carousel
+  const buttonsWrapper = document.createElement('div');
+  buttonsWrapper.classList.add('buttons');
+// prev button
+  const prevButton=document.createElement('button');
+  prevButton.id="prev";
+  //next button
+  const nextButton=document.createElement('button');
+  nextButton.id="next";
+  buttonsWrapper.appendChild(prevButton);
+  buttonsWrapper.appendChild(nextButton);
+
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
@@ -21,4 +33,5 @@ export default function decorate(block) {
   });
   block.textContent = '';
   block.append(ul);
+  block.append(buttonsWrapper);
 }
