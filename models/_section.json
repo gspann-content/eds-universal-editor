@@ -45,7 +45,8 @@
         "cards",
         "columns",
         "menu",
-        "fragment"
+        "fragment",
+        "testpage"
       ]
     }
   ]
