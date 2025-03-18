@@ -15,6 +15,7 @@ export default function decorate(block) {
 
   // Append the text div to the overlay
   overlay.appendChild(textDiv);
+  ul.append(overlay);
 
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
@@ -32,7 +33,6 @@ export default function decorate(block) {
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
-  ul.append(overlay);
   block.textContent = '';
   block.append(ul);
 }
