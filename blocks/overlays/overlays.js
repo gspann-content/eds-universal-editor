@@ -15,7 +15,6 @@ export default function decorate(block) {
 
   // Append the text div to the overlay
   overlay.appendChild(textDiv);
-  ul.append(overlay);
 
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
@@ -25,6 +24,7 @@ export default function decorate(block) {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'overlays-overlay-image';
       else div.className = 'overlays-overlay-body';
     });
+    li.append(overlay);
     ul.append(li);
   });
 
