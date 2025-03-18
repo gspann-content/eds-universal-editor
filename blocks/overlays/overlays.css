@@ -36,10 +36,19 @@
   }
   
   .overlays > ul > li img {
-    width: 50%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+    color: #fff;
+    text-align: center;
+    vertical-align: baseline;
+    padding: 30px 10px;
+    display: flex;
+    align-items: end;
     border-radius: 50%;
+    margin: -20px auto 0;
+    height: 180px;
+    width: 180px;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
   }
   
   .overlays > ul:hover .overlay {
