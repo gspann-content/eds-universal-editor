@@ -23,26 +23,15 @@
     margin-bottom: 10px;
 }
 
+.testing img{
+    margin-bottom: 2px;
+}
+
 .testingcard p {
     font-size: 1rem;    
     color: #4a154b;
     line-height: 1.5;
 }
-
-
-/* .global-absolute {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.global-object-cover {
-    object-fit: cover;
-}
-
-.global-z-0 {
-    z-index: 0;
-} */
 
 .background-image-enhanced {
     filter: brightness(0.8) contrast(1.2);
