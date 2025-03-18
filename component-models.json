@@ -150,7 +150,7 @@
     ]
   },
   {
-    "id": "featured-products",
+    "id": "featuredproducts",
     "fields": [
       {
         "component": "reference",
