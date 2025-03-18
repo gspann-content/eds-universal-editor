@@ -3,12 +3,13 @@ export default function decorate(block) {
   card.classList.add('card');
 
   // Create the image element
+
   const blockContainer = block.querySelector('div');
   const innerContainer = blockContainer.querySelector('div');
 
   // Handle the background image setup
-  const backgroundImage = innerContainer.querySelector('picture');
-  backgroundImage.classList.add('card-image');
+  const cardImage = innerContainer.querySelector('picture');
+  cardImage.className = 'card-image';
   // Create the content container
   const cardContent = document.createElement('div');
   cardContent.classList.add('card-content');
@@ -26,7 +27,7 @@ export default function decorate(block) {
   cardContent.appendChild(description);
 
   // Append the image and content to the card
-  card.appendChild(backgroundImage);
+  card.appendChild(cardImage);
   card.appendChild(cardContent);
 
   block.textContent = '';
