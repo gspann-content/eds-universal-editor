@@ -61,18 +61,6 @@
     ]
   },
   {
-    "id": "menu",
-    "components": [
-      "menuItem"
-    ]
-  },
-  {
-    "id": "menuItem",
-    "components": [
-      "subItem"
-    ]
-  },
-  {
     "id": "quote",
     "components": [
       "quote"
