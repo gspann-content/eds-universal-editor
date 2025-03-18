@@ -47,6 +47,9 @@ export default function decorate(block) {
 
         const image = document.createElement('img');
         image.src = product.images[0];
+        image.width = '150';
+        image.height = '150';
+        image.loading = 'lazy';
 
         picture.append(image);
 
