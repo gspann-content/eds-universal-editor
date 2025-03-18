@@ -40,7 +40,7 @@
             "valueType": "string",
             "name": "frontTitle",
             "label": "Front Title",
-            "value": "Front Card"
+            "value": ""
           },
           {
             "component": "richtext",

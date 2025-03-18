@@ -13,11 +13,11 @@
       "button",
       "title",
       "hero",
+      "flipcard",
       "cards",
       "columns",
       "menu",
-      "fragment",
-      "flipcard"
+      "fragment"
     ]
   },
   {

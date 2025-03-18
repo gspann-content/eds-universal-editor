@@ -157,7 +157,7 @@
         "valueType": "string",
         "name": "frontTitle",
         "label": "Front Title",
-        "value": "Front Card"
+        "value": ""
       },
       {
         "component": "richtext",
@@ -326,7 +326,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "altText1",
+        "name": "altText",
         "label": "Alt text",
         "value": "Alt text"
       }
