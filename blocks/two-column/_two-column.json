@@ -28,17 +28,10 @@
           "multi": false
         },
         {
-          "component": "text",
+          "component": "richtext",
           "valueType": "string",
           "name": "imageAlt",
           "label": "Alt",
-          "value": ""
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "title",
-          "label": "title",
           "value": ""
         },
         {
