@@ -3,11 +3,12 @@ export default function decorate(block) {
   card.classList.add('card');
 
   // Create the image element
-  const img = document.createElement('img');
-  img.src = 'https://via.placeholder.com/150'; // Replace with your image URL
-  img.alt = 'Image';
-  img.classList.add('card-image');
+  const blockContainer = block.querySelector('div');
+  const innerContainer = blockContainer.querySelector('div');
 
+  // Handle the background image setup
+  const backgroundImage = innerContainer.querySelector('picture');
+  backgroundImage.classList.add('card-image');
   // Create the content container
   const cardContent = document.createElement('div');
   cardContent.classList.add('card-content');
@@ -25,7 +26,7 @@ export default function decorate(block) {
   cardContent.appendChild(description);
 
   // Append the image and content to the card
-  card.appendChild(img);
+  card.appendChild(backgroundImage);
   card.appendChild(cardContent);
 
   block.textContent = '';
