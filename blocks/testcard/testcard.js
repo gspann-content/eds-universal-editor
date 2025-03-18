@@ -2,14 +2,6 @@ export default function decorate(block) {
   const test = document.createElement('div');
   test.classList.add('test');
 
-  // Create the image element
-
-  const blockContainer = block.querySelector('div');
-  const innerContainer = blockContainer.querySelector('div');
-
-  // Handle the background image setup
-  const testImage = innerContainer.querySelector('picture');
-  testImage.className.add('test-image');
   // Create the content container
   const testContent = document.createElement('div');
   testContent.classList.add('test-content');
@@ -27,7 +19,7 @@ export default function decorate(block) {
   testContent.appendChild(description);
 
   // Append the image and content to the test
-  test.appendChild(testImage);
+  //   test.appendChild(testImage);
   test.appendChild(testContent);
 
   block.textContent = '';
