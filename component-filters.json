@@ -13,7 +13,7 @@
       "button",
       "title",
       "hero",
-      "flipcard",
+      "testcard",
       "cards",
       "columns",
       "menu",
@@ -85,7 +85,7 @@
     ]
   },
   {
-    "id": "flipcard",
+    "id": "testcard",
     "components": [
       "frontcard"
     ]
