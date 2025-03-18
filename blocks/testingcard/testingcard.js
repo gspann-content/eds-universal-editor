@@ -60,20 +60,12 @@ export default function decorate(block) {
   
     // Create image element
     const img = document.createElement('img');
-    img.src = 'https://via.placeholder.com/300x150';
     img.alt = 'Card image';
     img.style.width = '100%';
     img.style.borderRadius = '8px 8px 0 0';
   
-    // Create card title
-    const cardTitle = document.createElement('h2');
-    cardTitle.textContent = 'Card Title';
-    cardTitle.style.fontSize = '1.5em';
-    cardTitle.style.margin = '16px 0';
-  
     // Create card text
     const cardText = document.createElement('p');
-    cardText.textContent = 'This is a simple card created using JavaScript with basic styling.';
     cardText.style.fontSize = '1em';
     cardText.style.color = '#333';
   
