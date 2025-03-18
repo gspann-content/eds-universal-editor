@@ -1,48 +1,33 @@
 export default function decorate(block) {
-  const flipCard = document.createElement('div');
-  flipCard.classList.add('flip-card');
+  const card = document.createElement('div');
+  card.classList.add('card');
 
-  // Create the inner container for the flip card
-  const flipCardInner = document.createElement('div');
-  flipCardInner.classList.add('flip-card-inner');
+  // Create the image element
+  const img = document.createElement('img');
+  img.src = 'https://via.placeholder.com/150'; // Replace with your image URL
+  img.alt = 'Image';
+  img.classList.add('card-image');
 
-  // Create the front of the card
-  const flipCardFront = document.createElement('div');
-  flipCardFront.classList.add('flip-card-front');
+  // Create the content container
+  const cardContent = document.createElement('div');
+  cardContent.classList.add('card-content');
 
-  const frontTitle1 = document.createElement('h2');
-  frontTitle1.textContent = 'Front Card';
-  flipCardFront.appendChild(frontTitle1);
+  // Create the title
+  const title = document.createElement('h3');
+  title.textContent = 'Card Title';
 
-  const frontText1 = document.createElement('p');
-  frontText1.textContent = 'This is the front side of the flip card.';
-  flipCardFront.appendChild(frontText1);
+  // Create the paragraph
+  const description = document.createElement('p');
+  description.textContent = 'This is a simple card with text and an image.';
 
-  // Create the back of the card
-  const flipCardBack = document.createElement('div');
-  flipCardBack.classList.add('flip-card-back');
+  // Append the elements to the content container
+  cardContent.appendChild(title);
+  cardContent.appendChild(description);
 
-  const backTitle = document.createElement('h2');
-  backTitle.textContent = 'Back Card';
-  flipCardBack.appendChild(backTitle);
+  // Append the image and content to the card
+  card.appendChild(img);
+  card.appendChild(cardContent);
 
-  const backText = document.createElement('p');
-  backText.textContent = 'This is the back side of the flip card.';
-  flipCardBack.appendChild(backText);
-
-  // Append the front and back sides to the inner container
-  flipCardInner.appendChild(flipCardFront);
-  flipCardInner.appendChild(flipCardBack);
-
-  // Append the inner container to the outer flip card container
-  flipCard.appendChild(flipCardInner);
-
-  // Add the event listener for clicking to flip the card
-  flipCard.addEventListener('click', () => {
-    flipCardInner.classList.toggle('flipped');
-  });
-
-  // Append the flip card to the DOM
   block.textContent = '';
-  block.append(flipCard);
+  block.append(card);
 }
