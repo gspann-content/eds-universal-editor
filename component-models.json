@@ -300,7 +300,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "alttext",
+        "name": "altText",
         "label": "Alt text",
         "value": "Alt text"
       }
@@ -346,6 +346,25 @@
         "name": "menuitemtext",
         "value": "",
         "label": "Menu Item Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "overlay",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
         "valueType": "string"
       }
     ]

@@ -73,6 +73,12 @@
     ]
   },
   {
+    "id": "overlays",
+    "components": [
+      "overlay"
+    ]
+  },
+  {
     "id": "sciex-columns",
     "components": [
       "sciex-card"
