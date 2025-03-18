@@ -1,6 +1,6 @@
 export default function decorate(block) {
   const card = document.createElement('div');
-  card.classList.add('card');
+  card.className = 'card';
 
   // Create the image element
 
@@ -10,11 +10,11 @@ export default function decorate(block) {
   const img = document.createElement('img');
   img.src = image.src;
   img.alt = 'Image';
-  img.classList.add('card-image');
+  img.className = 'card-image';
 
   // Create the content container
   const cardContent = document.createElement('div');
-  cardContent.classList.add('card-content');
+  cardContent.className = 'card-content';
 
   // Create the title
   const title = document.createElement('h3');
