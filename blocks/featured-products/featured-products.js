@@ -1,34 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-let currentIndex=0;
-const testimonialsToShow=3;
-function activateCarousel(action,testimonialsToShow)
-{
-  const testimonialsWrapper=document.querySelector('.testimonials ul');
-  const totalTestimonials=testimonialsWrapper.querySelectorAll('li').length;
-  if(action==='prev')
-  {
-    if(currentIndex>0)
-    {
-      currentIndex--;
-    }
-  }
-  if(action==='next')
-  {
-    if(currentIndex < totalTestimonials-testimonialsToShow)
-    {
-      currentIndex++;
-    }
-  }
-  updateTestimonials(testimonialsWrapper,currentIndex,testimonialsToShow);
-}
-function updateTestimonials(testimonialsWrapper,currentIndex,testimonialsToShow)
-{
-  const offset=-currentIndex*(100/testimonialsToShow)
-  testimonialsWrapper.style.transform=`translate(${offset}%)`;
-}
-
 export default function decorate(block) {
   
   /* change to ul, li */
