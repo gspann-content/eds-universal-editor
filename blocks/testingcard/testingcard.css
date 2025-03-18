@@ -1,0 +1,12 @@
+.testingcard {
+    display: flex;
+    flex-direction: column;
+    background-color: #b39ab3;
+    border: 1px solid #8f4889;
+    border-radius: 5px;
+    width: 50%;
+    height: 400px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
