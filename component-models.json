@@ -300,7 +300,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "alttext",
+        "name": "altText",
         "label": "Alt text",
         "value": "Alt text"
       }
@@ -463,25 +463,18 @@
     "id": "testcard",
     "fields": [
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "fronttitle",
-        "label": "Front Title",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "fronttext",
-        "label": "Front Text",
-        "value": ""
-      },
-      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   }

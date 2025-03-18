@@ -83,5 +83,11 @@
     "components": [
       "tabItem"
     ]
+  },
+  {
+    "id": "testcards",
+    "components": [
+      "testcard"
+    ]
   }
 ]
