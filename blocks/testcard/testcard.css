@@ -49,4 +49,4 @@
   /* Flip the card when the `.flipped` class is added */
   .flip-card-inner.flipped {
     transform: rotateY(180deg);
-  }  
+  }

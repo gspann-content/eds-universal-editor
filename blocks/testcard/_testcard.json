@@ -38,14 +38,14 @@
           {
             "component": "text",
             "valueType": "string",
-            "name": "frontTitle",
+            "name": "fronttitle",
             "label": "Front Title",
             "value": ""
           },
           {
             "component": "richtext",
             "valueType": "string",
-            "name": "frontText",
+            "name": "fronttext",
             "label": "Front Text",
             "value": ""
           },
@@ -68,4 +68,3 @@
           }
     ]
   }
-  

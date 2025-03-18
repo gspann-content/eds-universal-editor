@@ -150,32 +150,6 @@
     ]
   },
   {
-    "id": "frontcard",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "frontTitle",
-        "label": "Front Title",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "frontText",
-        "label": "Front Text",
-        "value": ""
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      }
-    ]
-  },
-  {
     "id": "fragment",
     "fields": [
       {
@@ -482,6 +456,32 @@
         "value": "",
         "label": "Link Url",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "frontcard",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "fronttitle",
+        "label": "Front Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "fronttext",
+        "label": "Front Text",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
       }
     ]
   }

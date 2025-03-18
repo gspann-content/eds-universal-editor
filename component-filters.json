@@ -42,12 +42,6 @@
     ]
   },
   {
-    "id": "flipcard",
-    "components": [
-      "frontcard"
-    ]
-  },
-  {
     "id": "header-bar",
     "components": [
       "headerbarItem"
@@ -88,6 +82,12 @@
     "id": "tabs",
     "components": [
       "tabItem"
+    ]
+  },
+  {
+    "id": "flipcard",
+    "components": [
+      "frontcard"
     ]
   }
 ]
