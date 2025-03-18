@@ -162,15 +162,15 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
+        "name": "heading",
+        "label": "Heading",
         "value": ""
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "subheading",
         "value": "",
-        "label": "Text",
+        "label": "Sub Heading",
         "valueType": "string"
       }
     ]
