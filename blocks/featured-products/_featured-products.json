@@ -29,23 +29,16 @@
                 },
                 {
                     "component": "text",
-                    "name": "author",
-                    "value": "",
-                    "label": "API URL",
-                    "valueType": "string"
-                },
-                {
-                    "component": "text",
-                    "name": "title",
-                    "value": "",
-                    "label": "Title",
-                    "valueType": "string"
+                    "valueType": "string",
+                    "name": "imageAlt",
+                    "label": "Alt",
+                    "value": ""
                 },
                 {
                     "component": "richtext",
-                    "name": "description",
+                    "name": "text",
                     "value": "",
-                    "label": "Description",
+                    "label": "Text",
                     "valueType": "string"
                 }
             ]
