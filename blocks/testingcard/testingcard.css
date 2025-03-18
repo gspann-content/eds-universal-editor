@@ -61,3 +61,13 @@
     filter: brightness(1) contrast(1);
     transform: scale(1.05);
 }
+
+picture{
+        display: block;
+        height: 150px;
+        width: 150px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 0 auto 20px;
+    
+}
