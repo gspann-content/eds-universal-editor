@@ -37,11 +37,12 @@ export default function decorate(block) {
   // Append the inner container to the outer flip card container
   flipCard.appendChild(flipCardInner);
 
-  // Append the flip card to the DOM
-  block.textContent = '';
-  block.append(flipCard);
   // Add the event listener for clicking to flip the card
   flipCard.addEventListener('click', () => {
     flipCardInner.classList.toggle('flipped');
   });
+
+  // Append the flip card to the DOM
+  block.textContent = '';
+  block.append(flipCard);
 }
