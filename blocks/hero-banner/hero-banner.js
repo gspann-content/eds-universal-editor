@@ -4,13 +4,8 @@ import {
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  // Main wrapper container
-  const wrapper = div({ class: 'global-pb-32 md:global-pb-48' });
-
   // Background section container with styling for alignment
   const backgroundSection = document.createElement('section');
-  backgroundSection.className = 'global-relative global-bg-cover global-bg-center global-bg-no-repeat';
-  wrapper.appendChild(backgroundSection);
 
   // Primary content container with min-height
   const contentContainer = div({ class: 'global-relative global-min-h-[420px] md:global-min-h-[512px]' });
