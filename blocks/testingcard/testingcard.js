@@ -11,6 +11,11 @@ export default function decorate(block) {
   console.log("blockContainer", blockContainer);
     console.log("innerContainer", innerContainer);
 
+     const backgroundImage = innerContainer.querySelector('picture');
+        if (backgroundImage) {
+            backgroundImage.className = 'global-absolute global-object-cover global-h-full global-w-full global-z-0';
+            contentContainer.appendChild(backgroundImage);
+        }
       // Add heading and paragraph
       const heading = block.querySelector('h1');
       const headingElement = document.createElement('h1');
