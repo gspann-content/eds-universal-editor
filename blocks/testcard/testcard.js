@@ -9,7 +9,7 @@ export default function decorate(block) {
 
   // Handle the background image setup
   const testImage = innerContainer.querySelector('picture');
-  testImage.className = 'test-image';
+  testImage.className.add('test-image');
   // Create the content container
   const testContent = document.createElement('div');
   testContent.classList.add('test-content');
