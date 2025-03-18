@@ -41,6 +41,12 @@
     ]
   },
   {
+    "id": "flipcard",
+    "components": [
+      "frontcard"
+    ]
+  },
+  {
     "id": "header-bar",
     "components": [
       "headerbarItem"
