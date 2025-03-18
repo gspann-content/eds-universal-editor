@@ -196,14 +196,14 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "frontTitle",
+        "name": "frontTitle1",
         "label": "Front Title",
         "value": "Front Card"
       },
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "frontText",
+        "name": "frontText1",
         "label": "Front Text",
         "value": "<p>This is the front side of the flip card.</p>"
       },
@@ -221,14 +221,14 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "backTitle",
+        "name": "backTitle1",
         "label": "Back Title",
         "value": "Back Card"
       },
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "backText",
+        "name": "backText1",
         "label": "Back Text",
         "value": "<p>This is the back side of the flip card.</p>"
       },
