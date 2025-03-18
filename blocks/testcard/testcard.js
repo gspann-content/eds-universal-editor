@@ -1,65 +1,23 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 export default function decorate(block) {
-  const card = document.createElement('div');
-  card.classList.add('card');
-
-  const img = document.createElement('img');
-  img.src = '/w3images/team2.jpg';
-  img.alt = 'John';
-  img.style.width = '100%';
-
-  const name = document.createElement('h1');
-  name.textContent = 'John Doe';
-
-  const title = document.createElement('p');
-  title.classList.add('title');
-  title.textContent = 'CEO & Founder, Example';
-
-  const university = document.createElement('p');
-  university.textContent = 'Harvard University';
-
-  const socialMediaDiv = document.createElement('div');
-  socialMediaDiv.style.margin = '24px 0';
-
-  const dribbbleLink = document.createElement('a');
-  dribbbleLink.href = '#';
-  const dribbbleIcon = document.createElement('i');
-  dribbbleIcon.classList.add('fa', 'fa-dribbble');
-  dribbbleLink.appendChild(dribbbleIcon);
-
-  const twitterLink = document.createElement('a');
-  twitterLink.href = '#';
-  const twitterIcon = document.createElement('i');
-  twitterIcon.classList.add('fa', 'fa-twitter');
-  twitterLink.appendChild(twitterIcon);
-
-  const linkedinLink = document.createElement('a');
-  linkedinLink.href = '#';
-  const linkedinIcon = document.createElement('i');
-  linkedinIcon.classList.add('fa', 'fa-linkedin');
-  linkedinLink.appendChild(linkedinIcon);
-
-  const facebookLink = document.createElement('a');
-  facebookLink.href = '#';
-  const facebookIcon = document.createElement('i');
-  facebookIcon.classList.add('fa', 'fa-facebook');
-  facebookLink.appendChild(facebookIcon);
-
-  socialMediaDiv.appendChild(dribbbleLink);
-  socialMediaDiv.appendChild(twitterLink);
-  socialMediaDiv.appendChild(linkedinLink);
-  socialMediaDiv.appendChild(facebookLink);
-
-  const contactButton = document.createElement('button');
-  contactButton.textContent = 'Contact';
-
-  // Append all elements to the card
-  card.appendChild(img);
-  card.appendChild(name);
-  card.appendChild(title);
-  card.appendChild(university);
-  card.appendChild(socialMediaDiv);
-  card.appendChild(contactButton);
-
+  const ul = document.createElement('ul');
+  [...block.children].forEach((row) => {
+    const li = document.createElement('li');
+    moveInstrumentation(row, li);
+    while (row.firstElementChild) li.append(row.firstElementChild);
+    [...li.children].forEach((div) => {
+      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
+      else div.className = 'cards-card-body';
+    });
+    ul.append(li);
+  });
+  ul.querySelectorAll('picture > img').forEach((img) => {
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+    moveInstrumentation(img, optimizedPic.querySelector('img'));
+    img.closest('picture').replaceWith(optimizedPic);
+  });
   block.textContent = '';
-  block.append(card);
+  block.append(ul);
 }
