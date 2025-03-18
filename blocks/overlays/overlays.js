@@ -23,8 +23,9 @@ export default function decorate(block) {
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'overlays-overlay-image';
       else div.className = 'overlays-overlay-body';
+      const ovver = div.querySelector('picture');
+      ovver.append(overlay);
     });
-    li.append(overlay);
     ul.append(li);
   });
 
