@@ -300,7 +300,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "altText",
+        "name": "alttext",
         "label": "Alt text",
         "value": "Alt text"
       }
