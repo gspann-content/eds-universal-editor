@@ -5,7 +5,7 @@
     border: 1px solid #8f4889;
     border-radius: 10px;
     min-width: 200px;
-    max-width: 600px;
+    max-width: 400px;
     padding: 20px;
     margin: 20px auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -40,14 +40,6 @@
     object-fit: cover;
 }
 
-.global-h-full {
-    height: 100%;
-}
-
-.global-w-full {
-    width: 100%;
-}
-
 .global-z-0 {
     z-index: 0;
 }
@@ -64,8 +56,8 @@
 
 picture{
         display: block;
-        height: 150px;
-        width: 150px;
+        height: 200px;
+        width: 250px;
         border-radius: 10px;
         overflow: hidden;
         margin: 0 auto 20px;
