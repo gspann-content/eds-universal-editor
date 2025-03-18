@@ -13,7 +13,7 @@
     font-family: Arial, sans-serif;
   }
   
-  .cards > ul {
+  .overlays > ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -22,25 +22,25 @@
     grid-gap: 24px;
   }
   
-  .cards > ul > li {
+  .overlays > ul > li {
     border: 1px solid #dadada;
     background-color: var(--background-color);
   }
   
-  .cards .cards-card-body {
+  .overlays .overlays-overlay-body {
     margin: 16px;
   }
   
-  .cards .cards-card-image {
+  .overlays .overlays-overlay-image {
     line-height: 0;
   }
   
-  .cards > ul > li img {
+  .overlays > ul > li img {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
   }
   
-  .cards > ul:hover .overlay {
+  .overlays > ul:hover .overlay {
     opacity: 1;
   }
