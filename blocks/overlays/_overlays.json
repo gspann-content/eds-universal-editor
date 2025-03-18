@@ -50,18 +50,16 @@
             "valueType": "string"
         },
         {
-            "component": "text",
-            "name": "title",
-            "value": "",
-            "label": "Title",
-            "valueType": "string"
-        },
-        {
             "component": "richtext",
             "name": "description",
             "value": "",
             "label": "Description",
             "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "linkTitle",
+          "label": "Title"
         }
         ]
       }
