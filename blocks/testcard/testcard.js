@@ -1,6 +1,6 @@
 export default function decorate(block) {
-  const card = document.createElement('div');
-  card.classList.add('card');
+  const test = document.createElement('div');
+  test.classList.add('test');
 
   // Create the image element
 
@@ -8,28 +8,28 @@ export default function decorate(block) {
   const innerContainer = blockContainer.querySelector('div');
 
   // Handle the background image setup
-  const cardImage = innerContainer.querySelector('picture');
-  cardImage.className = 'card-image';
+  const testImage = innerContainer.querySelector('picture');
+  testImage.className = 'test-image';
   // Create the content container
-  const cardContent = document.createElement('div');
-  cardContent.classList.add('card-content');
+  const testContent = document.createElement('div');
+  testContent.classList.add('test-content');
 
   // Create the title
   const title = document.createElement('h3');
-  title.textContent = 'Card Title';
+  title.textContent = 'test Title';
 
   // Create the paragraph
   const description = document.createElement('p');
-  description.textContent = 'This is a simple card with text and an image.';
+  description.textContent = 'This is a simple test with text and an image.';
 
   // Append the elements to the content container
-  cardContent.appendChild(title);
-  cardContent.appendChild(description);
+  testContent.appendChild(title);
+  testContent.appendChild(description);
 
-  // Append the image and content to the card
-  card.appendChild(cardImage);
-  card.appendChild(cardContent);
+  // Append the image and content to the test
+  test.appendChild(testImage);
+  test.appendChild(testContent);
 
   block.textContent = '';
-  block.append(card);
+  block.append(test);
 }
