@@ -326,7 +326,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "altText",
+        "name": "altText1",
         "label": "Alt text",
         "value": "Alt text"
       }
