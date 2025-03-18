@@ -59,7 +59,6 @@ export default function decorate(block) {
     img.alt = 'Card image';
     
     const cardText = document.createElement('p');
-    cardText.textContent = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
     cardText.style.fontSize = '1em';
     cardText.style.color = '#333';
   
