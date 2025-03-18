@@ -56,7 +56,6 @@ export default function decorate(block) {
     card.style.margin = '16px auto';
   
     const img = document.createElement('img');
-    img.alt = 'Card image';
     
     const cardText = document.createElement('p');
     cardText.style.fontSize = '1em';
