@@ -17,7 +17,7 @@ export default function decorate(block) {
   // Handle the background image setup
   const backgroundImage = innerContainer.querySelector('picture');
   if (backgroundImage) {
-    backgroundImage.className = 'global-absolute global-object-cover global-h-full global-w-full global-z-0';
+    backgroundImage.className = 'global-absolute global-object-cover global-h-full global-w-full global-z-0 scale-50';
     contentContainer.appendChild(backgroundImage);
   }
 
