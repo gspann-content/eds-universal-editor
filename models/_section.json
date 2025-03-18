@@ -48,7 +48,8 @@
         "carousel",
         "columns",
         "menu",
-        "fragment"
+        "fragment",
+        "two-column"
       ]
     }
   ]

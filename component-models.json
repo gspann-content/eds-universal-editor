@@ -110,9 +110,28 @@
         ]
       }
     ]
-  },  
+  },
   {
     "id": "card-sample",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text1",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "card",
     "fields": [
       {
         "component": "reference",
@@ -131,7 +150,7 @@
     ]
   },
   {
-    "id": "card",
+    "id": "carouselll",
     "fields": [
       {
         "component": "reference",
@@ -205,25 +224,6 @@
     ]
   },
   {
-    "id": "testingcard",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
     "id": "hero-banner",
     "fields": [
       {
@@ -244,7 +244,7 @@
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Text",
+        "label": "Text1",
         "valueType": "string"
       }
     ]
@@ -319,6 +319,32 @@
     ]
   },
   {
+    "id": "media-grid-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "linkUrl",
+        "value": "",
+        "label": "Link Url",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "altText",
+        "label": "Alt text",
+        "value": "Alt text"
+      }
+    ]
+  },
+  {
     "id": "menu",
     "fields": [
       {
@@ -326,18 +352,6 @@
         "name": "menutext",
         "value": "",
         "label": "Menu Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "carousel",
-    "fields": [
-      {
-        "component": "text",
-        "name": "carouseltext",
-        "value": "",
-        "label": "Carousel Text",
         "valueType": "string"
       }
     ]
@@ -484,7 +498,26 @@
     ]
   },
   {
-    "id": "page-title",
+    "id": "testingcard",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "text",
+        "value": "",
+        "label": "Text1",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "two-column",
     "fields": [
       {
         "component": "reference",
@@ -503,68 +536,9 @@
       {
         "component": "richtext",
         "name": "text",
-        "value": "text",
-        "label": "Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "media-grid-item",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "name": "linkUrl",
         "value": "",
-        "label": "Link Url",
+        "label": "Text1",
         "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt text",
-        "value": "Alt text"
-      }
-    ]
-  },
-  {
-    "id": "page-subnav-item",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "Nav-Item",
-        "label": "nav-item",
-        "value": ""
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "title",
-        "label": "title",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "name": "description",
-        "value": "",
-        "label": "Description",
-        "valueType": "string"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
       }
     ]
   }
