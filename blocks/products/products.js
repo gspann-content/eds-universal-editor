@@ -12,8 +12,12 @@ async function fetchData(url) {
 }
 function getShortText(text, wordLimit) {
   const words = text.split(/\s+/);
+  console.table(words.length, wordLimit);
+  if (words.length <= wordLimit) {
+    return text;
+  }
   const limitedWords = words.splice(0, wordLimit);
-  return limitedWords.join(' ') + (words.length > wordLimit ? '...' : '');
+  return `${limitedWords.join(' ')}...`;
 }
 export default function decorate(block) {
   const container = document.createElement('div');
