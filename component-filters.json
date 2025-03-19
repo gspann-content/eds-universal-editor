@@ -24,6 +24,12 @@
     ]
   },
   {
+    "id": "card-samples",
+    "components": [
+      "card-sample"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"
