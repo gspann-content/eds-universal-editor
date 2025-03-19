@@ -79,8 +79,8 @@ export default function decorate(block) {
     console.log(error);
   });
   
-  document.documentElement.style.setProperty( "--product-image-width", imageWidth); 
-  document.documentElement.style.setProperty( "--product-image-height", imageHeight); 
+  document.documentElement.style.setProperty( "--product-image-width", `${imageWidth}px`); 
+  document.documentElement.style.setProperty( "--product-image-height", `${imageHeight}px`); 
 
   block.textContent = '';
   block.append(container);
