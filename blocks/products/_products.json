@@ -35,11 +35,51 @@
                     "value": ""
                 },
                 {
+                    "component": "select",
+                    "label": "Select",
+                    "name": "headingalignment",
+                    "valueType": "Heading Position",
+                    "options": [
+                        {
+                            "name": "Left",
+                            "value": "left"
+                        },
+                        {
+                            "name": "Center",
+                            "value": "center"
+                        },
+                        {
+                            "name": "Right",
+                            "value": "right"
+                        }
+                    ]
+                },
+                {
                     "component": "richtext",
                     "name": "subheading",
                     "value": "",
                     "label": "Sub Heading",
                     "valueType": "string"
+                },
+                {
+                    "component": "select",
+                    "label": "Select",
+                    "name": "subheadingalignment",
+                    "valueType": "Sub Heading Position",
+                    "options": [
+                        {
+                            "name": "Left",
+                            "value": "left"
+                        },
+                        {
+                            "name": "Center",
+                            "value": "center"
+                        },
+                        {
+                            "name": "Right",
+                            "value": "right"
+                        }
+                    ]
                 },
                 {
                     "component": "text",
@@ -74,6 +114,86 @@
                     },
                     "value": "",
                     "label": "Image Width (pixels)"
+                },
+                {
+                    "component": "select",
+                    "label": "Select",
+                    "name": "imagealignment",
+                    "valueType": "Product Image Position",
+                    "options": [
+                        {
+                            "name": "Left",
+                            "value": "left"
+                        },
+                        {
+                            "name": "Center",
+                            "value": "center"
+                        },
+                        {
+                            "name": "Right",
+                            "value": "right"
+                        }
+                    ]
+                },
+                {
+                    "component": "select",
+                    "label": "Select",
+                    "name": "titlealignment",
+                    "valueType": "Product Title Position",
+                    "options": [
+                        {
+                            "name": "Left",
+                            "value": "left"
+                        },
+                        {
+                            "name": "Center",
+                            "value": "center"
+                        },
+                        {
+                            "name": "Right",
+                            "value": "right"
+                        }
+                    ]
+                },
+                {
+                    "component": "select",
+                    "label": "Select",
+                    "name": "descriptionalignment",
+                    "valueType": "Product Description Position",
+                    "options": [
+                        {
+                            "name": "Left",
+                            "value": "left"
+                        },
+                        {
+                            "name": "Center",
+                            "value": "center"
+                        },
+                        {
+                            "name": "Right",
+                            "value": "right"
+                        }
+                    ]
+                },
+                {
+                    "component": "select",
+                    "label": "Select",
+                    "name": "pricealignment",
+                    "valueType": "Product Price Position",
+                    "options": [
+                        {
+                            "name": "Left",
+                            "value": "left"
+                        },
+                        {
+                            "name": "Center",
+                            "value": "center"
+                        },
+                        {
+                            "name": "Right",
+                            "value": "right"
+                        }
+                    ]
                 }
             ]
         }

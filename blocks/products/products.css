@@ -1,6 +1,12 @@
 :root{
     --product-image-height:150px;
     --product-image-width:150px;
+    --heading-alignment:center;
+    --sub-heading-alignment:center;
+    --product-title-alignment:center;
+    --product-description-alignment:center;
+    --product-price-alignment:center;
+    --product-image-alignment:center;
 }
 body
 {
@@ -17,11 +23,12 @@ body
 .products-container .heading
 {
     font-size: 48px;
+    text-align: var(--heading-alignment);
 }
 .products-container .sub-heading
 {
     font-size: 18px;
-    text-align: center;
+    text-align: var(--sub-heading-alignment);
     max-width: 768px;
 }
 .products-container ul
@@ -36,7 +43,6 @@ body
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: center;
     padding: 20px;
     text-align: center;
     object-fit: cover;
@@ -54,9 +60,22 @@ body
 {    
     width: calc(49% - 20px);
 }
+.products-container ul li picture
+{
+    display: flex;
+    justify-content: var(--product-image-alignment);
+}
 .products-container ul li img
 {
     object-fit: contain;
     height: var(--product-image-height);
     width: var(--product-image-width);
+}
+.products-container ul li h3
+{
+    text-align: var(--product-title-alignment);
+}
+.products-container ul li p
+{
+    text-align: var(--product-description-alignment);
 }
