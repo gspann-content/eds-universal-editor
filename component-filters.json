@@ -9,7 +9,7 @@
     "id": "section",
     "components": [
       "text",
-      "card-samples",
+      "card-sample",
       "testingcard",
       "image",
       "button",
@@ -24,15 +24,15 @@
     ]
   },
   {
-    "id": "cards",
-    "components": [
-      "card"
-    ]
-  },
-  {
     "id": "card-samples",
     "components": [
       "card-sample"
+    ]
+  },
+  {
+    "id": "cards",
+    "components": [
+      "card"
     ]
   },
   {
