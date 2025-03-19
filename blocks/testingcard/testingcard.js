@@ -48,27 +48,56 @@
     
 // }
 
-export default function decorate(block) {
-    console.log("block", block);
-    console.log("block.children", block.children);
-  
-    const card = document.createElement('div');
-    card.style.margin = '16px auto';
-  
-    const img = document.createElement('img');
-    
-    const cardText = document.createElement('p');
-    cardText.style.fontSize = '1em';
-    cardText.style.color = '#333';
-  
-    card.appendChild(img);
-    card.appendChild(cardText);
-  
-  const blockContainer = block.querySelector('div');
-  const innerContainer = blockContainer.querySelector('div');
-  innerContainer.appendChild(card);
-    
-    console.log("block11", block);
-    console.log("block.children11", block.children);
-  
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error getting data: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetch error:', error);
+    return [];
   }
+}
+
+export default function decorate(block) {
+  const container = document.createElement("div");
+  container.className = "container";
+ 
+
+  fetchData("https://jsonplaceholder.typicode.com/users").then((data) => {
+    data.forEach((item) => {
+      const card = document.createElement("div");
+      card.className = "card";     
+
+      const img = document.createElement("img");
+      img.src = `https://i.pravatar.cc/150?img=${item.id}`;
+      img.alt = "User image";
+      img.className = "card-image";
+
+      const cardTitle = document.createElement("h1");
+      cardTitle.textContent = item.name;
+      cardTitle.className = "card-title";
+
+      const cardText = document.createElement("p");
+      cardText.textContent = `📧 ${item.email}`;
+      cardText.className = "card-text";
+
+      const button = document.createElement("button");
+      button.textContent = "View Profile";
+      button.className = "card-button";
+
+      // Append elements
+      card.appendChild(img);
+      card.appendChild(cardTitle);
+      card.appendChild(cardText);
+      card.appendChild(button);
+      container.appendChild(card);
+    });
+
+    block.appendChild(container);
+  }).catch((error) => {
+    console.error("Error creating cards:", error);
+  });
+}
