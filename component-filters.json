@@ -80,6 +80,12 @@
     ]
   },
   {
+    "id": "products",
+    "components": [
+      "product"
+    ]
+  },
+  {
     "id": "sciex-columns",
     "components": [
       "sciex-card"
