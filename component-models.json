@@ -300,7 +300,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "alttext",
+        "name": "altText",
         "label": "Alt text",
         "value": "Alt text"
       }
@@ -376,7 +376,7 @@
       },
       {
         "component": "text",
-        "name": "linktitle",
+        "name": "linkTitle",
         "label": "Title"
       }
     ]
@@ -392,10 +392,10 @@
         "multi": false
       },
       {
-        "component": "richtext",
+        "component": "text",
         "name": "text",
         "value": "",
-        "label": "Text",
+        "label": "Text1",
         "valueType": "string"
       }
     ]
