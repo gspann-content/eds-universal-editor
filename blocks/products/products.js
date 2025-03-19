@@ -10,6 +10,11 @@ async function fetchData(url) {
     return error;
   }
 }
+function getShortText(text, wordLimit) {
+  const words = text.split(/\s+/);
+  const limitedWords = words.splice(0, wordLimit);
+  return limitedWords.join(' ') + (words.length > wordLimit ? '...' : '');
+}
 export default function decorate(block) {
   const container = document.createElement('div');
   container.classList.add('products-container');
@@ -26,6 +31,7 @@ export default function decorate(block) {
   let titleFontSizet;
   let descriptionAlignment;
   let descriptionFontSize;
+  let descriptionWordsLimit;
   let priceAlignment;
   let priceFontSize;
 
@@ -80,9 +86,12 @@ export default function decorate(block) {
       descriptionFontSize = fieldValue?.textContent || 'center';
     }
     if (rowIndex === 15) {
-      priceAlignment = fieldValue?.textContent || 'center';
+      descriptionWordsLimit = fieldValue?.textContent || '10';
     }
     if (rowIndex === 16) {
+      priceAlignment = fieldValue?.textContent || 'center';
+    }
+    if (rowIndex === 17) {
       priceFontSize = fieldValue?.textContent || 'center';
     }
   });
@@ -107,7 +116,7 @@ export default function decorate(block) {
       title.textContent = product.title;
 
       const description = document.createElement('p');
-      description.textContent = product.description;
+      description.textContent = getShortText(product.description, descriptionWordsLimit);
 
       const price = document.createElement('h6');
       price.textContent = `$${product.price}`;

@@ -45,11 +45,11 @@ body
 }
 .products-container ul li 
 {
+    padding-bottom: 25px;
     background: #fff;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 20px;
     text-align: center;
     object-fit: cover;
     box-shadow: 0 0 4px 4px #f1f1f1;
@@ -68,6 +68,7 @@ body
 }
 .products-container ul li picture
 {
+    background: #f9f9f9;
     display: flex;
     justify-content: var(--product-image-alignment);
 }
@@ -79,16 +80,19 @@ body
 }
 .products-container ul li h3
 {
+    padding: 0 15px;
     font-size: var(--product-title-font-size);
     text-align: var(--product-title-alignment);
 }
 .products-container ul li p
 {
+    padding: 0 15px;
     font-size: var(--product-description-font-size);
     text-align: var(--product-description-alignment);
 }
 .products-container ul li h6
 {
+    padding: 0 15px;
     font-size: var(--product-price-font-size);
     text-align: var(--product-price-alignment);
 }

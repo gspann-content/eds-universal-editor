@@ -344,6 +344,17 @@
                     ]
                 },
                 {
+                    "component": "text",
+                    "valueType": "number",
+                    "name": "descriptionwordslimit",
+                    "validation": {
+                        "numberMin": 10,
+                        "customErrorMsg": "Minimum 10 words allowed"
+                    },
+                    "value": "",
+                    "label": "Product description words limit"
+                },
+                {
                     "component": "select",
                     "label": "Product Price Alignment",
                     "name": "pricealignment",
