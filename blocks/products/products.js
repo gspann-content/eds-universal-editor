@@ -19,61 +19,71 @@ export default function decorate(block) {
   let imageWidth;
   let imageAlignment;
   let headingAlignment;
+  let headingFontSize;
   let subHeadingAlignment;
+  let subHeadingFontSize;
   let titleAlignment;
+  let titleFontSizet;
   let descriptionAlignment;
+  let descriptionFontSize;
   let priceAlignment;
+  let priceFontSize;
 
   [...block.children].forEach((row, rowIndex) => {
+    const fieldValue = row.querySelector('div > div > p');
     if (rowIndex === 1) {
-      const heading = row.querySelector('div > div > p');
-      if (heading) {
-        heading.classList.add('heading');
-        container.append(heading);
+      if (fieldValue) {
+        fieldValue.classList.add('heading');
+        container.append(fieldValue);
       }
     }
     if (rowIndex === 2) {
-      const headingPosition = row.querySelector('div > div > p');
-      headingAlignment = headingPosition?.textContent || 'center';
+      headingAlignment = fieldValue?.textContent || 'center';
     }
     if (rowIndex === 3) {
-      const subHeading = row.querySelector('div > div > p');
-      if (subHeading) {
-        subHeading.classList.add('sub-heading');
-        container.append(subHeading);
-      }
+      headingFontSize = fieldValue?.textContent || 'center';
     }
     if (rowIndex === 4) {
-      const subHeadingPosition = row.querySelector('div > div > p');
-      subHeadingAlignment = subHeadingPosition?.textContent || 'center';
+      if (fieldValue) {
+        fieldValue.classList.add('sub-heading');
+        container.append(fieldValue);
+      }
     }
     if (rowIndex === 5) {
-      const columns = row.querySelector('div > div > p');
-      productsColumns = columns?.textContent || '4';
+      subHeadingAlignment = fieldValue?.textContent || 'center';
     }
     if (rowIndex === 6) {
-      const height = row.querySelector('div > div > p');
-      imageHeight = height?.textContent || '200';
+      subHeadingFontSize = fieldValue?.textContent || 'center';
     }
     if (rowIndex === 7) {
-      const width = row.querySelector('div > div > p');
-      imageWidth = width?.textContent || '200';
+      productsColumns = fieldValue?.textContent || '4';
     }
     if (rowIndex === 8) {
-      const imagePosition = row.querySelector('div > div > p');
-      imageAlignment = imagePosition?.textContent || 'center';
+      imageHeight = fieldValue?.textContent || '200';
     }
     if (rowIndex === 9) {
-      const titlePosition = row.querySelector('div > div > p');
-      titleAlignment = titlePosition?.textContent || 'center';
+      imageWidth = fieldValue?.textContent || '200';
     }
     if (rowIndex === 10) {
-      const descriptionPosition = row.querySelector('div > div > p');
-      descriptionAlignment = descriptionPosition?.textContent || 'center';
+      imageAlignment = fieldValue?.textContent || 'center';
     }
     if (rowIndex === 11) {
-      const pricePosition = row.querySelector('div > div > p');
-      priceAlignment = pricePosition?.textContent || 'center';
+      titleAlignment = fieldValue?.textContent || 'center';
+    }
+    if (rowIndex === 12) {
+      titleFontSizet = fieldValue?.textContent || 'center';
+    }
+    if (rowIndex === 13) {
+      descriptionAlignment = fieldValue?.textContent || 'center';
+    }
+    if (rowIndex === 14) {
+      descriptionFontSize = fieldValue?.textContent || 'center';
+    }
+    if (rowIndex === 15) {
+      priceAlignment = fieldValue?.textContent || 'center';
+    }
+    if (rowIndex === 16) {
+      priceFontSize = fieldValue?.textContent || 'center';
     }
   });
   const productsWrapper = document.createElement('ul');
@@ -118,10 +128,15 @@ export default function decorate(block) {
   document.documentElement.style.setProperty('--product-image-height', `${imageHeight}px`);
   document.documentElement.style.setProperty('--product-image-alignment', `${imageAlignment}`);
   document.documentElement.style.setProperty('--heading-alignment', `${headingAlignment}`);
+  document.documentElement.style.setProperty('--heading-font-size', `${headingFontSize}`);
   document.documentElement.style.setProperty('--sub-heading-alignment', `${subHeadingAlignment}`);
+  document.documentElement.style.setProperty('--sub-heading-font-size', `${subHeadingFontSize}`);
   document.documentElement.style.setProperty('--product-title-alignment', `${titleAlignment}`);
+  document.documentElement.style.setProperty('--product-title-font-size', `${titleFontSizet}`);
   document.documentElement.style.setProperty('--product-description-alignment', `${descriptionAlignment}`);
+  document.documentElement.style.setProperty('--product-description-font-size', `${descriptionFontSize}`);
   document.documentElement.style.setProperty('--product-price-alignment', `${priceAlignment}`);
+  document.documentElement.style.setProperty('--product-price-font-size', `${priceFontSize}`);
 
   block.textContent = '';
   block.append(container);
