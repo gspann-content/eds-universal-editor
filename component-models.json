@@ -369,7 +369,7 @@
       },
       {
         "component": "select",
-        "label": "Heading Position",
+        "label": "Heading Alignment",
         "name": "headingalignment",
         "valueType": "string",
         "options": [
@@ -396,7 +396,7 @@
       },
       {
         "component": "select",
-        "label": "Sub Heading Position",
+        "label": "Sub Heading Alignment",
         "name": "subheadingalignment",
         "valueType": "string",
         "options": [
@@ -450,7 +450,7 @@
       },
       {
         "component": "select",
-        "label": "Product Image Position",
+        "label": "Product Image Alignment",
         "name": "imagealignment",
         "valueType": "string",
         "options": [
@@ -470,7 +470,7 @@
       },
       {
         "component": "select",
-        "label": "Product Title Position",
+        "label": "Product Title Alignment",
         "name": "titlealignment",
         "valueType": "string",
         "options": [
@@ -490,7 +490,7 @@
       },
       {
         "component": "select",
-        "label": "Product Description Position",
+        "label": "Product Description Alignment",
         "name": "descriptionalignment",
         "valueType": "string",
         "options": [
@@ -510,7 +510,7 @@
       },
       {
         "component": "select",
-        "label": "Product Price Position",
+        "label": "Product Price Alignment",
         "name": "pricealignment",
         "valueType": "string",
         "options": [
