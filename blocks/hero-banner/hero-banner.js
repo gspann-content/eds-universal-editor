@@ -102,5 +102,5 @@ export default function decorate(block) {
   ctaLinkInnerContainer.appendChild(svgIcon);
   block.textContent = '';
   block.classList.add('global');
-  block.append(wrapper);
+  // block.append(wrapper);
 }

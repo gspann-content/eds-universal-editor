@@ -32,7 +32,7 @@ function level1DomStructure(div, divs, itemMap, rowindex, idMap, content, subdiv
 
   subdiv2.append(itemDiv);
 
-  subATag.onclick = function (event) {
+  subATag.onclick = function clickable(event) {
     event.preventDefault();
     const activeElements = document.querySelectorAll('.submenu-active');
     activeElements.forEach((element) => {
