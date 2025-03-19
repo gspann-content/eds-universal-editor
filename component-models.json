@@ -380,11 +380,33 @@
         "name": "columns",
         "validation": {
           "numberMin": 1,
-          "numberMax": 4,
+          "numberMax": 5,
           "customErrorMsg": "Minimum 2 columns and Maximum 4 columns allowed"
         },
         "value": "",
         "label": "Columns"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "imageheight",
+        "validation": {
+          "numberMin": 50,
+          "customErrorMsg": "Minimum 2 columns and Maximum 4 columns allowed"
+        },
+        "value": "",
+        "label": "Image Height (pixels)"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "imagewidth",
+        "validation": {
+          "numberMin": 50,
+          "customErrorMsg": "Minimum 2 columns and Maximum 4 columns allowed"
+        },
+        "value": "",
+        "label": "Image Width (pixels)"
       }
     ]
   },

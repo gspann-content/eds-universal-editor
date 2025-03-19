@@ -14,13 +14,13 @@ export default function decorate(block) {
   const container = document.createElement('div');
   container.classList.add('products-container');
 
-  [...block.children].forEach((row, rowindex) => {
-    if (rowindex === 1) {
+  [...block.children].forEach((row, rowIndex) => {
+    if (rowIndex === 1) {
       const heading = row.querySelector('div > div > p');
       heading.classList.add('heading');
       container.append(heading);
     }
-    if (rowindex === 2) {
+    if (rowIndex === 2) {
       const subHeading = row.querySelector('div > div > p');
       subHeading.classList.add('sub-heading');
       container.append(subHeading);
