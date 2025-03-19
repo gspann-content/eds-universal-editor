@@ -56,6 +56,7 @@ body
 }
 .products-container ul li img
 {
+    object-fit: contain;
     height: var(--product-image-height);
     width: var(--product-image-width);
 }
