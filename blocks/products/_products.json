@@ -78,6 +78,10 @@
                         {
                             "name": "Right",
                             "value": "right"
+                        },
+                        {
+                            "name": "Justify",
+                            "value": "justify"
                         }
                     ]
                 },
@@ -172,6 +176,10 @@
                         {
                             "name": "Right",
                             "value": "right"
+                        },
+                        {
+                            "name": "Justify",
+                            "value": "justify"
                         }
                     ]
                 },
