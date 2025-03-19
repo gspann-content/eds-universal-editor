@@ -13,7 +13,9 @@ async function fetchData(url) {
 export default function decorate(block) {
   const container = document.createElement('div');
   container.classList.add('products-container');
-
+  let productsColumns;
+  let imageHeight;
+  let imageWidth;
   [...block.children].forEach((row, rowIndex) => {
     if (rowIndex === 1) {
       const heading = row.querySelector('div > div > p');
@@ -25,8 +27,22 @@ export default function decorate(block) {
       subHeading.classList.add('sub-heading');
       container.append(subHeading);
     }
+    if (rowIndex === 3) {
+      const columns = row.querySelector('div > div > p');
+      productsColumns = columns.textContent;
+    }
+    if (rowIndex === 4) {
+      const height = row.querySelector('div > div > p');
+      imageHeight = height.textContent;
+    }
+    if (rowIndex === 5) {
+      const width = row.querySelector('div > div > p');
+      imageWidth = width.textContent;
+    }
   });
+  
   const productsWrapper = document.createElement('ul');
+  productsWrapper.classList.add(`products-col-${productsColumns}`);
   const products = fetchData('https://dummyjson.com/products');
   products.then((data) => {
     data.products.forEach((product) => {
@@ -36,8 +52,8 @@ export default function decorate(block) {
       const image = document.createElement('img');
       const [imageSrc] = product.images;
       image.src = imageSrc;
-      image.width = '150';
-      image.height = '150';
+      image.width = imageWidth; 
+      image.height = imageHeight;
       image.loading = 'lazy';
 
       picture.append(image);
@@ -62,6 +78,10 @@ export default function decorate(block) {
   }).catch((error) => {
     console.log(error);
   });
+  
+  document.documentElement.style.setProperty( "--product-image-width", imageWidth); 
+  document.documentElement.style.setProperty( "--product-image-height", imageHeight); 
+
   block.textContent = '';
   block.append(container);
 }

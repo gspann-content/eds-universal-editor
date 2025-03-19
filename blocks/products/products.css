@@ -1,3 +1,7 @@
+:root{
+    --product-image-height:150px;
+    --product-image-width:150px;
+}
 body
 {
     background: #f9f9f9;
@@ -35,13 +39,23 @@ body
     align-items: center;
     padding: 20px;
     text-align: center;
-    width: calc(24% - 20px);
     object-fit: cover;
     box-shadow: 0 0 4px 4px #f1f1f1;
 }
+.products-col-4 li
+{    
+    width: calc(24% - 20px);
+}
+.products-col-3 li
+{    
+    width: calc(32% - 20px);
+}
+.products-col-2 li
+{    
+    width: calc(49% - 20px);
+}
 .products-container ul li img
 {
-    width: 150px;
-    object-fit: cover;
-    height: 150px;
+    height: var(--product-image-height);
+    width: var(--product-image-width);
 }
