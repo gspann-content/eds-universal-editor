@@ -344,7 +344,7 @@
                     ]
                 },
                 {
-                    "component": "text",
+                    "component": "number",
                     "valueType": "number",
                     "name": "descriptionwordslimit",
                     "validation": {
