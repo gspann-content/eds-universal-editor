@@ -123,7 +123,7 @@
       },
       {
         "component": "text",
-        "name": "author",
+        "name": "heading",
         "value": "",
         "label": "Name",
         "valueType": "string"
