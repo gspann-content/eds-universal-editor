@@ -44,7 +44,7 @@
               },
               {
                   "component": "text",
-                  "name": "heading",
+                  "name": "subheading",
                   "value": "",
                   "label": "Name",
                   "valueType": "string"
