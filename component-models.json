@@ -373,6 +373,18 @@
         "value": "",
         "label": "Sub Heading",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "validation": {
+          "numberMin": 1,
+          "numberMax": 4,
+          "customErrorMsg": "Minimum 2 columns and Maximum 4 columns allowed"
+        },
+        "value": "",
+        "label": "Columns"
       }
     ]
   },
