@@ -61,31 +61,30 @@ async function fetchData(url) {
 }
 
 export default function decorate(block) {
-  const container = document.createElement("div");
-  container.className = "container";
- 
+  const container = document.createElement('div');
+  container.className = 'container';
 
-  fetchData("https://jsonplaceholder.typicode.com/users").then((data) => {
+  fetchData('https://jsonplaceholder.typicode.com/users').then((data) => {
     data.forEach((item) => {
-      const card = document.createElement("div");
-      card.className = "card";     
+      const card = document.createElement('div');
+      card.className = 'card';
 
-      const img = document.createElement("img");
+      const img = document.createElement('img');
       img.src = `https://i.pravatar.cc/150?img=${item.id}`;
-      img.alt = "User image";
-      img.className = "card-image";
+      img.alt = 'User image';
+      img.className = 'card-image';
 
-      const cardTitle = document.createElement("h1");
+      const cardTitle = document.createElement('h1');
       cardTitle.textContent = item.name;
-      cardTitle.className = "card-title";
+      cardTitle.className = 'card-title';
 
-      const cardText = document.createElement("p");
+      const cardText = document.createElement('p');
       cardText.textContent = `📧 ${item.email}`;
-      cardText.className = "card-text";
+      cardText.className = 'card-text';
 
-      const button = document.createElement("button");
-      button.textContent = "View Profile";
-      button.className = "card-button";
+      const button = document.createElement('button');
+      button.textContent = 'View Profile';
+      button.className = 'card-button';
 
       // Append elements
       card.appendChild(img);
@@ -97,6 +96,6 @@ export default function decorate(block) {
 
     block.appendChild(container);
   }).catch((error) => {
-    console.error("Error creating cards:", error);
+    console.error('Error creating cards:', error);
   });
 }
