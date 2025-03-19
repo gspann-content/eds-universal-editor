@@ -27,7 +27,7 @@ export default function decorate(block) {
   [...block.children].forEach((row, rowIndex) => {
     if (rowIndex === 1) {
       const heading = row.querySelector('div > div > p');
-      if(heading) {
+      if (heading) {
         heading.classList.add('heading');
         container.append(heading);
       }
@@ -38,7 +38,7 @@ export default function decorate(block) {
     }
     if (rowIndex === 3) {
       const subHeading = row.querySelector('div > div > p');
-      if(subHeading) {
+      if (subHeading) {
         subHeading.classList.add('sub-heading');
         container.append(subHeading);
       }
@@ -76,7 +76,6 @@ export default function decorate(block) {
       priceAlignment = pricePosition?.textContent || 'center';
     }
   });
-  
   const productsWrapper = document.createElement('ul');
   productsWrapper.classList.add(`products-col-${productsColumns}`);
   const products = fetchData('https://dummyjson.com/products');
@@ -88,7 +87,7 @@ export default function decorate(block) {
       const image = document.createElement('img');
       const [imageSrc] = product.images;
       image.src = imageSrc;
-      image.width = imageWidth; 
+      image.width = imageWidth;
       image.height = imageHeight;
       image.loading = 'lazy';
 
@@ -114,15 +113,15 @@ export default function decorate(block) {
   }).catch((error) => {
     console.log(error);
   });
-  
-  document.documentElement.style.setProperty( "--product-image-width", `${imageWidth}px`); 
-  document.documentElement.style.setProperty( "--product-image-height", `${imageHeight}px`);
-  document.documentElement.style.setProperty( "--product-image-alignment", `${imageAlignment}`);  
-  document.documentElement.style.setProperty( "--heading-alignment", `${headingAlignment}`); 
-  document.documentElement.style.setProperty( "--sub-heading-alignment", `${subHeadingAlignment}`); 
-  document.documentElement.style.setProperty( "--product-title-alignment", `${titleAlignment}`); 
-  document.documentElement.style.setProperty( "--product-description-alignment", `${descriptionAlignment}`); 
-  document.documentElement.style.setProperty( "--product-price-alignment", `${priceAlignment}`); 
+
+  document.documentElement.style.setProperty('--product-image-width', `${imageWidth}px`);
+  document.documentElement.style.setProperty('--product-image-height', `${imageHeight}px`);
+  document.documentElement.style.setProperty('--product-image-alignment', `${imageAlignment}`);
+  document.documentElement.style.setProperty('--heading-alignment', `${headingAlignment}`);
+  document.documentElement.style.setProperty('--sub-heading-alignment', `${subHeadingAlignment}`);
+  document.documentElement.style.setProperty('--product-title-alignment', `${titleAlignment}`);
+  document.documentElement.style.setProperty('--product-description-alignment', `${descriptionAlignment}`);
+  document.documentElement.style.setProperty('--product-price-alignment', `${priceAlignment}`);
 
   block.textContent = '';
   block.append(container);

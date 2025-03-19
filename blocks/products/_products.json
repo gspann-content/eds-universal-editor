@@ -55,6 +55,46 @@
                     ]
                 },
                 {
+                    "component": "select",
+                    "label": "Heading Font Size",
+                    "name": "headingfontsize",
+                    "valueType": "string",
+                    "options": [
+                        {
+                            "name": "Large",
+                            "value": "large"
+                        },
+                        {
+                            "name": "Larger",
+                            "value": "larger"
+                        },
+                        {
+                            "name": "Medium",
+                            "value": "medium"
+                        },
+                        {
+                            "name": "Small",
+                            "value": "small"
+                        },
+                        {
+                            "name": "Smaller",
+                            "value": "smaller"
+                        },
+                        {
+                            "name": "X-Large",
+                            "value": "x-large"
+                        },
+                        {
+                            "name": "XX-Large",
+                            "value": "xx-large"
+                        },
+                        {
+                            "name": "XXX-Large",
+                            "value": "xxx-large"
+                        }
+                    ]
+                },
+                {
                     "component": "richtext",
                     "name": "subheading",
                     "value": "",
@@ -82,6 +122,46 @@
                         {
                             "name": "Justify",
                             "value": "justify"
+                        }
+                    ]
+                },
+                {
+                    "component": "select",
+                    "label": "Sub Heading Font Size",
+                    "name": "subheadingfontsize",
+                    "valueType": "string",
+                    "options": [
+                        {
+                            "name": "Large",
+                            "value": "large"
+                        },
+                        {
+                            "name": "Larger",
+                            "value": "larger"
+                        },
+                        {
+                            "name": "Medium",
+                            "value": "medium"
+                        },
+                        {
+                            "name": "Small",
+                            "value": "small"
+                        },
+                        {
+                            "name": "Smaller",
+                            "value": "smaller"
+                        },
+                        {
+                            "name": "X-Large",
+                            "value": "x-large"
+                        },
+                        {
+                            "name": "XX-Large",
+                            "value": "xx-large"
+                        },
+                        {
+                            "name": "XXX-Large",
+                            "value": "xxx-large"
                         }
                     ]
                 },
@@ -161,6 +241,46 @@
                 },
                 {
                     "component": "select",
+                    "label": "Product Title Font Size",
+                    "name": "titlefontsize",
+                    "valueType": "string",
+                    "options": [
+                        {
+                            "name": "Large",
+                            "value": "large"
+                        },
+                        {
+                            "name": "Larger",
+                            "value": "larger"
+                        },
+                        {
+                            "name": "Medium",
+                            "value": "medium"
+                        },
+                        {
+                            "name": "Small",
+                            "value": "small"
+                        },
+                        {
+                            "name": "Smaller",
+                            "value": "smaller"
+                        },
+                        {
+                            "name": "X-Large",
+                            "value": "x-large"
+                        },
+                        {
+                            "name": "XX-Large",
+                            "value": "xx-large"
+                        },
+                        {
+                            "name": "XXX-Large",
+                            "value": "xxx-large"
+                        }
+                    ]
+                },
+                {
+                    "component": "select",
                     "label": "Product Description Alignment",
                     "name": "descriptionalignment",
                     "valueType": "string",
@@ -185,6 +305,46 @@
                 },
                 {
                     "component": "select",
+                    "label": "Product Description Font Size",
+                    "name": "descriptionfontsize",
+                    "valueType": "string",
+                    "options": [
+                        {
+                            "name": "Large",
+                            "value": "large"
+                        },
+                        {
+                            "name": "Larger",
+                            "value": "larger"
+                        },
+                        {
+                            "name": "Medium",
+                            "value": "medium"
+                        },
+                        {
+                            "name": "Small",
+                            "value": "small"
+                        },
+                        {
+                            "name": "Smaller",
+                            "value": "smaller"
+                        },
+                        {
+                            "name": "X-Large",
+                            "value": "x-large"
+                        },
+                        {
+                            "name": "XX-Large",
+                            "value": "xx-large"
+                        },
+                        {
+                            "name": "XXX-Large",
+                            "value": "xxx-large"
+                        }
+                    ]
+                },
+                {
+                    "component": "select",
                     "label": "Product Price Alignment",
                     "name": "pricealignment",
                     "valueType": "string",
@@ -200,6 +360,46 @@
                         {
                             "name": "Right",
                             "value": "right"
+                        }
+                    ]
+                },
+                {
+                    "component": "select",
+                    "label": "Product Price Font Size",
+                    "name": "pricefontsize",
+                    "valueType": "string",
+                    "options": [
+                        {
+                            "name": "Large",
+                            "value": "large"
+                        },
+                        {
+                            "name": "Larger",
+                            "value": "larger"
+                        },
+                        {
+                            "name": "Medium",
+                            "value": "medium"
+                        },
+                        {
+                            "name": "Small",
+                            "value": "small"
+                        },
+                        {
+                            "name": "Smaller",
+                            "value": "smaller"
+                        },
+                        {
+                            "name": "X-Large",
+                            "value": "x-large"
+                        },
+                        {
+                            "name": "XX-Large",
+                            "value": "xx-large"
+                        },
+                        {
+                            "name": "XXX-Large",
+                            "value": "xxx-large"
                         }
                     ]
                 }
