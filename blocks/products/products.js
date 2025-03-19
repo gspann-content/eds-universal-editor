@@ -27,49 +27,53 @@ export default function decorate(block) {
   [...block.children].forEach((row, rowIndex) => {
     if (rowIndex === 1) {
       const heading = row.querySelector('div > div > p');
-      heading.classList.add('heading');
-      container.append(heading);
+      if(heading) {
+        heading.classList.add('heading');
+        container.append(heading);
+      }
     }
     if (rowIndex === 2) {
       const headingPosition = row.querySelector('div > div > p');
-      headingAlignment = headingPosition.textContent;
+      headingAlignment = headingPosition?.textContent || 'center';
     }
     if (rowIndex === 3) {
       const subHeading = row.querySelector('div > div > p');
-      subHeading.classList.add('sub-heading');
-      container.append(subHeading);
+      if(subHeading) {
+        subHeading.classList.add('sub-heading');
+        container.append(subHeading);
+      }
     }
     if (rowIndex === 4) {
       const subHeadingPosition = row.querySelector('div > div > p');
-      subHeadingAlignment = subHeadingPosition.textContent;
+      subHeadingAlignment = subHeadingPosition?.textContent || 'center';
     }
     if (rowIndex === 5) {
       const columns = row.querySelector('div > div > p');
-      productsColumns = columns.textContent;
+      productsColumns = columns?.textContent || '4';
     }
     if (rowIndex === 6) {
       const height = row.querySelector('div > div > p');
-      imageHeight = height.textContent;
+      imageHeight = height?.textContent || '200';
     }
     if (rowIndex === 7) {
       const width = row.querySelector('div > div > p');
-      imageWidth = width.textContent;
+      imageWidth = width?.textContent || '200';
     }
     if (rowIndex === 8) {
       const imagePosition = row.querySelector('div > div > p');
-      imageAlignment = imagePosition.textContent;
+      imageAlignment = imagePosition?.textContent || 'center';
     }
     if (rowIndex === 9) {
       const titlePosition = row.querySelector('div > div > p');
-      titleAlignment = titlePosition.textContent;
+      titleAlignment = titlePosition?.textContent || 'center';
     }
     if (rowIndex === 10) {
       const descriptionPosition = row.querySelector('div > div > p');
-      descriptionAlignment = descriptionPosition.textContent;
+      descriptionAlignment = descriptionPosition?.textContent || 'center';
     }
     if (rowIndex === 11) {
       const pricePosition = row.querySelector('div > div > p');
-      priceAlignment = pricePosition.textContent;
+      priceAlignment = pricePosition?.textContent || 'center';
     }
   });
   
@@ -110,14 +114,15 @@ export default function decorate(block) {
   }).catch((error) => {
     console.log(error);
   });
-  imageWidth ? document.documentElement.style.setProperty( "--product-image-width", `${imageWidth}px`) : document.documentElement.style.setProperty( "--product-image-width", '200px'); 
-  imageHeight ? document.documentElement.style.setProperty( "--product-image-height", `${imageHeight}px`) : document.documentElement.style.setProperty( "--product-image-height", '200px');
-  imageAlignment ? document.documentElement.style.setProperty( "--product-image-alignment", `${imageAlignment}`) : document.documentElement.style.setProperty( "--product-image-alignment", 'center');  
-  headingAlignment ? document.documentElement.style.setProperty( "--heading-alignment", `${headingAlignment}`) : document.documentElement.style.setProperty( "--heading-alignment", 'center'); 
-  subHeadingAlignment ? document.documentElement.style.setProperty( "--sub-heading-alignment", `${subHeadingAlignment}`) : document.documentElement.style.setProperty( "--sub-heading-alignment", 'center'); 
-  titleAlignment ? document.documentElement.style.setProperty( "--product-title-alignment", `${titleAlignment}`) : document.documentElement.style.setProperty( "--product-title-alignment", 'center'); 
-  descriptionAlignment ? document.documentElement.style.setProperty( "--product-description-alignment", `${descriptionAlignment}`) : document.documentElement.style.setProperty( "--product-description-alignment", 'center'); 
-  priceAlignment ? document.documentElement.style.setProperty( "--product-price-alignment", `${priceAlignment}`) : document.documentElement.style.setProperty( "--product-price-alignment", 'center'); 
+  
+  document.documentElement.style.setProperty( "--product-image-width", `${imageWidth}px`); 
+  document.documentElement.style.setProperty( "--product-image-height", `${imageHeight}px`);
+  document.documentElement.style.setProperty( "--product-image-alignment", `${imageAlignment}`);  
+  document.documentElement.style.setProperty( "--heading-alignment", `${headingAlignment}`); 
+  document.documentElement.style.setProperty( "--sub-heading-alignment", `${subHeadingAlignment}`); 
+  document.documentElement.style.setProperty( "--product-title-alignment", `${titleAlignment}`); 
+  document.documentElement.style.setProperty( "--product-description-alignment", `${descriptionAlignment}`); 
+  document.documentElement.style.setProperty( "--product-price-alignment", `${priceAlignment}`); 
 
   block.textContent = '';
   block.append(container);
