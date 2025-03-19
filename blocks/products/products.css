@@ -27,13 +27,13 @@ body
 }
 .products-container .heading
 {
-    font-size: var(--product-title-font-size);
+    font-size: var(--heading-font-size);
     width: 100%;
     text-align: var(--heading-alignment);
 }
 .products-container .sub-heading
 {
-    font-size: var(--product-description-font-size);
+    font-size: var(--sub-heading-font-size);
     text-align: var(--sub-heading-alignment);
     width: 100%;
 }
