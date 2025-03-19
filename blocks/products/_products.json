@@ -36,9 +36,9 @@
                 },
                 {
                     "component": "select",
-                    "label": "Select",
+                    "label": "Heading Position",
                     "name": "headingalignment",
-                    "valueType": "Heading Position",
+                    "valueType": "string",
                     "options": [
                         {
                             "name": "Left",
@@ -63,9 +63,9 @@
                 },
                 {
                     "component": "select",
-                    "label": "Select",
+                    "label": "Sub Heading Position",
                     "name": "subheadingalignment",
-                    "valueType": "Sub Heading Position",
+                    "valueType": "string",
                     "options": [
                         {
                             "name": "Left",
@@ -117,9 +117,9 @@
                 },
                 {
                     "component": "select",
-                    "label": "Select",
+                    "label": "Product Image Position",
                     "name": "imagealignment",
-                    "valueType": "Product Image Position",
+                    "valueType": "string",
                     "options": [
                         {
                             "name": "Left",
@@ -137,9 +137,9 @@
                 },
                 {
                     "component": "select",
-                    "label": "Select",
+                    "label": "Product Title Position",
                     "name": "titlealignment",
-                    "valueType": "Product Title Position",
+                    "valueType": "string",
                     "options": [
                         {
                             "name": "Left",
@@ -157,9 +157,9 @@
                 },
                 {
                     "component": "select",
-                    "label": "Select",
+                    "label": "Product Description Position",
                     "name": "descriptionalignment",
-                    "valueType": "Product Description Position",
+                    "valueType": "string",
                     "options": [
                         {
                             "name": "Left",
@@ -177,9 +177,9 @@
                 },
                 {
                     "component": "select",
-                    "label": "Select",
+                    "label": "Product Price Position",
                     "name": "pricealignment",
-                    "valueType": "Product Price Position",
+                    "valueType": "string",
                     "options": [
                         {
                             "name": "Left",
