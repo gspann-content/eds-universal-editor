@@ -1,77 +1,65 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
-
-async function fetchData(url)
-{   
-    try{
-        const response = await fetch(url);
-        if(!response.ok)
-        {
-            throw new Error(`Error getting products: ${response.status}`);
-        }
-        const data =  await response.json();
-        return data;
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error getting products: ${response.status}`);
     }
-    catch(error)
-    {
-        console.error(`An error occured: ${error}`);
-    }
-}   
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
 export default function decorate(block) {
   const container = document.createElement('div');
   container.classList.add('products-container');
-  
+
   [...block.children].forEach((row, rowindex) => {
-    if(rowindex === 1)
-    {   
-        const heading = row.querySelector('div > div > p');
-        heading.classList.add('heading')
-        container.append(heading);
+    if (rowindex === 1) {
+      const heading = row.querySelector('div > div > p');
+      heading.classList.add('heading');
+      container.append(heading);
     }
-    if(rowindex === 2)
-    {   
-        const subHeading = row.querySelector('div > div > p');
-        subHeading.classList.add('sub-heading')
-        container.append(subHeading);
+    if (rowindex === 2) {
+      const subHeading = row.querySelector('div > div > p');
+      subHeading.classList.add('sub-heading');
+      container.append(subHeading);
     }
   });
   const productsWrapper = document.createElement('ul');
   const products = fetchData('https://dummyjson.com/products');
-  products.then((data)=>
-  { 
-    data.products.forEach((product)=>
-    {   
-        const productCard = document.createElement('li');
+  products.then((data) => {
+    data.products.forEach((product) => {
+      const productCard = document.createElement('li');
+      const picture = document.createElement('picture');
 
-        const picture = document.createElement('picture');
+      const image = document.createElement('img');
+      const [imageSrc] = product.images;
+      image.src = imageSrc;
+      image.width = '150';
+      image.height = '150';
+      image.loading = 'lazy';
 
-        const image = document.createElement('img');
-        image.src = product.images[0];
-        image.width = '150';
-        image.height = '150';
-        image.loading = 'lazy';
+      picture.append(image);
 
-        picture.append(image);
+      const title = document.createElement('h3');
+      title.textContent = product.title;
 
-        const title = document.createElement('h3');
-        title.textContent = product.title;
+      const description = document.createElement('p');
+      description.textContent = product.description;
 
-        const description = document.createElement('p');
-        description.textContent = product.description;
+      const price = document.createElement('h6');
+      price.textContent = `$${product.price}`;
 
-        const price = document.createElement('h6');
-        price.textContent = `$${product.price}`;
+      productCard.append(picture);
+      productCard.append(title);
+      productCard.append(description);
+      productCard.append(price);
 
-        productCard.append(picture);
-        productCard.append(title);
-        productCard.append(description);
-        productCard.append(price);
-
-        productsWrapper.append(productCard);
-    })
+      productsWrapper.append(productCard);
+    });
     container.append(productsWrapper);
-  }).catch((error)=>
-  {
+  }).catch((error) => {
     console.log(error);
   });
   block.textContent = '';
