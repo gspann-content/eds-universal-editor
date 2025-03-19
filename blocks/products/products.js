@@ -1,6 +1,8 @@
-async function fetchData(url) {
+async function fetchData(url, limit, page) {
   try {
-    const response = await fetch(url);
+    const skip = page === 1 ? '0' : (page * limit);
+    const paginatedUrl = `${url}?limit=${limit}&page=${page}&skip=${skip}&select=title,price,description,images`;
+    const response = await fetch(paginatedUrl);
     if (!response.ok) {
       throw new Error(`Error getting products: ${response.status}`);
     }
@@ -8,6 +10,17 @@ async function fetchData(url) {
     return data;
   } catch (error) {
     return error;
+  }
+}
+function renderPagination(currentPage, totalPages) {
+  const paginationContainer = document.getElementById('pagination-container');
+  paginationContainer.innerHTML = '';
+  for (let i = 1; i <= totalPages; i += 1) {
+    const span = document.createElement('span');
+    span.textContent = i;
+    span.disabled = i === currentPage; // Disable current page link
+    // span.addEventListener('click', () => fetchData(i));
+    paginationContainer.appendChild(span);
   }
 }
 function getShortText(text, wordLimit) {
@@ -18,6 +31,51 @@ function getShortText(text, wordLimit) {
   }
   const limitedWords = words.splice(0, wordLimit);
   return `${limitedWords.join(' ')}...`;
+}
+function loadProducts(url, limit, page, productsColumns, imageHeight, imageWidth, descriptionWordsLimit, container) {
+  const paginationContainer = document.createElement('div');
+  paginationContainer.id = 'pagination-container';
+
+  const productsWrapper = document.createElement('ul');
+  productsWrapper.classList.add(`products-col-${productsColumns}`);
+  const products = fetchData(url, limit, page);
+  products.then((data) => {
+    data.products.forEach((product) => {
+      const productCard = document.createElement('li');
+      const picture = document.createElement('picture');
+
+      const image = document.createElement('img');
+      const [imageSrc] = product.images;
+      image.src = imageSrc;
+      image.width = imageWidth;
+      image.height = imageHeight;
+      image.loading = 'lazy';
+
+      picture.append(image);
+
+      const title = document.createElement('h3');
+      title.textContent = product.title;
+
+      const description = document.createElement('p');
+      description.textContent = getShortText(product.description, descriptionWordsLimit);
+
+      const price = document.createElement('h6');
+      price.textContent = `$${product.price}`;
+
+      productCard.append(picture);
+      productCard.append(title);
+      productCard.append(description);
+      productCard.append(price);
+
+      productsWrapper.append(productCard);
+    });
+    container.append(productsWrapper);
+    container.append(paginationContainer);
+    const totalPages = Math.ceil(data.total / limit);
+    renderPagination(page, totalPages);
+  }).catch((error) => {
+    console.log(error);
+  });
 }
 export default function decorate(block) {
   const container = document.createElement('div');
@@ -99,43 +157,12 @@ export default function decorate(block) {
       priceFontSize = fieldValue?.textContent || 'center';
     }
   });
-  const productsWrapper = document.createElement('ul');
-  productsWrapper.classList.add(`products-col-${productsColumns}`);
-  const products = fetchData('https://dummyjson.com/products');
-  products.then((data) => {
-    data.products.forEach((product) => {
-      const productCard = document.createElement('li');
-      const picture = document.createElement('picture');
 
-      const image = document.createElement('img');
-      const [imageSrc] = product.images;
-      image.src = imageSrc;
-      image.width = imageWidth;
-      image.height = imageHeight;
-      image.loading = 'lazy';
+  const url = 'https://dummyjson.com/products';
+  const limit = 16;
+  const page = 1;
 
-      picture.append(image);
-
-      const title = document.createElement('h3');
-      title.textContent = product.title;
-
-      const description = document.createElement('p');
-      description.textContent = getShortText(product.description, descriptionWordsLimit);
-
-      const price = document.createElement('h6');
-      price.textContent = `$${product.price}`;
-
-      productCard.append(picture);
-      productCard.append(title);
-      productCard.append(description);
-      productCard.append(price);
-
-      productsWrapper.append(productCard);
-    });
-    container.append(productsWrapper);
-  }).catch((error) => {
-    console.log(error);
-  });
+  loadProducts(url, limit, page, productsColumns, imageHeight, imageWidth, descriptionWordsLimit, container);
 
   document.documentElement.style.setProperty('--product-image-width', `${imageWidth}px`);
   document.documentElement.style.setProperty('--product-image-height', `${imageHeight}px`);

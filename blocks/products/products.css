@@ -96,3 +96,21 @@ body
     font-size: var(--product-price-font-size);
     text-align: var(--product-price-alignment);
 }
+#pagination-container
+{
+    display: flex;
+    gap: 10px;
+}
+#pagination-container span
+{
+    cursor: pointer;
+    background-color: black;
+    color: #fff;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    height: 30px;
+    /* vertical-align: middle; */
+    align-items: center;
+    justify-content: center;
+}
