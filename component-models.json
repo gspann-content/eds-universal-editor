@@ -122,10 +122,17 @@
         "multi": false
       },
       {
-        "component": "richtext",
-        "name": "text",
+        "component": "text",
+        "name": "author",
         "value": "",
-        "label": "Text1",
+        "label": "Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "value": "",
+        "label": "Title",
         "valueType": "string"
       }
     ]
