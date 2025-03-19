@@ -14,6 +14,10 @@ async function fetchData(url) {
 export default function decorate(block) {
   const container = document.createElement('div');
   container.className = 'container';
+  const heading = document.createElement('h1');
+  heading.textContent = "Men's Clothing";
+  heading.className = 'heading';
+  container.appendChild(heading);
 
   fetchData('https://fakestoreapi.com/products').then((data) => {
     data.forEach((item) => {
@@ -26,7 +30,7 @@ export default function decorate(block) {
       img.className = 'card-image';
 
       const cardTitle = document.createElement('h1');
-      cardTitle.textContent = item.category;
+      cardTitle.textContent = item.title;
       cardTitle.className = 'card-title';
 
       const cardText = document.createElement('p');

@@ -4,8 +4,15 @@
     gap: 20px;
     justify-content: center;
     padding: 20px;
-    background: rgb(221, 201, 218);
+    background: rgb(221 201 218);
 }
+
+.heading {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--background-color);
+  }
 
 .card{
         width: 280px;
@@ -14,14 +21,14 @@
         background: #f0f9ff;
         border: 2px solid #bf9bdd;
         border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         text-align: center;
 }
 
 .card:hover{
     transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(136, 39, 39, 0.2);
+    box-shadow: 0 8px 16px rgb(136 39 39 / 0.2);
 }
 .card-image{
     width: 100%;
