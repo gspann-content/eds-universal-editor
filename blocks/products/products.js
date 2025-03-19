@@ -14,10 +14,6 @@ async function fetchData(url) {
 export default function decorate(block) {
   const container = document.createElement('div');
   container.className = 'container';
-  const heading = document.createElement('h1');
-  heading.textContent = "Men's Clothing";
-  heading.className = 'heading';
-  container.appendChild(heading);
 
   fetchData('https://fakestoreapi.com/products').then((data) => {
     data.forEach((item) => {
@@ -30,7 +26,7 @@ export default function decorate(block) {
       img.className = 'card-image';
 
       const cardTitle = document.createElement('h1');
-      cardTitle.textContent = item.title;
+      cardTitle.textContent = item.category;
       cardTitle.className = 'card-title';
 
       const cardText = document.createElement('p');
@@ -38,18 +34,19 @@ export default function decorate(block) {
       cardText.className = 'card-text';
 
       const cardPrice = document.createElement('p');
-      cardPrice.textContent = item.price;
-      cardPrice.className = 'card-text';
+      cardPrice.textContent = `$${item.price}`;
+      cardPrice.className = 'price';
 
-      // const button = document.createElement('button');
-      // button.textContent = 'View Profile';
-      // button.className = 'card-button';
+      const button = document.createElement('button');
+      button.textContent = 'Add to cart';
+      button.className = 'card-button';
 
       // Append elements
       card.appendChild(img);
       card.appendChild(cardTitle);
-      card.appendChild(cardText);
       card.appendChild(cardPrice);
+      card.appendChild(cardText);
+      card.appendChild(button);
       container.appendChild(card);
     });
 
