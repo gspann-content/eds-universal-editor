@@ -17,7 +17,7 @@ body
 {
     background: #f9f9f9;
 }
-.products-container
+.products-section
 {
     padding: 30px 0;
     display: flex;
@@ -25,25 +25,25 @@ body
     gap: 50px;
     align-items: center;
 }
-.products-container .heading
+.products-section .heading
 {
     font-size: var(--heading-font-size);
     width: 100%;
     text-align: var(--heading-alignment);
 }
-.products-container .sub-heading
+.products-section .sub-heading
 {
     font-size: var(--sub-heading-font-size);
     text-align: var(--sub-heading-alignment);
     width: 100%;
 }
-.products-container ul
+.products-section ul
 {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
 }
-.products-container ul li 
+.products-section ul li 
 {
     padding-bottom: 25px;
     background: #fff;
@@ -66,31 +66,31 @@ body
 {    
     width: calc(49% - 20px);
 }
-.products-container ul li picture
+.products-section ul li picture
 {
     background: #f9f9f9;
     display: flex;
     justify-content: var(--product-image-alignment);
 }
-.products-container ul li img
+.products-section ul li img
 {
     object-fit: contain;
     height: var(--product-image-height);
     width: var(--product-image-width);
 }
-.products-container ul li h3
+.products-section ul li h3
 {
     padding: 0 15px;
     font-size: var(--product-title-font-size);
     text-align: var(--product-title-alignment);
 }
-.products-container ul li p
+.products-section ul li p
 {
     padding: 0 15px;
     font-size: var(--product-description-font-size);
     text-align: var(--product-description-alignment);
 }
-.products-container ul li h6
+.products-section ul li h6
 {
     padding: 0 15px;
     font-size: var(--product-price-font-size);
@@ -98,8 +98,11 @@ body
 }
 #pagination-container
 {
+    flex-wrap: wrap;
     display: flex;
     gap: 10px;
+    justify-content: center;
+    max-width: 768px;
 }
 #pagination-container span
 {

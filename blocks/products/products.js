@@ -12,33 +12,22 @@ async function fetchData(url, limit, page) {
     return error;
   }
 }
-function renderPagination(currentPage, totalPages) {
-  const paginationContainer = document.getElementById('pagination-container');
-  paginationContainer.innerHTML = '';
-  for (let i = 1; i <= totalPages; i += 1) {
-    const span = document.createElement('span');
-    span.textContent = i;
-    span.disabled = i === currentPage; // Disable current page link
-    // span.addEventListener('click', () => fetchData(i));
-    paginationContainer.appendChild(span);
-  }
-}
 function getShortText(text, wordLimit) {
   const words = text.split(/\s+/);
-  console.table(words.length, wordLimit);
   if (words.length <= wordLimit) {
     return text;
   }
   const limitedWords = words.splice(0, wordLimit);
   return `${limitedWords.join(' ')}...`;
 }
-function loadProducts(url, limit, page, productsColumns, imageHeight, imageWidth, descriptionWordsLimit, container) {
-  const paginationContainer = document.createElement('div');
-  paginationContainer.id = 'pagination-container';
-
-  const productsWrapper = document.createElement('ul');
-  productsWrapper.classList.add(`products-col-${productsColumns}`);
+function loadProducts(url, limit, page, imageHeight, imageWidth, descriptionWordsLimit) {
+  const productsWrapper = document.querySelector('#products-list');
+  productsWrapper.innerHTML = '';
   const products = fetchData(url, limit, page);
+  if (!products) {
+    productsWrapper.innerHTML = '<h3>Error loading products...</h3>';
+    return;
+  }
   products.then((data) => {
     data.products.forEach((product) => {
       const productCard = document.createElement('li');
@@ -69,115 +58,108 @@ function loadProducts(url, limit, page, productsColumns, imageHeight, imageWidth
 
       productsWrapper.append(productCard);
     });
-    container.append(productsWrapper);
-    container.append(paginationContainer);
     const totalPages = Math.ceil(data.total / limit);
-    renderPagination(page, totalPages);
+    renderPagination(totalPages, url, limit, page, imageHeight, imageWidth, descriptionWordsLimit);
   }).catch((error) => {
     console.log(error);
   });
 }
+
+function renderPagination(totalPages, url, limit, currentPage, imageHeight, imageWidth, descriptionWordsLimit) {
+  const paginationContainer = document.querySelector('#pagination-container');
+  paginationContainer.innerHTML = '';
+  for (let i = 1; i <= totalPages; i += 1) {
+    const span = document.createElement('span');
+    span.textContent = i;
+    span.disabled = i === currentPage; // Disable current page link
+    span.addEventListener('click', () => loadProducts(url, limit, i, imageHeight, imageWidth, descriptionWordsLimit));
+    paginationContainer.appendChild(span);
+  }
+}
 export default function decorate(block) {
   const container = document.createElement('div');
-  container.classList.add('products-container');
+  container.classList.add('products-section');
 
-  let productsColumns;
-  let imageHeight;
-  let imageWidth;
-  let imageAlignment;
-  let headingAlignment;
-  let headingFontSize;
-  let subHeadingAlignment;
-  let subHeadingFontSize;
-  let titleAlignment;
-  let titleFontSizet;
-  let descriptionAlignment;
-  let descriptionFontSize;
-  let descriptionWordsLimit;
-  let priceAlignment;
-  let priceFontSize;
-
+  const properties = {
+    productsColumns: '4',
+    imageHeight: '',
+    imageWidth: '',
+    imageAlignment: 'center',
+    headingAlignment: 'center',
+    headingFontSize: 'large',
+    subHeadingAlignment: 'center',
+    subHeadingFontSize: 'large',
+    titleAlignment: 'center',
+    titleFontSizet: 'large',
+    descriptionAlignment: 'center',
+    descriptionFontSize: 'large',
+    descriptionWordsLimit: '15',
+    priceAlignment: 'center',
+    priceFontSize: 'large',
+  };
   [...block.children].forEach((row, rowIndex) => {
     const fieldValue = row.querySelector('div > div > p');
-    if (rowIndex === 1) {
-      if (fieldValue) {
-        fieldValue.classList.add('heading');
-        container.append(fieldValue);
-      }
-    }
-    if (rowIndex === 2) {
-      headingAlignment = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 3) {
-      headingFontSize = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 4) {
-      if (fieldValue) {
-        fieldValue.classList.add('sub-heading');
-        container.append(fieldValue);
-      }
-    }
-    if (rowIndex === 5) {
-      subHeadingAlignment = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 6) {
-      subHeadingFontSize = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 7) {
-      productsColumns = fieldValue?.textContent || '4';
-    }
-    if (rowIndex === 8) {
-      imageHeight = fieldValue?.textContent || '200';
-    }
-    if (rowIndex === 9) {
-      imageWidth = fieldValue?.textContent || '200';
-    }
-    if (rowIndex === 10) {
-      imageAlignment = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 11) {
-      titleAlignment = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 12) {
-      titleFontSizet = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 13) {
-      descriptionAlignment = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 14) {
-      descriptionFontSize = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 15) {
-      descriptionWordsLimit = fieldValue?.textContent || '10';
-    }
-    if (rowIndex === 16) {
-      priceAlignment = fieldValue?.textContent || 'center';
-    }
-    if (rowIndex === 17) {
-      priceFontSize = fieldValue?.textContent || 'center';
+    switch (rowIndex) {
+      case 1:
+        if (fieldValue) {
+          fieldValue.classList.add('heading');
+          container.append(fieldValue);
+        }
+        break;
+      case 2: properties.headingAlignment = fieldValue?.textContent || 'center'; break;
+      case 3: properties.headingFontSize = fieldValue?.textContent || 'center'; break;
+      case 4:
+        if (fieldValue) {
+          fieldValue.classList.add('sub-heading');
+          container.append(fieldValue);
+        }
+        break;
+      case 5: properties.subHeadingAlignment = fieldValue?.textContent || 'center'; break;
+      case 6: properties.subHeadingFontSize = fieldValue?.textContent || 'center'; break;
+      case 7: properties.productsColumns = fieldValue?.textContent || '4'; break;
+      case 8: properties.imageHeight = fieldValue?.textContent || '200'; break;
+      case 9: properties.imageWidth = fieldValue?.textContent || '200'; break;
+      case 10: properties.imageAlignment = fieldValue?.textContent || 'center'; break;
+      case 11: properties.titleAlignment = fieldValue?.textContent || 'center'; break;
+      case 12: properties.titleFontSizet = fieldValue?.textContent || 'large'; break;
+      case 13: properties.descriptionAlignment = fieldValue?.textContent || 'center'; break;
+      case 14: properties.descriptionFontSize = fieldValue?.textContent || 'small'; break;
+      case 15: properties.descriptionWordsLimit = fieldValue?.textContent || '10'; break;
+      case 16: properties.priceAlignment = fieldValue?.textContent || 'center'; break;
+      case 17: properties.priceFontSize = fieldValue?.textContent || 'small'; break;
+      default: break;
     }
   });
+
+  block.innerHTML = '';
+
+  document.documentElement.style.setProperty('--product-image-width', `${properties.imageWidth}px`);
+  document.documentElement.style.setProperty('--product-image-height', `${properties.imageHeight}px`);
+  document.documentElement.style.setProperty('--product-image-alignment', `${properties.imageAlignment}`);
+  document.documentElement.style.setProperty('--heading-alignment', `${properties.headingAlignment}`);
+  document.documentElement.style.setProperty('--heading-font-size', `${properties.headingFontSize}`);
+  document.documentElement.style.setProperty('--sub-heading-alignment', `${properties.subHeadingAlignment}`);
+  document.documentElement.style.setProperty('--sub-heading-font-size', `${properties.subHeadingFontSize}`);
+  document.documentElement.style.setProperty('--product-title-alignment', `${properties.titleAlignment}`);
+  document.documentElement.style.setProperty('--product-title-font-size', `${properties.titleFontSizet}`);
+  document.documentElement.style.setProperty('--product-description-alignment', `${properties.descriptionAlignment}`);
+  document.documentElement.style.setProperty('--product-description-font-size', `${properties.descriptionFontSize}`);
+  document.documentElement.style.setProperty('--product-price-alignment', `${properties.priceAlignment}`);
+  document.documentElement.style.setProperty('--product-price-font-size', `${properties.priceFontSize}`);
+
+  const productsList = document.createElement('ul');
+  productsList.classList.add(`products-col-${properties.productsColumns}`);
+  productsList.id = 'products-list';
+
+  const paginationContainer = document.createElement('div');
+  paginationContainer.id = 'pagination-container';
+
+  container.append(productsList, paginationContainer);
+
+  block.append(container);
 
   const url = 'https://dummyjson.com/products';
   const limit = 16;
   const page = 1;
-
-  loadProducts(url, limit, page, productsColumns, imageHeight, imageWidth, descriptionWordsLimit, container);
-
-  document.documentElement.style.setProperty('--product-image-width', `${imageWidth}px`);
-  document.documentElement.style.setProperty('--product-image-height', `${imageHeight}px`);
-  document.documentElement.style.setProperty('--product-image-alignment', `${imageAlignment}`);
-  document.documentElement.style.setProperty('--heading-alignment', `${headingAlignment}`);
-  document.documentElement.style.setProperty('--heading-font-size', `${headingFontSize}`);
-  document.documentElement.style.setProperty('--sub-heading-alignment', `${subHeadingAlignment}`);
-  document.documentElement.style.setProperty('--sub-heading-font-size', `${subHeadingFontSize}`);
-  document.documentElement.style.setProperty('--product-title-alignment', `${titleAlignment}`);
-  document.documentElement.style.setProperty('--product-title-font-size', `${titleFontSizet}`);
-  document.documentElement.style.setProperty('--product-description-alignment', `${descriptionAlignment}`);
-  document.documentElement.style.setProperty('--product-description-font-size', `${descriptionFontSize}`);
-  document.documentElement.style.setProperty('--product-price-alignment', `${priceAlignment}`);
-  document.documentElement.style.setProperty('--product-price-font-size', `${priceFontSize}`);
-
-  block.textContent = '';
-  block.append(container);
+  loadProducts(url, limit, page, properties.imageHeight, properties.imageWidth, properties.descriptionWordsLimit);
 }
