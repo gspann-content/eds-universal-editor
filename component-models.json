@@ -319,7 +319,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "altText",
+        "name": "alttext",
         "label": "Alt text",
         "value": "Alt text"
       }
@@ -395,7 +395,7 @@
       },
       {
         "component": "text",
-        "name": "linkTitle",
+        "name": "linktitle",
         "label": "Title"
       }
     ]
