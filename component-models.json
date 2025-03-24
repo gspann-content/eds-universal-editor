@@ -131,6 +131,25 @@
     ]
   },
   {
+    "id": "cartlandingpage",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "text",
+        "value": "",
+        "label": "Text1",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
@@ -300,7 +319,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "alttext",
+        "name": "altText",
         "label": "Alt text",
         "value": "Alt text"
       }
@@ -376,7 +395,7 @@
       },
       {
         "component": "text",
-        "name": "linktitle",
+        "name": "linkTitle",
         "label": "Title"
       }
     ]
