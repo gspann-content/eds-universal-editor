@@ -17,6 +17,46 @@ export default function decorate(block) {
     }, 0);
   }
 
+  // Function to show the details of an item
+  function showItemDetails(item) {
+    // Create and display a modal with the item's details
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+
+    const modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
+
+    const modalTitle = document.createElement('h2');
+    modalTitle.textContent = item.title;
+    const modalDescription = document.createElement('p');
+    modalDescription.textContent = `Description: ${item.description}`;
+    const modalPrice = document.createElement('p');
+    modalPrice.textContent = `Price: ${formatCurrency(item.price)}`;
+    modalPrice.classList.add('price');
+    const modalImage = document.createElement('img');
+    modalImage.src = item.images;
+    modalImage.alt = 'Item Image';
+
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'Close';
+    closeButton.classList.add('close-button');
+    closeButton.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modalContent.appendChild(modalTitle);
+    modalContent.appendChild(modalDescription);
+    modalContent.appendChild(modalPrice);
+    modalContent.appendChild(modalImage);
+    modalContent.appendChild(closeButton);
+
+    modal.appendChild(modalContent);
+    block.appendChild(modal);
+
+    // Show the modal
+    modal.style.display = 'block';
+  }
+
   // Function to render cart items dynamically
   function renderCartItems() {
     const cartItemsList = document.getElementById('cartItemsList');
@@ -51,7 +91,7 @@ export default function decorate(block) {
       const itemDetailsDiv = document.createElement('div');
       itemDetailsDiv.classList.add('item-details');
       const itemName = document.createElement('h3');
-      itemName.textContent = item.name;
+      itemName.textContent = item.title;
       const itemDescription = document.createElement('p');
       itemDescription.textContent = item.description;
       const itemPrice = document.createElement('p');
@@ -77,7 +117,7 @@ export default function decorate(block) {
       const viewDetailsButton = document.createElement('button');
       viewDetailsButton.textContent = 'View Details';
       viewDetailsButton.addEventListener('click', () => {
-        alert(`Viewing details for ${item.name}`);
+        showItemDetails(item);
       });
       itemActionsDiv.appendChild(viewDetailsButton);
 
@@ -187,6 +227,7 @@ export default function decorate(block) {
     fetch(apiUrl) // Replace with actual API URL
       .then((response) => response.json())
       .then((data) => {
+        console.log('Cart items:', data);
         // Assume the API returns the products in a format similar to the example below
         cartItems = data.products.map((item) => ({
           ...item,
