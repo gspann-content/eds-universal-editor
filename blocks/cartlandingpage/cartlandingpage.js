@@ -1,186 +1,205 @@
 export default function decorate(block) {
-// Create elements
-  const cartContainer = document.createElement('div');
-  cartContainer.classList.add('cart-container');
+    let apiUrl = 'https://dummyjson.com/products?limit=5';
+    let cartItems = [];
 
-  const stickyCheckout = document.createElement('div');
-  stickyCheckout.classList.add('sticky-checkout');
-  const checkoutButton = document.createElement('button');
-  checkoutButton.textContent = 'Proceed to Checkout';
-  stickyCheckout.appendChild(checkoutButton);
-
-  // Cart Title
-  const title = document.createElement('h1');
-  title.textContent = 'Your Shopping Cart';
-
-  // Empty Cart Message
-  const emptyCart = document.createElement('div');
-  emptyCart.classList.add('empty-cart');
-  const emptyMessage = document.createElement('p');
-  emptyMessage.textContent = 'Your cart is empty. Start shopping!';
-  const goToShopButton = document.createElement('button');
-  goToShopButton.textContent = 'Go to Shop';
-  emptyCart.appendChild(emptyMessage);
-  emptyCart.appendChild(goToShopButton);
-
-  // Cart items container
-  const cartItemsContainer = document.createElement('div');
-  cartItemsContainer.classList.add('cart-items');
-
-  // Create total price display
-  const cartSummary = document.createElement('div');
-  cartSummary.classList.add('cart-summary');
-  const totalPriceSpan = document.createElement('p');
-  totalPriceSpan.textContent = 'Total: $0.00';
-  cartSummary.appendChild(totalPriceSpan);
-
-  // Append everything to the main cart container
-  cartContainer.appendChild(stickyCheckout);
-  cartContainer.appendChild(title);
-  cartContainer.appendChild(emptyCart);
-  cartContainer.appendChild(cartItemsContainer);
-  cartContainer.appendChild(cartSummary);
-
-  // Append cart container to the body
-  block.appendChild(cartContainer);
-
-  // API URL (replace with your actual API endpoint)
-  const apiUrl = 'https://api.example.com/cart-items'; // Example API URL
-
-  // Utility function to format currency
-  function formatCurrency(value) {
-    return `$${value.toFixed(2)}`;
-  }
-
-  // Function to update total price
-  function updateTotalPrice(cartItems) {
-    let total = 0;
-    cartItems.forEach((item) => {
-      if (item.selected) {
-        total += item.price * item.quantity;
-      }
-    });
-    totalPriceSpan.textContent = `Total: ${formatCurrency(total)}`;
-  }
-
-  // Function to remove item from cart
-  function removeItem(index, cartItems) {
-    cartItems.splice(index, 1);
-    // renderCartItems(cartItems);
-    updateTotalPrice(cartItems);
-  }
-
-  // Increase item quantity
-  function increaseQuantity(index, cartItems) {
-    cartItems[index].quantity += cartItems[index].quantity;
-    // renderCartItems(cartItems);
-    updateTotalPrice(cartItems);
-  }
-
-  // Decrease item quantity
-  function decreaseQuantity(index, cartItems) {
-    if (cartItems[index].quantity > 1) {
-      cartItems[index].quantity -= cartItems[index].quantity;
-      //   renderCartItems(cartItems);
-      updateTotalPrice(cartItems);
+    // Function to format currency
+    function formatCurrency(value) {
+        return `$${value.toFixed(2)}`;
     }
-  }
 
-  // Function to render cart items
-  function renderCartItems(cartItems) {
-    cartItemsContainer.innerHTML = ''; // Clear previous items
+    // Function to calculate the total price (sum of selected items only)
+    function calculateTotalPrice() {
+        return cartItems.reduce((sum, item) => item.selected ? sum + item.price * item.quantity : sum, 0);
+    }
 
-    cartItems.forEach((item, index) => {
-      const cartItem = document.createElement('div');
-      cartItem.classList.add('cart-item');
+    // Function to render cart items dynamically
+    function renderCartItems() {
+        const cartItemsList = document.getElementById("cartItemsList");
+        const totalPriceElement = document.getElementById("totalPrice");
 
-      // Item select (checkbox)
-      const itemSelect = document.createElement('div');
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.checked = item.selected;
-      checkbox.addEventListener('change', () => {
-        item.selected = checkbox.checked;
-        updateTotalPrice(cartItems);
-      });
-      itemSelect.appendChild(checkbox);
+        cartItemsList.innerHTML = '';  // Clear the list first
 
-      // Item image
-      const itemImage = document.createElement('div');
-      const img = document.createElement('img');
-      img.src = item.image;
-      img.alt = 'Product image';
-      itemImage.appendChild(img);
+        cartItems.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.classList.add('cart-item');
+            
+            const itemSelectDiv = document.createElement('div');
+            itemSelectDiv.classList.add('item-select');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = item.selected;  // Make sure all items are selected by default
+            checkbox.addEventListener('click', function() {
+                item.selected = !item.selected;
+                renderCartItems();  // Re-render the cart items when selection changes
+            });
+            itemSelectDiv.appendChild(checkbox);
+            li.appendChild(itemSelectDiv);
 
-      // Item details
-      const itemDetails = document.createElement('div');
-      const itemName = document.createElement('h3');
-      itemName.textContent = item.name;
-      const itemDescription = document.createElement('p');
-      itemDescription.textContent = item.description;
-      const itemPrice = document.createElement('p');
-      itemPrice.textContent = formatCurrency(item.price);
-      itemDetails.appendChild(itemName);
-      itemDetails.appendChild(itemDescription);
-      itemDetails.appendChild(itemPrice);
+            const itemImageDiv = document.createElement('div');
+            itemImageDiv.classList.add('item-image');
+            const img = document.createElement('img');
+            img.src = item.images;
+            img.alt = "Product image";
+            itemImageDiv.appendChild(img);
+            li.appendChild(itemImageDiv);
 
-      // Item actions
-      const itemActions = document.createElement('div');
-      const removeButton = document.createElement('button');
-      removeButton.textContent = 'Remove';
-      removeButton.addEventListener('click', () => removeItem(index, cartItems));
+            const itemDetailsDiv = document.createElement('div');
+            itemDetailsDiv.classList.add('item-details');
+            const itemName = document.createElement('h3');
+            itemName.textContent = item.name;
+            const itemDescription = document.createElement('p');
+            itemDescription.textContent = item.description;
+            const itemPrice = document.createElement('p');
+            itemPrice.textContent = formatCurrency(item.price);
+            itemDetailsDiv.appendChild(itemName);
+            itemDetailsDiv.appendChild(itemDescription);
+            itemDetailsDiv.appendChild(itemPrice);
+            li.appendChild(itemDetailsDiv);
 
-      const viewButton = document.createElement('button');
-      viewButton.textContent = 'View Details';
-      viewButton.addEventListener('click', () => console.log(`Viewing details of ${item.name}`)); // Replaced alert
+            const itemActionsDiv = document.createElement('div');
+            itemActionsDiv.classList.add('item-actions');
+            
+            // Remove button
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', function() {
+                cartItems.splice(index, 1);
+                renderCartItems();  // Re-render after removal
+            });
+            itemActionsDiv.appendChild(removeButton);
 
-      // Quantity controls
-      const quantityControls = document.createElement('div');
-      const minusButton = document.createElement('button');
-      minusButton.textContent = '-';
-      minusButton.disabled = item.quantity <= 1;
-      minusButton.addEventListener('click', () => decreaseQuantity(index, cartItems));
-      const quantitySpan = document.createElement('span');
-      quantitySpan.textContent = item.quantity;
-      const plusButton = document.createElement('button');
-      plusButton.textContent = '+';
-      plusButton.addEventListener('click', () => increaseQuantity(index, cartItems));
+            // View details button
+            const viewDetailsButton = document.createElement('button');
+            viewDetailsButton.textContent = 'View Details';
+            viewDetailsButton.addEventListener('click', function() {
+                alert(`Viewing details for ${item.name}`);
+            });
+            itemActionsDiv.appendChild(viewDetailsButton);
 
-      quantityControls.appendChild(minusButton);
-      quantityControls.appendChild(quantitySpan);
-      quantityControls.appendChild(plusButton);
+            // Quantity controls
+            const quantityControlsDiv = document.createElement('div');
+            quantityControlsDiv.classList.add('quantity-controls');
+            const decreaseButton = document.createElement('button');
+            decreaseButton.textContent = '-';
+            decreaseButton.disabled = item.quantity <= 1;
+            decreaseButton.addEventListener('click', function() {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                    renderCartItems();  // Re-render after quantity change
+                }
+            });
+            const quantitySpan = document.createElement('span');
+            quantitySpan.textContent = item.quantity;
+            const increaseButton = document.createElement('button');
+            increaseButton.textContent = '+';
+            increaseButton.addEventListener('click', function() {
+                item.quantity++;
+                renderCartItems();  // Re-render after quantity change
+            });
 
-      itemActions.appendChild(removeButton);
-      itemActions.appendChild(viewButton);
-      itemActions.appendChild(quantityControls);
+            quantityControlsDiv.appendChild(decreaseButton);
+            quantityControlsDiv.appendChild(quantitySpan);
+            quantityControlsDiv.appendChild(increaseButton);
 
-      // Append all parts to cart item
-      cartItem.appendChild(itemSelect);
-      cartItem.appendChild(itemImage);
-      cartItem.appendChild(itemDetails);
-      cartItem.appendChild(itemActions);
+            itemActionsDiv.appendChild(quantityControlsDiv);
+            li.appendChild(itemActionsDiv);
 
-      cartItemsContainer.appendChild(cartItem);
-    });
-  }
+            cartItemsList.appendChild(li);
+        });
 
-  // Checkout button event
-  checkoutButton.addEventListener('click', () => console.log('Proceeding to checkout!')); // Replaced alert
+        totalPriceElement.textContent = formatCurrency(calculateTotalPrice());  // Update total price
 
-  // Fetch cart items from API
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      // Check if cart is empty
-      if (data.length === 0) {
-        emptyCart.style.display = 'block'; // Show empty cart message
-      } else {
-        emptyCart.style.display = 'none'; // Hide empty cart message
-        renderCartItems(data); // Render items from API
-        updateTotalPrice(data); // Update total price
-      }
-    })
-    .catch((error) => {
-      console.error('Error fetching cart items:', error);
-    });
+        // Toggle visibility of cart items and empty cart message
+        document.getElementById("cartItemsContainer").style.display = cartItems.length > 0 ? 'block' : 'none';
+        document.getElementById("emptyCartMessage").style.display = cartItems.length === 0 ? 'block' : 'none';
+    }
+
+    // Function to create the cart page dynamically
+    function createCartPage() {
+        const cartContainer = document.createElement('div');
+        cartContainer.classList.add('cart-container');
+
+        // Sticky Checkout Button
+        const stickyCheckout = document.createElement('div');
+        stickyCheckout.classList.add('sticky-checkout');
+        const checkoutButton = document.createElement('button');
+        checkoutButton.textContent = 'Proceed to Checkout';
+        checkoutButton.addEventListener('click', function() {
+            alert('Proceeding to checkout!');
+        });
+        stickyCheckout.appendChild(checkoutButton);
+        cartContainer.appendChild(stickyCheckout);
+
+        // Heading
+        const heading = document.createElement('h1');
+        heading.textContent = 'Your Shopping Cart';
+        cartContainer.appendChild(heading);
+
+        // Empty Cart Message
+        const emptyCartMessage = document.createElement('div');
+        emptyCartMessage.id = 'emptyCartMessage';
+        emptyCartMessage.classList.add('empty-cart');
+        emptyCartMessage.style.display = 'none'; // Hidden by default
+        const emptyCartText = document.createElement('p');
+        emptyCartText.textContent = 'Your cart is empty. Start shopping!';
+        const goToShopButton = document.createElement('button');
+        goToShopButton.textContent = 'Go to Shop';
+        goToShopButton.addEventListener('click', function() {
+            alert('Redirecting to shopping page...');
+        });
+        emptyCartMessage.appendChild(emptyCartText);
+        emptyCartMessage.appendChild(goToShopButton);
+        cartContainer.appendChild(emptyCartMessage);
+
+        // Cart Items Container
+        const cartItemsContainer = document.createElement('div');
+        cartItemsContainer.id = 'cartItemsContainer';
+        cartItemsContainer.style.display = 'none'; // Hidden by default
+
+        // Cart Items List
+        const cartItemsList = document.createElement('ul');
+        cartItemsList.id = 'cartItemsList';
+        cartItemsContainer.appendChild(cartItemsList);
+        cartContainer.appendChild(cartItemsContainer);
+
+        // Cart Summary
+        const cartSummary = document.createElement('div');
+        cartSummary.classList.add('cart-summary');
+        const totalText = document.createElement('p');
+        totalText.textContent = 'Total: ';
+        const totalPrice = document.createElement('span');
+        totalPrice.id = 'totalPrice';
+        totalText.appendChild(totalPrice);
+        cartSummary.appendChild(totalText);
+        cartContainer.appendChild(cartSummary);
+
+        // Append cart container to the body
+        document.body.appendChild(cartContainer);
+    }
+
+    // Function to fetch and load cart items (API call)
+    function fetchCartItems() {
+        fetch(apiUrl)  // Replace with actual API URL
+            .then(response => response.json())
+            .then(data => {
+                // Assume the API returns the products in a format similar to the example below
+                cartItems = data.products.map(item => ({
+                    ...item,
+                    quantity: 1,
+                    selected: true  // All items are selected by default
+                }));
+                renderCartItems();
+            })
+            .catch(error => {
+                console.error('Error fetching cart items:', error);
+                alert('There was an error fetching the cart data.');
+            });
+    }
+
+    // Initialize the page by creating the cart structure
+    createCartPage();
+
+    // Load cart items from the API
+    fetchCartItems();
+ 
 }

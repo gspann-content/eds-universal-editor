@@ -26,7 +26,7 @@
   /* Sticky Checkout Bar */
   .sticky-checkout {
     position: sticky;
-    top: 0;
+    top: 100px;
     background-color: #fff;
     padding: 10px 0;
     z-index: 10;
@@ -41,7 +41,7 @@
     max-width: 250px;
     padding: 12px;
     font-size: 1.2rem;
-    background-color: #28a745;
+    background-color: yellow;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -72,9 +72,10 @@
     font-size: 1.2rem;
     color: #888;
   }
-  
+
+   
   .empty-cart button {
-    background-color: #007bff;
+    background-color: black;;
     color: #fff;
     padding: 10px 20px;
     font-size: 1rem;
@@ -85,7 +86,7 @@
   }
   
   .empty-cart button:hover {
-    background-color: #0056b3;
+    background-color: grey;
   }
   
   /* Cart Items */
@@ -152,17 +153,17 @@
   .cart-item .item-actions button {
     padding: 8px 12px;
     font-size: 1rem;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
+    background-color: white;
+    color: black;
+    border: solid;
+    border-radius: 22px;
     margin-bottom: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
   .cart-item .item-actions button:hover {
-    background-color: #c82333;
+    background-color: #e1b0b5;
   }
   
   .cart-item .item-actions button:disabled {
@@ -180,7 +181,7 @@
   .cart-item .item-actions .quantity-controls button {
     width: 30px;
     height: 30px;
-    background-color: #007bff;
+    background-color: black;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -188,9 +189,14 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+
+  .cart-item .item-actions .quantity-controls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5; /* Optional: Makes the button look faded to indicate it's disabled */
+}
   
   .cart-item .item-actions .quantity-controls button:hover {
-    background-color: #0056b3;
+    background-color: #b9c6d4;
   }
   
   .cart-item .item-actions .quantity-controls span {
@@ -231,6 +237,8 @@
     height: 100px;
     margin-right: 20px;
   }
+
+  
   
   /* Responsive Design */
   @media (max-width: 768px) {
