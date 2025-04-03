@@ -1,5 +1,5 @@
 import {
-    h1, img,
+    img, h1
   } from '../../scripts/dom-builder.js';
 
   export default function decorate(block) {
