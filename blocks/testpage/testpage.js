@@ -1,5 +1,5 @@
 import {
-    h1, h2, h3, h4, h5, h6, span, div, a, p, input, button, ul, li,
+    h1, img,
   } from '../../scripts/dom-builder.js';
 
   export default function decorate(block) {
@@ -21,5 +21,4 @@ import {
     block.innerHTML = '';  //clear the existing content 
     block.append(testpage);
   }
-
 
