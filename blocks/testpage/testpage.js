@@ -21,4 +21,3 @@ import {
     block.innerHTML = '';  //clear the existing content 
     block.append(testpage);
   }
-
