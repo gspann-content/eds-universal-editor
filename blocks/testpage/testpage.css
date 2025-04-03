@@ -1,0 +1,22 @@
+.testpage {
+    position:relative;
+    width: 100%;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.testpage img {
+    position: relative;
+    width: 100%;
+    height: 30%;
+    object-fit: cover;
+}
+.testpage h1 {
+    position: relative;
+    color: color;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
+}
