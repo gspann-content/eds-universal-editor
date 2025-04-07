@@ -47,7 +47,8 @@
         "menu",
         "fragment",
         "testpage",
-        "pagging"
+        "pagging",
+        "testcard"
       ]
     }
   ]

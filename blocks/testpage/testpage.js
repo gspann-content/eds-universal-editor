@@ -15,7 +15,6 @@ import {
     const text = block.querySelector('h1');
 
     if(text) {
-        text.classList.add('testpage-text');
         testpageDiv.append(text);
     }
     block.innerHTML = '';  //clear the existing content 
