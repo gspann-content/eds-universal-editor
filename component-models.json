@@ -307,6 +307,18 @@
     ]
   },
   {
+    "id": "pagging",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "text",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "quote",
     "fields": [
       {

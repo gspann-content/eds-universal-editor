@@ -46,7 +46,8 @@
         "columns",
         "menu",
         "fragment",
-        "testpage"
+        "testpage",
+        "pagging"
       ]
     }
   ]
