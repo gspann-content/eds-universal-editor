@@ -1,24 +1,43 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
+import {ul, li, img, div} from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  /* change to ul, li */
-  const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
-    const li = document.createElement('li');
-    moveInstrumentation(row, li);
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
-    });
-    ul.append(li);
+
+  const ulElement = ul();
+
+ [...block.children].forEach((row) => {
+  const liElement = li();
+  const rowDiv = div();
+
+  moveInstrumentation(rowDiv,row);
+  while(row.firstElementChild){
+    const divElement = div();
+
+    divElement.append(row.firstElementChild);
+
+    if(divElement.children.length === 1 && divElement.querySelector('picture'))
+    {
+      divElement.className = 'cards-card-image';
+    } else {
+      divElement.className = 'cards-card-body';
+    }
+    rowDiv.append(divElement);
+  }
+
+  liElement.append(rowDiv);
+  ulElement.append(liElement);
+
+  ulElement.querySelectorAll('picture > img').forEach((imgEl) => {
+    const optimizedPic = createOptimizedPicture(imgEl.src,imgEl.alt, false, [{width: '750'}]);
+    
   });
-  ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-    moveInstrumentation(img, optimizedPic.querySelector('img'));
-    img.closest('picture').replaceWith(optimizedPic);
-  });
-  block.textContent = '';
-  block.append(ul);
+
+  moveInstrumentation(imgEl,optimizedPic.querySelector('img'));
+
+  imgEl.closest('picture').replaceWith(optimizedPic);
+ });
+
+ block.textContent = '';
+ block.appendElement;
 }

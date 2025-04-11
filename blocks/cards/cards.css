@@ -1,4 +1,4 @@
-.cards > ul {
+.cards ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -7,12 +7,12 @@
   grid-gap: 24px;
 }
 
-.cards > ul > li {
+.cards  {
   border: 1px solid #dadada;
   background-color: var(--background-color);
 }
 
-.cards .cards-card-body {
+.cards .card {
   margin: 16px;
 }
 
@@ -25,3 +25,14 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+/* .cards ul {
+  display:flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.cards li {
+  flex: 0 0 300px;
+} */
