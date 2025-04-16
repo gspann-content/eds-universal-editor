@@ -1,15 +1,15 @@
 {
     "definitions": [
       {
-        "title": "Hero Banner",
-        "id": "hero-banner",
+        "title": "Toggle",
+        "id": "toggle",
         "plugins": {
           "xwalk": {
             "page": {
               "resourceType": "core/franklin/components/block/v1/block",
               "template": {
-                "name": "Hero Banner",
-                "model": "hero-banner"
+                "name": "Toggle",
+                "model": "toggle"
               }
             }
           }
@@ -18,21 +18,14 @@
     ],
     "models": [
       {
-        "id": "hero-banner",
+        "id": "toggle",
         "fields": [
           {
             "component": "reference",
             "valueType": "string",
             "name": "image",
             "label": "Image",
-            "multi": false
-          },
-          {
-            "component": "text",
-            "name": "eyebrow",
-            "value": "",
-            "label": "Eyebrow",
-            "valueType": "string"
+            "multi": true
           },
           {
             "component": "text",
@@ -44,9 +37,23 @@
           {
             "component": "richtext",
             "name": "text",
-            "value": "",
-            "label": "Text1",
+            "value": "text",
+            "label": "Text",
             "valueType": "string"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "link",
+            "label": "Link",
+            "multi": true
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "linkAlt",
+            "label": "Alt",
+            "value": ""
           }
         ]
       }
