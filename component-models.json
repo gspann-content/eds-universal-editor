@@ -502,20 +502,6 @@
     "id": "toggle",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": true
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
-      },
-      {
         "component": "richtext",
         "name": "text",
         "value": "text",
@@ -525,14 +511,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "link",
-        "label": "Link",
+        "name": "Button",
+        "label": "button",
         "multi": true
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "linkAlt",
+        "name": "textAlt",
         "label": "Alt",
         "value": ""
       }
