@@ -26,20 +26,6 @@
             "value": "text",
             "label": "Text",
             "valueType": "string"
-          },
-          {
-            "component": "reference",
-            "valueType": "string",
-            "name": "Button",
-            "label": "button",
-            "multi": true
-          },
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "textAlt",
-            "label": "Alt",
-            "value": ""
           }
         ]
       }
