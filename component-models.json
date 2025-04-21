@@ -421,6 +421,18 @@
     ]
   },
   {
+    "id": "tab-filters",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "text",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "tabItem",
     "fields": [
       {
