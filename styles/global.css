@@ -582,14 +582,14 @@
   audio,
   iframe,
   embed,
+
   object {
-    display: block; /* 1 */
-    vertical-align: middle; /* 2 */
+    display: block; 
   }
   
-  /*
+  /* 
   Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
-  */
+   */
   
   img,
   video {
@@ -3039,11 +3039,11 @@
   }
   
   .flickity-enabled.is-draggable .flickity-viewport {
-    /* cursor: url("/img/os/drag.svg"), auto; */
+    cursor: url("/img/os/drag.svg"), auto; 
   }
   
   .flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
-    /* cursor: url("/img/os/drag.svg"), auto; */
+     cursor: url("/img/os/drag.svg"), auto; 
   }
   
   button.flickity-page-dot {
