@@ -1,0 +1,56 @@
+.tab-container {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 10px;
+
+}
+.filter-button {
+    padding: 10px 18px;
+    background-color: #007da4;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: 500px;
+    transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #005f7a;
+}
+.tab-track {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+.tab-card {
+    background-color: #e4f1f5;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+.tab-card:hover {
+    transform: translateY(-5px);
+}
+.tab-card img {
+    max-width: 100%;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+.tab-card h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    color: #333;
+}
+.tab-card p {
+    color: #333;
+    font-size: 14px;
+}
