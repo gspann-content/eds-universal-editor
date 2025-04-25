@@ -30,12 +30,16 @@
           {
             "component": "text",
             "name": "buttonText",
-            "label": "Button Text"
+            "valueType": "text",
+            "label": "Button Text",
+            "multi": true
           },
           {
             "component": "aem-content",
             "name": "buttonUrl",
-            "label": "Button URL"
+            "valueType": "text",
+            "label": "Button URL",
+            "multi": true
           }
         ]
       }
