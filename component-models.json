@@ -296,20 +296,6 @@
         "value": "text",
         "label": "Text",
         "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "buttonText",
-        "valueType": "text",
-        "label": "Button Text",
-        "multi": true
-      },
-      {
-        "component": "aem-content",
-        "name": "buttonUrl",
-        "valueType": "text",
-        "label": "Button URL",
-        "multi": true
       }
     ]
   },
