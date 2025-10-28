@@ -30,7 +30,7 @@
 /* Card item styling */
 .cards-item {
   border-top: 1px solid #dadada;
-  background-color: var(--background-color, #ffffff);
+  background-color: var(--background-color, #fff);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -61,7 +61,7 @@
 /* Heading styling */
 .cards-card-body h3 {
   font-size: 1.25rem;
-  padding: 15px 0px;
+  padding: 15px 0;
   color: #707070;
 }
 

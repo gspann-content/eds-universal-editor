@@ -186,6 +186,42 @@
     ]
   },
   {
+    "id": "hero-banner-with-text",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "buttontext",
+        "value": "",
+        "label": "Button Text"
+      },
+      {
+        "component": "aem-content",
+        "name": "buttonurl",
+        "value": "",
+        "label": "Button URL",
+        "valueType": "string",
+        "validation": {
+          "rootPath": "/content/refresh"
+        }
+      }
+    ]
+  },
+  {
     "id": "hero-banner",
     "fields": [
       {
@@ -319,7 +355,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "altText",
+        "name": "alttext",
         "label": "Alt text",
         "value": "Alt text"
       }

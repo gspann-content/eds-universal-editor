@@ -11,8 +11,8 @@
     "build:json:models": "merge-json-cli -i \"models/_component-models.json\" -o \"component-models.json\"",
     "build:json:definitions": "merge-json-cli -i \"models/_component-definition.json\" -o \"component-definition.json\"",
     "build:json:filters": "merge-json-cli -i \"models/_component-filters.json\" -o \"component-filters.json\"",
-	"build:css": "tailwindcss -i ./styles/styles.css -o ./styles/tailwind.css --watch",
-	"lint:fix": "eslint --fix --ext .js,.jsx .",
+    "build:css": "tailwindcss -i ./styles/styles.css -o ./styles/tailwind.css --watch",
+    "lint:fix": "eslint --fix --ext .js,.jsx .",
     "prepare": "husky"
   },
   "repository": {
@@ -34,7 +34,7 @@
     "eslint-plugin-xwalk": "github:adobe-rnd/eslint-plugin-xwalk#v0.1.2",
     "husky": "9.1.1",
     "merge-json-cli": "1.0.4",
-    "npm-run-all": "4.1.5",
+    "npm-run-all": "^4.1.5",
     "stylelint": "16.8.2",
     "stylelint-config-standard": "36.0.1"
   },
