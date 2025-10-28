@@ -28,13 +28,6 @@
             "multi": false
           },
           {
-            "component": "text",
-            "name": "title",
-            "value": "",
-            "label": "Title",
-            "valueType": "string"
-          },
-          {
             "component": "richtext",
             "valueType": "string",
             "name": "description",
@@ -43,14 +36,14 @@
             },
           {
             "component": "text",
-            "name": "buttonText",
+            "valueType": "string",
+            "name": "buttontext",
             "value": "",
-            "label": "Button Text",
-            "valueType": "string"
+            "label": "Button Text"
           },
           {
             "component": "aem-content",
-            "name": "buttonUrl",
+            "name": "buttonurl",
             "value": "",
             "label": "Button URL",
             "valueType": "string",

@@ -1,115 +1,95 @@
 import {
-    div, p,
-  } from '../../scripts/dom-builder.js';
+  div,
+} from '../../scripts/dom-builder.js';
 
-const baseUrl = 'https://dummyjson.com/products'; 
+const baseUrl = 'https://dummyjson.com/products';
 let allProducts = [];
 
-async function fetchallProducts(baseUrl) {
-    try {
-        const response = await fetch(baseUrl);
-        if(!response.ok) throw new Error(`http error! status' $(response.status)`);
-        const json = await response.json();
-        return json.products;
-    } catch(error) {
-        console.error ('Error fetching products:',error);
-        return[];
-    }
+async function fetchallProducts() {
+  try {
+    const response = await fetch();
+    if (!response.ok) throw new Error('http error! status\' $(response.status)');
+    const json = await response.json();
+    return json.products;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return [];
+  }
 }
 
 function renderProducts(products, cardContainer) {
-    cardContainer.innerHTML = '';
-    products.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'tab-card';
+  cardContainer.innerHTML = '';
+  products.forEach((product) => {
+    const card = document.createElement('div');
+    card.className = 'tab-card';
 
-        const img = document.createElement('img');
-        img.src = product.thumbnail;
-        img.alt = product.title;
+    const img = document.createElement('img');
+    img.src = product.thumbnail;
+    img.alt = product.title;
 
-        const title = document.createElement('h2');
-        title.textContent = product.title;
+    const title = document.createElement('h2');
+    title.textContent = product.title;
 
-        const desc = document.createElement('p');
-        desc.textContent = product.description;
+    const desc = document.createElement('p');
+    desc.textContent = product.description;
 
-        const productPrice = document.createElement('h6');
-        productPrice.textContent = product.price;
+    const productPrice = document.createElement('h6');
+    productPrice.textContent = product.price;
 
-        card.append(img, title, desc, productPrice);
-        cardContainer.appendChild(card);
-    });
+    card.append(img, title, desc, productPrice);
+    cardContainer.appendChild(card);
+  });
 }
 
-function filterProductByCategory(category,cardContainer) {
-    const filtered = category === 'all' ? allProducts : allProducts.filter(p => p.category.toLowerCase().includes(category));
-    renderProducts(filtered, cardContainer);
-
-    console.log('categories', category);
-    console.log('filtered products', filtered);
-    
-
+function filterProductByCategory(category, cardContainer) {
+  const filtered = category === 'all' ? allProducts : allProducts.filter((p) => p.category.toLowerCase().includes(category));
+  renderProducts(filtered, cardContainer);
 }
 
 export default async function decorate(block) {
+  const heading = block.querySelector('p');
+  const headingDiv = div({ class: 'heading-div' });
 
-    const heading = block.querySelector('p');
-    const headingDiv = div({class: 'heading-div'});
+  if (heading) {
+    heading.classList.add('tab-heading');
+    headingDiv.append(heading);
+  }
 
-    if(heading) {
-        heading.classList.add('tab-heading');
-        headingDiv.append(heading);
-    }
+  const tabContainer = div({ class: 'tab-container' });
+  tabContainer.append(headingDiv);
 
-    const tabContainer = div({class: 'tab-container'});
-    tabContainer.append(headingDiv);
+  const filterContainer = div({ class: 'filter-container' });
 
-    const filterContainer = div({class: 'filter-container'});
+  const cardTrack = div({ class: 'tab-track' });
 
-    const cardTrack = div({class: 'tab-track'});
+  block.append(tabContainer, filterContainer, cardTrack);
 
-    block.append(tabContainer,filterContainer, cardTrack);
+  const list = block.querySelector('ul');
+  const items = list ? list.querySelectorAll('li') : [];
 
-    const list = block.querySelector('ul');
-    const items = list ? list.querySelectorAll('li') : [];
+  items.forEach((item) => {
+    const button = document.createElement('button');
+    const category = item.textContent.trim().toLowerCase().replace(/\s+/g, '_');
+    button.textContent = item.textContent.trim();
+    button.dataset.category = category;
 
-    items.forEach(item => {
-        const button = document.createElement('button');
-        const category = item.textContent.trim().toLowerCase().replace(/\s+/g, '_');
-        button.textContent = item.textContent.trim();
-        button.dataset.category = category;
+    button.className = 'filter-button';
 
-        button.className = 'filter-button';
+    filterContainer.appendChild(button);
+  });
 
-        filterContainer.appendChild(button);
+  allProducts = await fetchallProducts(baseUrl);
+
+  renderProducts(allProducts, cardTrack);
+
+  filterContainer.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', () => {
+      const { category } = button.dataset;
+
+      filterProductByCategory(category, cardTrack);
     });
-
-    allProducts = await fetchallProducts(baseUrl);
-
-    renderProducts(allProducts, cardTrack);
-
-    filterContainer.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.dataset.category;
-
-            filterProductByCategory(category,cardTrack);
-        });
-    });
-
+  });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // //fetch api
 //   async function fetchProducts() {
@@ -129,8 +109,6 @@ export default async function decorate(block) {
 //     if(!Array.isArray(products))
 //         return;
 
-    
-    
 //     products.forEach((product) => {
 //         const card = document.createElement('div');
 //         card.className = "track-card";
@@ -157,7 +135,6 @@ export default async function decorate(block) {
 
 //   export default function decorate(block) {
 
-  
 //     const heading = block.querySelector('p');
 //     const headingDiv = div({class: 'heading-div'});
 
@@ -173,7 +150,6 @@ export default async function decorate(block) {
 
 //     const storedData = fetchProducts();
 
-    
 //     const ul = block.querySelector('ul');
 //     const items = ul? [...ul.querySelectorAll('li')] : [];
 //     if(ul) ul.remove();
@@ -198,8 +174,9 @@ export default async function decorate(block) {
 //         btn.addEventListener('click', () => {
 //             const category = btn.getAttribute('data-category');
 //             if(!category) return;
-            
-//             const filtered = category === 'all' ? storedData : storedData.filter((item) => item.category.toLowerCase() === category);
+
+//             const filtered = category === 'all' ? storedData : storedData.filter((item)
+//                                        => item.category.toLowerCase() === category);
 //             renderProducts(filtered);
 //         })
 //     })

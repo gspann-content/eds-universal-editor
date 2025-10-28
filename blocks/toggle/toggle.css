@@ -47,11 +47,10 @@
 
 .toggle-right {
     width: 1500px;
-    background-color: #ffffff;
     /* overflow-y: auto; */
     height: 800px;
     margin-bottom: 12px;
-    background-color: #ffffff;
+    background-color: #fff;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 

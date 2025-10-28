@@ -1,90 +1,77 @@
-
 import {
-    p, div, ul, li
-  } from '../../scripts/dom-builder.js';
+  div,
+} from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
+  const container = div({ class: 'toggle-container' });
+  const leftSide = div({ class: ' toggle-left' });
+  const rightSide = div({ class: 'toggle-right' });
 
-    console.log("block", block);
+  const heading = block.querySelector('p');
+  if (heading) {
+    heading.classList.add('toggle-heading');
+    leftSide.append(heading);
+  }
 
-    // block.innerHTML("")
-    const container = div({class: 'toggle-container',});
-    const leftSide = div({class: ' toggle-left',});
-    const rightSide = div({class: 'toggle-right',});
+  const list = block.querySelector('ul');
+  const items = list ? list.querySelectorAll('li') : [];
 
-    const heading = block.querySelector('p');
-    if(heading) {
+  async function fetchAndShowData(category) {
+    try {
+      rightSide.innerHTML = '';
 
-        heading.classList.add('toggle-heading');
-        leftSide.append(heading);
-    }
-    
+      const loading = div({ class: 'loading' });
+      loading.textContent = 'Loading...';
+      rightSide.append(loading);
 
-    const list = block.querySelector('ul');
-    const items = list? list.querySelectorAll('li') : []; 
+      const validcategory = ['fragrance', 'groceries', 'home-decoration', 'skincare'];
+      if (!validcategory.includes(category)) {
+        throw new Error('invalid category');
+      }
 
+      const response = await fetch(`https://dummyjson.com/products/category/${category}`);
+      if (!response.ok) {
+        throw new Error(`failed tofetch data:${category}`);
+      }
 
-    async function fetchAndShowData(category) {
-        try {
-            rightSide.innerHTML = '';
+      const data = await response.json();
+      const { products } = data;
 
-            const loading = div({class: 'loading'});
-            loading.textContent = 'Loading...';
-            rightSide.append(loading) ;
+      rightSide.innerHTML = '';
 
-            const validCategory = ['fragrance','groceries', 'home-decoration', 'skincare'];
-            if(!validCategory.includes(category)) {
-                throw new error ('invalid category');
-            }
+      if (!products || products.length === 0) {
+        const nocontent = div({ class: 'no products found for this category' });
+        rightSide.append(nocontent);
+        return;
+      }
 
-            const response = await fetch (`https://dummyjson.com/products/category/${category}`);
-            if(!response.ok) {
-                throw new error (`failed tofetch data:${category}`);
-            }
-            
-            const data = await response.json();
-            const products = data.products;
-
-            rightSide.innerHTML = '';
-
-            if(!products || products.length === 0 ) {
-                const noContent = div({class: 'no products found for this category'});
-                rightSide.append(noContent);
-                return;
-            }
-
-            products.forEach(product => {
-                const content = div ({ class: 'toggle-content'});
-                content.innerHTML = `<h4> ${product.title}</h4> 
+      products.forEach((product) => {
+        const content = div({ class: 'toggle-content' });
+        content.innerHTML = `<h4> ${product.title}</h4> 
                 <p> ${product.description}</p>
                 <p><strong> price: </strong> $${product.price}</p>`;
 
-                rightSide.append(content);
-            });
-
-
-        } catch (error) {
-            rightSide.innerHTML = '';
-            const errorDiv = div({class: 'toggle-content'});
-            errorDiv.textContent = 'Error fetching data';
-            rightSide.append(errorDiv);
-            console.error('error fetching products', error);
-
-        }
+        rightSide.append(content);
+      });
+    } catch (error) {
+      rightSide.innerHTML = '';
+      const errorDiv = div({ class: 'toggle-content' });
+      errorDiv.textContent = 'Error fetching data';
+      rightSide.append(errorDiv);
     }
+  }
 
-    items.forEach((item) => {
-        item.classList.add('toggle-items');
-        item.addEventListener ('click', () => {
-            const category = item.textContent.trim().toLowerCase();
-            fetchAndShowData(category);
-        });
+  items.forEach((item) => {
+    item.classList.add('toggle-items');
+    item.addEventListener('click', () => {
+      const category = item.textContent.trim().toLowerCase();
+      fetchAndShowData(category);
+    });
 
-        leftSide.append(item);
-    })
+    leftSide.append(item);
+  });
 
-    container.append(leftSide, rightSide);
-    block.innerHTML = '';
-    block.append(container);
-
+  container.append(leftSide, rightSide);
+  block.innerHTML = '';
+  block.append(container);
 }
