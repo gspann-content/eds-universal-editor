@@ -186,6 +186,49 @@
     ]
   },
   {
+    "id": "hero-banner-with-text",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "buttonText",
+        "value": "",
+        "label": "Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "buttonUrl",
+        "value": "",
+        "label": "Button URL",
+        "valueType": "string",
+        "validation": {
+          "rootPath": "/content/refresh"
+        }
+      }
+    ]
+  },
+  {
     "id": "hero-banner",
     "fields": [
       {
