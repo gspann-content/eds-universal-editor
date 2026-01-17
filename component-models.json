@@ -131,6 +131,32 @@
     ]
   },
   {
+    "id": "carousel",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "text",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "button",
+        "value": "",
+        "label": "Button",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "buttonUrl",
+        "value": "",
+        "label": "Button URL",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
