@@ -3,7 +3,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  ul, li, div,
+  ul, li, div, div test
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
