@@ -1,0 +1,67 @@
+.category-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  background-color: theme('colors.white');
+  border: 1px solid theme('colors.gray.300');
+  border-radius: theme('borderRadius.md'); /* Assuming a default border-radius for cards */
+  overflow: hidden; /* To ensure content stays within bounds */
+}
+
+.category-card-image img {
+  width: 100%;
+  height: 164px; /* Fixed height as per Figma */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.category-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: theme('spacing.3'); /* Equivalent to 12px */
+  gap: theme('spacing.3'); /* Equivalent to 12px */
+  flex-grow: 1; /* Allows content to take available space */
+}
+
+.category-card-title {
+  font-size: theme('fontSize.xl'); /* Equivalent to 20px */
+  line-height: theme('lineHeight.normal'); /* Equivalent to 28px */
+  font-weight: theme('fontWeight.normal'); /* Equivalent to 400 */
+  color: theme('colors.black');
+  font-family: theme('fontFamily.sans'); /* Assuming TWK Lausanne Pan maps to a sans-serif font */
+}
+
+.category-card-description {
+  font-size: theme('fontSize.base'); /* Equivalent to 16px */
+  line-height: theme('lineHeight.snug'); /* Equivalent to 22px */
+  font-weight: theme('fontWeight.extralight'); /* Equivalent to 200 */
+  color: theme('colors.gray.700'); /* Equivalent to #374151 */
+  font-family: theme('fontFamily.sans'); /* Assuming TWK Lausanne Pan maps to a sans-serif font */
+}
+
+.category-card-link {
+  font-size: theme('fontSize.base'); /* Equivalent to 16px */
+  line-height: theme('lineHeight.snug'); /* Equivalent to 22px */
+  font-weight: theme('fontWeight.bold'); /* Equivalent to 700 */
+  color: theme('colors.purple.600'); /* Equivalent to #7523FF */
+  font-family: theme('fontFamily.sans'); /* Assuming TWK Lausanne Pan maps to a sans-serif font */
+  text-decoration: none; /* Default to no underline */
+  transition: text-decoration 0.2s ease-in-out;
+}
+
+.category-card-link:hover,
+.category-card-link:focus {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (min-width: theme('screens.md')) {
+  .category-card-content {
+    padding: theme('spacing.4'); /* Larger padding on medium screens */
+    gap: theme('spacing.4');
+  }
+}

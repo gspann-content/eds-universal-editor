@@ -52,7 +52,8 @@
         "toggle",
         "tab-filters",
         "items-cart",
-        "hero-banner-with-text"
+        "hero-banner-with-text",
+        "category-card"
       ]
     }
   ]
