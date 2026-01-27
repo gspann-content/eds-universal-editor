@@ -23,8 +23,8 @@ export default function decorate(block) {
   //   div (cell for link text)
   //   div (cell for link URL)
 
-  const children = [...block.children];
-
+  const [children] = block.children;
+  console.log(block,children);
   // Default values for robustness
   let imageUrl = '';
   let imageAlt = '';
