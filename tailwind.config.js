@@ -1,11 +1,72 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./blocks/**/*.{html,js,css}', './webpack/**/*.{js,html,ejs}'],
+  // Tailwind v3+ content scanning
+  content: [
+    './blocks/**/*.{html,js,css}',
+    './webpack/**/*.{js,html,ejs}',
+    './styles/**/*.{css,scss}',
+    './**/*.{htl,html}', // AEM HTL/templates, if applicable
+  ],
+
+  // Always include these classes (even if not found in files)
+  // Note: For arbitrary values like top-[...], list them explicitly here.
+  safelist: [
+    // Explicit classes
+    'wallsio-load-more-button',
+    'richtext-minimal',
+    'product-row-xf',
+
+    // Arbitrary values and specific utilities you mentioned
+    'tw-h-[calc(95svh-64px)]',
+    'md:tw-h-[calc(95svh-133px)]',
+
+    'tw-grid-cols-1',
+    'sm:tw-grid-cols-2',
+    'lg:tw-grid-cols-3',
+    'lg:tw-grid-cols-4',
+
+    'tw-mt-16',
+    'tw-mt-24',
+    'tw-mt-32',
+    'tw-mt-64',
+    'md:tw-mt-24',
+    'md:tw-mt-32',
+    'md:tw-mt-48',
+    'md:tw-mt-96',
+
+    'tw-mb-16',
+    'tw-mb-24',
+    'tw-mb-32',
+    'tw-mb-64',
+    'md:tw-mb-24',
+    'md:tw-mb-32',
+    'md:tw-mb-48',
+    'md:tw-mb-96',
+
+    'tw-top-[60px]',
+    'md:tw-top-[131px]',
+  ],
+
+  // Optional regex patterns (must target known utilities with known values).
+  // Keep these modest—patterns do NOT create arbitrary values.
+  // With your `prefix: 'tw-'`, the utilities include 'tw-grid-cols-{n}', 'tw-mt-{n}', etc.
+  safelistPatterns: [
+    // Keep families of spacing utilities that use numeric keys you defined
+    /^tw-(mt|mb|ml|mr|pt|pb|pl|pr)-(0|1|2|4|6|8|9|10|12|14|15|16|18|19|20|22|24|28|30|32|36|40|42|48|54|56|64|72|80|96|100|128|140|160)$/,
+    // Grid columns 1..4 that you listed
+    /^tw-grid-cols-(1|2|3|4)$/,
+    // Responsive variants for the above (no arbitrary values here)
+    /^(sm|md|lg|xl|2xl):tw-grid-cols-(1|2|3|4)$/,
+    /^(sm|md|lg|xl|2xl):tw-(mt|mb)-(16|24|32|48|64|96)$/,
+  ],
+
+  // Enforce your namespace and importance
   important: '.tw',
   prefix: 'tw-',
+
   theme: {
     extend: {
-      // colors: require('./tailwind.colors.js'),
       listStyleType: {
         none: 'none',
         disc: 'disc',
@@ -100,15 +161,15 @@ module.exports = {
         80: '80px',
         96: '96px',
         100: '100px',
+        128: '128px',
         140: '140px',
         160: '160px',
-        128: '128px',
         327: '327px',
         416: '416px',
         500: '500px',
         810: '810px',
 
-        // desktop
+        // desktop fractions
         '1/12': '8.333%',
         '2/12': '16.667%',
         '3/12': '25%',
@@ -170,16 +231,18 @@ module.exports = {
         mobCaptionSm: '1.1px',
       },
       gridTemplateColumns: {
-        productRowLg: '1fr auto 1fr auto 1fr auto 1fr;',
-        productRowMd: '1fr auto 1fr;',
+        productRowLg: '1fr auto 1fr auto 1fr auto 1fr',
+        productRowMd: '1fr auto 1fr',
       },
       boxShadow: {
         boxShadow: '0px 8px 16px 0px rgba(19, 19, 19, 0.05)',
       },
     },
+
     fontFamily: {
       sans: ['Geogrotesque'],
     },
+
     container: {
       center: true,
       padding: {
@@ -189,118 +252,14 @@ module.exports = {
       },
     },
   },
-  /* plugins: [
-    fluid({
-      suffix: '',
-      textSizes: {
-        'xl-display': {
-          min: '64px',
-          max: '140px',
-          minvw: '600px',
-          maxvw: '1280px',
-        },
-        'l-display': {
-          min: '48px',
-          max: '80px',
-          minvw: '600px',
-          maxvw: '1280px',
-        },
-        alfa: {
-          min: '34px',
-          max: '64px',
-          minvw: '600px',
-          maxvw: '1280px',
-        },
-        bravo: {
-          min: '31px',
-          max: '52px',
-          minvw: '600px',
-          maxvw: '1280px',
-        },
-        charlie: {
-          min: '27px',
-          max: '40px',
-          minvw: '600px',
-          maxvw: '1280px',
-        },
-        delta: {
-          min: '23px',
-          max: '32px',
-          minvw: '600px',
-          maxvw: '1280px',
-        },
-        echo: {
-          min: '19px',
-          max: '24px',
-          minvw: '600px',
-          maxvw: '1280px',
-        },
-        base: {
-          min: '15px',
-          max: '16px',
-          minvw: '600px',
-          maxvw: '1280px',
-        },
-        xl: '20px',
-        lg: '18px',
-        mobLg: '17px',
-        mobBase: '15px',
-        sm: '14px',
-        mobSm: '13px',
-        xs: '12px',
-        caption: '13px',
-        captionLarge: '14px',
-        captionSmall: '12px',
-      },
-    }),
-  ], */
-  purge: {
-    options: {
-      safelist: [
-        'wallsio-load-more-button',
-        'atomic-container-left-1-col .atomic-richtext-content',
-        'document-sub-nav .atomic-container-left-1-col .atomic-richtext-content .atomic-richtext-content-w-full',
-        'document-sub-nav .atomic-container-center-1-col .atomic-richtext-content .atomic-richtext-content-w-full',
-        'document-sub-nav .atomic-container-left-1-col .media-image .atomic-richtext-content',
-        'tw-h-[calc(95svh-64px)]', 'md:tw-h-[calc(95svh-133px)]',
-        'tw-grid-cols-1',
-        'sm:tw-grid-cols-2',
-        'lg:tw-grid-cols-3',
-        'lg:tw-grid-cols-4',
-        '.accordion-content div[role="region"] div section:first-child',
-        '.tab-content div[role="tabpanel"] > div > section',
-        '.tab-content div[role="tabpanel"] .cmp-container div:last-child section:last-of-type',
-        '.cmp-container:has(> .product-row-xf)',
-        '.product-row-xf',
-        'input[type="range"]',
-        'input[type="range" i]::-webkit-slider-thumb',
-        'input[type="range"]::-moz-range-thumb',
-        'tw-mt-32',
-        'tw-mt-16',
-        'tw-mt-24',
-        'tw-mt-64',
-        'md:tw-mt-48',
-        'md:tw-mt-24',
-        'md:tw-mt-32',
-        'md:tw-mt-96',
-        'tw-mb-32',
-        'tw-mb-16',
-        'tw-mb-24',
-        'tw-mb-64',
-        'md:tw-mb-48',
-        'md:tw-mb-24',
-        'md:tw-mb-32',
-        'md:tw-mb-96',
-        'tw-top-[60px]',
-        'md:tw-top-[131px]',
-        'richtext-minimal',
-      ],
-    },
-  },
-  variants: {
-    extend: {
-      border: ['first'],
-      textColor: ['group-hover'],
-    },
-  },
+
+  // In v3, variants are mostly built-in; keeping yours is harmless but optional.
+  // variants: {
+  //   extend: {
+  //     border: ['first'],
+  //     textColor: ['group-hover'],
+  //   },
+  // },
+
+  // plugins: [],
 };
