@@ -134,32 +134,32 @@
     "id": "category-card",
     "fields": [
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "category_image",
+        "label": "Category Image",
+        "value": "Image for the category card"
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "category_title",
-        "value": "Capillary Electrophoresis Instruments",
-        "label": "Category Title"
+        "label": "Category Title",
+        "value": "Title of the category"
       },
       {
-        "component": "richtext",
+        "component": "text",
         "valueType": "string",
         "name": "category_description",
-        "value": "Our capillary electrophoresis systems are designed to address your analytical needs and challenges.",
-        "label": "Category Description"
+        "label": "Category Description",
+        "value": "Short description of the category"
       },
       {
-        "component": "link",
-        "valueType": "url",
+        "component": "aem-content",
+        "valueType": "string",
         "name": "category_link",
-        "value": "#",
-        "label": "Category Link"
-      },
-      {
-        "component": "image",
-        "valueType": "url",
-        "name": "category_image",
-        "value": "https://placehold.co/305x164",
-        "label": "Category Image"
+        "label": "Category Link",
+        "value": "Link to the category details page"
       }
     ]
   },
