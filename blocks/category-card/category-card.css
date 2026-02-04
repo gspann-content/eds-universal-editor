@@ -1,91 +1,102 @@
-.category-card-wrapper {
+.product-card-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: 1px solid var(--color-border-subtle); /* Using a Tailwind-like token */
   background-color: white;
-  border-radius: 0.5rem; /* Example: rounded corners */
-  overflow: hidden; /* Ensures image corners are also rounded */
+  outline: 1px solid #d1d5db;
   width: 100%;
-  max-width: 305px; /* Based on Figma image width */
-  margin: 0 auto; /* Center the card if it's not full width */
+  height: 100%;
 }
 
-.category-card-image {
+.product-image {
   width: 100%;
-  height: 164px; /* Fixed height as per Figma */
-  object-fit: cover; /* Ensures image covers the area without distortion */
-  display: block; /* Remove extra space below image */
+  height: 164px;
+  object-fit: cover;
 }
 
-.category-card-content {
+.product-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0.75rem; /* Equivalent to 12px */
-  width: 100%;
-  flex-grow: 1; /* Allows content to take available space */
+  align-self: stretch;
+  padding: 12px;
+  gap: 12px;
+  flex-grow: 1;
 }
 
-.category-card-text-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem; /* Equivalent to 8px */
-  margin-bottom: 0.75rem; /* Space between text and link */
-}
-
-.category-card-title {
-  font-size: 1.25rem; /* Equivalent to 20px */
-  line-height: 1.75rem; /* Equivalent to 28px */
-  font-weight: 400;
-  color: var(--color-text-default); /* Using a Tailwind-like token */
-  margin: 0; /* Remove default heading margin */
-}
-
-.category-card-description {
-  font-size: 1rem; /* Equivalent to 16px */
-  line-height: 1.375rem; /* Equivalent to 22px */
-  font-weight: 200;
-  color: var(--color-text-subtle); /* Using a Tailwind-like token */
-  margin: 0; /* Remove default paragraph margin */
-}
-
-.category-card-link {
-  font-size: 1rem; /* Equivalent to 16px */
-  line-height: 1.375rem; /* Equivalent to 22px */
+.product-title {
+  font-size: 16px;
   font-weight: 700;
-  color: var(--color-primary); /* Using a Tailwind-like token */
+  line-height: 22px;
+  word-wrap: break-word;
+  color: #000000;
+  align-self: stretch;
+  height: 80px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.product-description {
+  font-size: 14px;
+  line-height: 20px;
+  color: #6b7280;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.product-link {
+  color: #7523ff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
   text-decoration: none;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.5rem; /* Space between text and arrow */
+  gap: 8px;
 }
 
-.category-card-link:hover,
-.category-card-link:focus {
-  text-decoration: underline;
+.product-link-icon {
+  font-size: 16px;
 }
 
-/* Responsive adjustments */
-@media (min-width: 768px) { /* Tablet breakpoint */
-  .category-card-wrapper {
-    max-width: 305px; /* Maintain consistent width */
+@media (min-width: 768px) {
+  .product-card-wrapper {
+    flex-direction: row;
   }
 
-  .category-card-content {
-    padding: 0.75rem;
+  .product-image {
+    width: 305px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .product-content {
+    padding: 24px;
+    gap: 16px;
+  }
+
+  .product-title {
+    font-size: 18px;
+    height: auto;
+  }
+
+  .product-description {
+    font-size: 16px;
+  }
+
+  .product-link {
+    font-size: 16px;
   }
 }
 
-@media (min-width: 1024px) { /* Desktop breakpoint */
-  .category-card-wrapper {
-    max-width: 305px; /* Maintain consistent width */
+@media (min-width: 1280px) {
+  .product-card-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
   }
-}
-
-/* Accessibility focus styles */
-.category-card-link:focus-visible {
-  outline: 2px solid var(--color-primary); /* Example focus outline */
-  outline-offset: 2px;
 }

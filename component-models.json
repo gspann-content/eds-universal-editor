@@ -131,35 +131,45 @@
     ]
   },
   {
-    "id": "category-card",
+    "id": "product-card",
     "fields": [
       {
         "component": "reference",
         "valueType": "string",
-        "name": "category_image",
-        "label": "Category Image",
+        "name": "product_image",
+        "label": "Product Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "category_title",
-        "label": "Category Title",
-        "value": "Title of the category"
+        "name": "product_title",
+        "value": "Capillary Electrophoresis Instruments",
+        "label": "Product Title"
+      },
+      {
+        "component": "aem-content",
+        "name": "product_description",
+        "label": "Product Description"
+      },
+      {
+        "component": "aem-content",
+        "name": "product_link",
+        "label": "Product Link"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "category_description",
-        "label": "Category Description",
-        "value": "Short description of the category"
+        "name": "link_label",
+        "value": "Browse Products",
+        "label": "Link Label"
       },
       {
-        "component": "aem-content",
+        "component": "text",
         "valueType": "string",
-        "name": "category_link",
-        "label": "Category Link",
-        "value": "Link to the category details page"
+        "name": "link_icon",
+        "value": "→",
+        "label": "Link Icon"
       }
     ]
   },
