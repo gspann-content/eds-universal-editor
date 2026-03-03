@@ -1,69 +1,65 @@
 import {
   div,
-  img,
+  h3,
+  p,
+  a,
   span,
-  a
+  img
 } from '../../scripts/dom-builder.js';
 
 export default function decorate(block) {
-  console.log("block.......")
-  console.log(block)
-  const productCardWrapper = div({
-    class: 'product-card-wrapper'
-  });
+  const categoryCardImage = block.children[0];
+  const categoryCardContent = block.children[1];
+  console.log("print data.....");
+  console.log(categoryCardImage)
+  console.log("print data end........");
 
-  const [
-    productImage,
-    productContent,
-    productDescription,
-    productLink,
-    linkLabel,
-    linkIcon
-  ] = block.children;
+  const imageSrc = categoryCardImage.querySelector('img')?.getAttribute('src') || '';
+  const imageAlt = categoryCardImage.querySelector('img')?.getAttribute('alt') || 'Category Image';
 
-  const imageSrc = productImage?.querySelector('img')?.src || '';
-  const imageAlt = productImage?.querySelector('img')?.alt || 'Product Image';
-  const title = productTitle?.textContent.trim() || '';
-  const description = productDescription?.innerHTML.trim() || '';
-  const link = productLink?.querySelector('a')?.href || '#';
-  const linkText = linkLabel?.textContent.trim() || '';
-  const icon = linkIcon?.textContent.trim() || '';
+  const categoryTitleEl = categoryCardContent.children[0]?.textContent.trim() || '';
+  const categoryDescriptionEl = categoryCardContent.children[1]?.textContent.trim() || '';
+  const ctaTextEl = categoryCardContent.children[2]?.textContent.trim() || '';
+  const ctaLinkEl = categoryCardContent.children[3]?.querySelector('a')?.getAttribute('href') || '';
+  const ctaLinkTargetEl = categoryCardContent.children[3]?.querySelector('a')?.getAttribute('target') || '';
 
-  const productImageElement = img({
+  const cardImage = img({
     src: imageSrc,
     alt: imageAlt,
-    class: 'product-image'
+    class: 'w-full h-[164px] object-cover',
   });
 
-  console.log("title.......")
-  console.log(title)
+  const categoryTitle = h3({
+    class: 'text-lg font-bold leading-tight',
+  }, categoryTitleEl);
 
-  const productTitleElement = span({
-    class: 'product-title'
-  }, title);
+  const categoryDescription = p({
+    class: 'text-sm text-gray-600',
+  }, categoryDescriptionEl);
 
-  
+  const ctaLink = a({
+    href: ctaLinkEl,
+    target: ctaLinkTargetEl,
+    class: 'text-primary-500 font-bold text-base flex items-center gap-1 hover:underline',
+  }, ctaTextEl, span({
+    class: 'icon icon-arrow-right'
+  }));
 
-  const productDescriptionElement = div({
-    class: 'product-description'
-  }, description);
-
-  const productLinkElement = a({
-    href: link,
-    class: 'product-link'
-  }, linkText, span({
-    class: 'product-link-icon'
-  }, icon));
-
-  const contentDiv = div({
-    class: 'product-content'
+  const cardContent = div({
+    class: 'p-4 flex flex-col justify-between flex-grow',
   },
-    productTitleElement,
-    productDescriptionElement,
-    productLinkElement
+    div({ class: 'mb-4' }, categoryTitle, categoryDescription),
+    ctaLink
   );
 
-  productCardWrapper.append(productImageElement, contentDiv);
+  const categoryCardWrapper = div({
+    class: 'category-card-wrapper bg-white outline outline-1 outline-gray-300 rounded-lg overflow-hidden shadow-sm flex flex-col',
+  },
+    cardImage,
+    cardContent
+  );
+
+  decorateIcons(categoryCardWrapper);
   block.innerHTML = '';
-  block.append(productCardWrapper);
+  block.appendChild(categoryCardWrapper);
 }

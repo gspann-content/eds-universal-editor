@@ -131,45 +131,45 @@
     ]
   },
   {
-    "id": "product-card",
+    "id": "category-card",
     "fields": [
       {
         "component": "reference",
         "valueType": "string",
-        "name": "product_image",
-        "label": "Product Image",
+        "name": "card_image",
+        "label": "Card Image",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "product_title",
-        "value": "Capillary Electrophoresis Instruments",
-        "label": "Product Title"
+        "name": "category_title",
+        "value": "",
+        "label": "Category Title"
       },
       {
         "component": "aem-content",
-        "name": "product_description",
-        "label": "Product Description"
-      },
-      {
-        "component": "aem-content",
-        "name": "product_link",
-        "label": "Product Link"
+        "name": "category_description",
+        "label": "Category Description"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "link_label",
-        "value": "Browse Products",
-        "label": "Link Label"
+        "name": "cta_text",
+        "value": "",
+        "label": "CTA Text"
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "link_icon",
-        "value": "→",
-        "label": "Link Icon"
+        "component": "aem-content",
+        "name": "cta_link",
+        "label": "CTA Link"
+      },
+      {
+        "component": "boolean",
+        "name": "cta_link_target",
+        "valueType": "boolean",
+        "value": false,
+        "label": "Open CTA link in new tab?"
       }
     ]
   },

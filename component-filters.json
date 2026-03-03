@@ -34,9 +34,9 @@
     ]
   },
   {
-    "id": "category-type-2",
+    "id": "category-card",
     "components": [
-      "product-card"
+      "category-card"
     ]
   },
   {
